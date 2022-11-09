@@ -1,0 +1,205 @@
+#!/usr/bin/perl -w
+
+# This script is called during 'make' to compile & assemble one source module
+# Assumes the code is to be built with RENT support as per $defrent 
+
+my $cleanbackup = 1;						# 1 = delete edit backup files: abc.c~
+my $defrent = 'norent';						# default - norent or rent
+my $objtype = 'xsd';						# default - goff or xsd
+my $bitfield = "-fansi_bitfield ";				# Systems/C bitfield option
+
+my $source = 'hello';						# default - C source name (.c)
+my $host = 'localhost';						# default - hercsub hostname
+my $port = '3505';						# default - hercsub port number
+my $jcl;							# default - JCL name
+my $version = '0003';						# Build script version id string
+
+my $srcpath = `pwd`;						# source subdir path
+chomp($srcpath);						# remove \n
+
+my $buildpath = '../build';					# path to build subdir
+my $asmpath = "$buildpath/asm";					# Target directory for intermediate assembly source
+my $listpath = "$buildpath/list";				# Target directory for assembly listing
+my $listcpath = "$buildpath/listc";				# Target directory for C        listing
+my $logpath = "$buildpath/log";					# subdir containing compile logs
+my $objpath = "$buildpath/obj";					# Target directory for object decks
+
+my $digmac = '/usr/local/dignus/160/maclib/&M';			# Dignus-supplied maclibs
+my $diginc = '/usr/local/dignus/160/include';			# Dignus-supplied includes
+my $amaclib = '/herc1/source/mvs38j/lib/amaclib/&m.mac';	# MVS38j AMACLIB
+my $amodgen = '/herc1/source/mvs38j/lib/amodgen/&m.mac';	# MVS38j AMODGEN
+my $dcc = '/usr/local/bin/dcc';					# executable - DCC
+my $dasm = '/usr/local/bin/dasm';				# executable - DASM
+my $goff2xsd = '/usr/local/bin/goff2xsd';			# executable - GOFF2XSD
+my $plink = '/usr/local/bin/plink';				# executable - PLINK
+my $digobj = "/usr/local/dignus/160/objs_$defrent";		# path - dignus object decks
+
+my $archpath = "arch/s370";					# S/370 architectural-dependent base subdir
+my $hpath   = "-Ih -I$archpath/h -I$archpath/temp -I$archpath/temph -I$diginc";	# C headers path
+my $tcpmac = "$archpath/mac";					# subdir containing MVS38j TCP/IP macros
+
+my $subdir;							# subdir containing source (relative src)
+my $srcext;							# source extension; default: c
+
+print "-------------------------------------------------------------------------------------------------------------\n";
+print "MVS38j source build support v$version\n\n";
+
+# We receive the command: mvs38j-compile dir xxx [ext]
+# dir = subdir relative to src tree (not relative to src/compile as old Makefile did)
+# xxx = C program source name, no extension
+# ext = filename extension; if omitted, "c" assumed
+
+if (@ARGV > 0) {
+	print "src subdir:       $ARGV[0]\n";
+	$subdir = "$ARGV[0]";					# subdir containing program source (relative to src)
+}
+if (@ARGV > 1) {
+	print "source name:      $ARGV[1]\n";
+	$source = "$ARGV[1]";					# name of source to build
+}
+$srcext = 'c';							# default source extension: c
+if (@ARGV > 2) {
+	print "source extension: $ARGV[2]\n";
+	$srcext = "$ARGV[2]";					# source filename extension: c, asm, etc.
+} else {
+	print "source extension: $srcext\n";
+}
+if (@ARGV > 3) {
+	print "** WARNING ** extraneous argument(s) $ARGV[3]\n";
+}
+print "\n";
+my $rc = 0;
+if ($srcext eq 'c') {						# remove extraneous junk
+	$rc = compile($source, $objtype, $defrent);		# run Systems/C comiler
+	if ( ($rc == 0) && ($cleanbackup) ) {
+		print "Removing edit backup file $subdir/$source.$srcext~\n";
+		system "rm $subdir/$source.$srcext" . "~ 2> /dev/null";
+	}
+}
+if ($rc == 0) {
+	$rc = asm($source, $objtype, $defrent);			# run Systems/ASM assembler
+	if ( ($rc == 0) && ($cleanbackup) ) {
+		print "Removing edit backup file $subdir/$source.asm~\n";
+		system "rm $subdir/$source.asm~ 2> /dev/null";
+	}
+#	if ($rc == 0) {
+#		$rc = plink($source, $objtype, $defrent);	# pre-link the object deck
+#		if ($rc == 0) {
+#			$rc = submit($source, $jcl);		# submit JCL to JES2 reader
+#		}
+#	}
+}
+print "Mvs38j-compile exiting with rc $rc\n";
+print "-------------------------------------------------------------------------------------------------------------\n";
+exit $rc;
+
+#------------------------------------------------------------------------------------------------------------------------------
+
+sub compile {
+	my $name = "$_[0]";					# source name without extension
+	my $objtype = "$_[1]";					# object format (ignored)
+	my $rent = "$_[2]";					# rent or norent
+	system "rm $buildpath/listc/*$name.list 2> /dev/null";	# remove possible prev error listings
+	my $clist = "-flisting=$buildpath/listc/$name.list";	# listing option
+	my $options = "-f$rent $hpath $clist -fnosname -fnoshowinc $bitfield";
+	my $cmd = "$dcc $options -o$asmpath/$name.asm $subdir/$name.c 2> $logpath/$name.txt";
+	print "Command: $cmd\n";
+	system "$cmd";
+	my $crc = $?;
+	my $listname = "$listcpath/$name.list";
+	if ($crc != 0) {
+		$listname = "$listcpath/$crc-$name.list";
+		$cmd = "mv $listcpath/$name.list $listname";
+		print "Executing $cmd\n";
+		system "$cmd";					# indicate return code
+	} 
+	$cmd = "cat $logpath/$name.txt >>$listname";		# append stderr to listing
+	print "Executing $cmd\n";
+	system "$cmd";
+	print "Systems/C return code $crc for $name\n\n";
+	return $crc;
+}
+
+sub asm {
+#	print "Specify dasm -h to see Help\n";
+#	print "Specify dasm -helplib to see Library (SYSLIB) Help\n";
+	my $goff;
+	my $rentopt;
+	my $name = "$_[0]";					# source name without extension
+	my $objtype = "$_[1]";					# object format: goff or <not>
+	my $maclib = "$digmac:$tcpmac/&m.mac:$amaclib:$amodgen";
+	my $asmsrc = "'$asmpath/$name.asm'";			# quoted to prevent shell from mucking with special chars in name
+	if ($srcext eq 'asm') {
+		$asmsrc = "$srcpath/$subdir/$name.asm";
+#		$maclib = "$tcpmac/&m.mac:" . "$maclib";	# add MVS38j TCP/IP macros
+		$objtype = 'xsd';				# force U370 & STCP obj decks to xsd
+	}
+	if ($objtype eq 'goff') {
+		$goff = '-goff';				# object deck GOFF
+		$xsd = '-xxsd';
+	} 
+	if ($objtype eq 'xsd') {
+		$goff = '-xgoff';
+		$xsd = '-xsd';					# object deck XSD
+	}
+	if ($objtype eq 'obj') {
+		$goff = '-xgoff';
+		$xsd = '-xxsd';					# object deck OBJ
+	}
+	if ($_[2] eq 'rent') {
+		$rentopt = '-r';				# reentrant
+	} else {
+		$rentopt = '-xr';				# non-reentrant
+	}
+	my $asmopt = "-xbatch -xdx -mx -a $xsd $goff -lc 32767 $rentopt";
+	my $asmobj = "'$objpath/$name.$objtype'";
+	system "rm $listpath/*$name.list 2> /dev/null";		# remove possible prev error listings
+	my $list = "-flisting=$listpath/$name.list";		# quoted to escape special chars in name
+	my $cmd = "$dasm $asmopt -o $asmobj '-L$maclib' $list $asmsrc";
+	print "Executing command $cmd\n";
+	system "$cmd";
+	my $asmrc = $?;
+	print "Systems/ASM return code $asmrc for $name\n\n";
+	if ($asmrc != 0) {
+		print "Assembly error; removing object deck $name.$objtype\n";
+		system "rm $name.$objtype";			# remove bad obj deck
+		$cmd = "mv $listpath/$name.list $listpath/$asmrc-$name.list";
+		print "Executing $cmd\n";
+		system "$cmd";						# indicate return code
+	}
+	return $asmrc;
+}
+
+sub clean {							# remove junk editor leaves lying around
+	my $name = "$_[0]";					# source name
+	my $cmd = "rm -v $name" . "~ 2>/dev/null";
+	print "Executing command $cmd\n";
+	system "$cmd";
+	print "\n";
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

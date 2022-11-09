@@ -1,0 +1,35 @@
+         MACRO
+         DSCTIO ,
+.*
+.* Copyright 2003 James M. Morrison
+.*
+*----------------------------------------------------------------------
+CTIOBLK  DSECT ,
+CIOEYE   DS    CL16               +0x00 eyecatcher
+*
+CIO@CTD  DS    A                  +0x10 @ ctdev
+CIOPOOL  DS    F                  +0x14 Xinu poolid
+CIOIOLEN DS    F                  +0x18 resulting I/O length
+         DS    A                  +0x1c
+*
+CIOPARMS DS    0XL12              +0x20 LM target
+CIO@BUF  DS    A                  +0x20 @ current buffer
+CIOLBUF  DS    F                  +0x24 buffer length
+CIO@ECB  DS    A                  +0x28 @ ECB
+         DS    A                  +0x2c
+*
+CIOIOB   DS    CL64               +0x30 IOB + extra
+CIODCB   DS    CL96               +0x70 DCB + extra
+CIOCCW   DS    D                  +0xd0 CCW
+         DS    6F                 +0xd8 spare
+         DS    0D
+L$CTCIO  EQU   *-CTIOBLK          length
+.MEX     MEXIT ,
+.DOC     ANOP  ,
+.*---------------------------------------------------------------------
+.*  Function: MVS-Xinu CTC I/O control block
+.*  DSCTCIO - MVS-Xinu <ctc.h> ctioblk; anchored ctdev.ctioblk
+.*  MUST BE KEPT IN SYNC WITH ABOVE STRUCTURE
+.*---------------------------------------------------------------------
+         MEND
+

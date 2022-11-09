@@ -1,0 +1,224 @@
+#!/usr/bin/perl -w
+
+# This script is run from the Xinu Makefile for 'make install'
+# The script is passed the list of object decks to include as operands, which 
+# will be used to build the DAR.  Since we now use DARLIBs, we only ask for
+# main() to be included and let PLINK search for the remainder of the object decks.
+# This helps reduce the module size by avoiding the inclusion of unneeded decks.
+
+my $defrent = 'norent';							# default - norent or rent
+my $objtype = 'xsd';							# default - goff or xsd
+my $name = 'xinu';							# resulting object & load module name
+
+my $hercsub = '/usr/local/bin/hercsub';					# hercsub command
+my $host = 'localhost';							# default - hercsub hostname
+my $port = '3505';							# default - hercsub port number
+
+my $dcc = '/usr/local/bin/dcc';						# executable - DCC
+my $dasm = '/usr/local/bin/dasm';					# executable - DASM
+my $goff2xsd = '/usr/local/bin/goff2xsd';				# executable - GOFF2XSD
+my $dar = '/usr/local/bin/dar';						# executable - DAR
+my $dranlib = '/usr/local/bin/dranlib';					# executable - DRANLIB
+my $plink = '/usr/local/bin/plink';					# executable - PLINK
+my $digobj = "/usr/local/dignus/160/objs_$defrent";			# path - dignus object decks
+my $quietdar = 1;							# no need to show dar every PLINK
+
+my $srcpath = `pwd`;							# path - source
+chomp $srcpath;								# remove \n
+
+my $arch = "arch/s370";							# path - S/370 architecture-dependent subdir
+my $jcl = "$arch/jcl/xinu.jcl";						# path/filename of JCL to submit
+
+my $buildpath = "../build";
+my $plinkpath = "$buildpath/plink";
+my $plinkout = "$plinkpath/plink-stdout.txt";				# stdout output from PLINK
+my $plinkerr = "$plinkpath/plink-stderr.txt";				# stderr output from PLINK
+my $lkedlist = "$plinkpath/xinu.map";					# output filename for $annotate script
+my $darfile = "$buildpath/dar/libxinu.a";				# filename of PLINK dar
+my $darout = "$buildpath/dar/dar-stdout.txt";				# dar stdout output
+my $darerr = "$buildpath/dar/dar-stderr.txt";				# dar stderr output
+my $dranout = "$buildpath/dar/dranlib-stdout.txt";			# dranlib stdout output
+my $dranerr = "$buildpath/dar/dranlib-stderr.txt";			# dranlib stderr output
+my $mainobj = "$buildpath/obj/main.xsd";				# filename of main.c obj deck for PLINK
+
+my $dasdseq = 'dasdseq';						# Hercules dasdseq command
+#									# http://ensose.com/mvs38j/dasdseq*
+my $dasdseqvol = '/herc3/mvs/dasd/mvs809.3380';				# Hercules dasd image containing LKED SYSPRINT
+my $dasdseqfile = 'jmm.xinu.lkedprt';					# filename on that volume
+my $plinknote = "$plinkpath/xinu.map";					# xinu map file created by mvs38j-annotate-lked-output
+
+my $perlpath = "$buildpath/perl";					# path to MVS build support perl scripts
+my $annotate = "$perlpath/mvs38j-annotate-lked-output";			# command to annotate LKED output
+
+my $line;								# PLINK stderr input line
+print "--------------------------------------------------------------------------------------------------------------\n";
+#foreach $obj (@ARGV) {
+#	print "Object deck to be included: $obj\n";
+#}
+dar();								# create object deck repository
+dranlib();							# create toc for plink
+showdar();							# show resulting archive created
+my $rc = plink($defrent);					# create one big honkin' object deck
+if ($rc != 0) {
+	print "Plink errors, submit JCL anyway? <y, n, default=y>\n";
+	my $ans = query();
+	if ($ans == 1) {
+		$rc = 0;					# user knows best
+	}
+}
+if ($rc == 0) {
+	$rc = submit($defrent, $jcl);				# submit JCL deck to MVS38j (requires sockdev reader)
+								# (needs to change LKED RENT/NORENT specification someday)
+} else {
+	print "mvs38j-plink: Link job not submitted\n";
+}
+exit $rc;
+
+#-------------------------------------------------------------------------------------------------------------------------------------
+
+sub dar {							# create dar file containing Xinu obj decks
+	system "rm $darfile";					# to be used by PLINK to resolve external symbols
+	my $cmd = "$dar -qv $darfile @ARGV 1> $darout 2> $darerr";
+	print "\nExecuting $cmd\n";
+	system "$cmd";
+	my $darrc = $?;
+#	print "Systems/C dar return code $darrc\n";
+	return $darrc;
+}
+
+sub dranlib {
+	system "rm $dranout $dranerr";
+	system "touch $dranout $dranerr";
+	my $cmd = "$dranlib $darfile 1> $dranout 2> $dranerr";
+	print "\nExecuting $cmd\n";
+	system "$cmd";						# create __.SYMDEF, dar table of contents member
+	my $dranrc = $?;
+	print "Systems/C dranlib return code $dranrc\n";
+	return $dranrc;
+}
+
+sub showdar {							# display dar contents (diagnostic aid)
+	if ($quietdar) {
+		return 0;
+	}
+	my $cmd = "$dar -tv $darfile";
+	print "\nExecuting $cmd\n";
+	system "$cmd";
+	return 0;
+}
+
+sub plink {
+	my $rent = "$_[0]";							# rent or norent
+	my $cmap = '';								# -cmap= $name.map
+	my $mvs38obj = "$digobj/\@crt038 $digobj/\@\@getm38 $digobj/\@\@igetm38 $digobj/\@\@ioin38";	# MVS38j-specific object decks
+	my $option = "$cmap -px -o $name.obj38";
+	my $syslib = "'-S$digobj/&m'";
+#	my $cmd = "$plink $option @ARGV $mvs38obj $syslib 1> $plinkout 2>$plinkerr";
+	my $cmd = "$plink $option $mainobj $mvs38obj $darfile $syslib 1> $plinkout 2>$plinkerr";
+	print "Executing command $cmd\n";
+	my $prc = system "$cmd";
+	print "Systems/ASM plink return code $prc for $name\n\n";
+	if ($prc != 0) {
+		errlist();							# list unresolved symbols
+	}
+	return $prc;
+}
+
+# Review PLINK stderr output, list unresolved symbols
+
+sub errlist {
+	unless (open ERRLIST, "<$plinkerr") {				# open PLINK stderr output
+		die "Open $plinkerr failed: $!";
+	}
+	foreach $line (<ERRLIST>) {					# read stderr line, loop until EOF
+		chomp $line;						# strip \n
+		if ($line =~ m[^plink: error: symbol ]) {		# if line begins with "plink: error: symbol "
+			my $sym = parse($line);				# parse line to extract symbol
+			addsym($sym);					# add symbol to symbol list
+		} 
+	}
+	close ERRLIST;
+	print "\nPLINK unresolved symbol summary:\n";
+	my $errcount = 0;
+	foreach $key (sort keys %summary) {
+		my $value = $summary{$key};				# retrieve value for key
+		print "$key\n";
+		$errcount++;
+	}
+	print "\nUnresolved symbols: $errcount\n\n";
+
+}
+
+sub parse {
+	my $sym = "-ERROR-";
+	my $line = $_[0];
+	if ($line =~ /symbol `(\w+)/) {					# remember unresolved symbol on match
+		$sym = $1;						# retrieve memorized symbol
+#		print "Parse hit: $sym\n";
+	}
+	return $sym;
+}
+
+sub addsym {
+	my $sym = $_[0];
+	$summary{$sym} = "unresolved";					# indicate unresolved symbol
+}
+
+# Rdrprep - ftp://ensose.com/mvs38j
+# Hercsub - Hercules source tarball html/hercrdr.html
+# Hercsub2- mildly modified version of Hercsub
+
+sub submit {
+	my $name = $_[0];							# name of .obj38 to be submitted
+	my $jcl = $_[1];							# name of JCL deck to submit
+	print "Preparing JCL deck $jcl\n";
+	my $preprc = system "rdrprep $jcl";					# use include facility to pull PLINK output
+	if ($preprc == 0) {
+		print "JCL deck prepared successfully, submit JCL to MVS? <y, n, default=y>\n";
+		my $ans = query();
+		if ($ans == 1) {
+			$subrc = system "$hercsub $host:$port reader.jcl";	# submit JCL to MVS through herc socket
+			if ($subrc == 0) {
+				print "JCL $jcl submitted to MVS\n";
+			}
+			system "ls -al reader.jcl";
+			system "rm reader.jcl";					# no reason to keep junk lying around
+			annotate();						# see if user wants to annotate LKED output
+		} else {
+			print "JCL deck not submitted\n";
+		}
+	} else {
+		print "JCL deck preparation ended with error(s)\n";
+	}
+}
+
+sub annotate {
+	print "Annotate LKED output? <y, n, default=y> (Wait for MVS job to complete before replying)\n";
+	my $ans = query();
+	if ($ans eq 1) {
+		chdir "$plinkpath" or die "chdir to $plinkpath error $!";
+#		my $dasdseqfile = uc($dasdseqfile);				# no longer needed for dasdseq v0003
+		my $cmd = "$dasdseq $dasdseqvol $dasdseqfile ascii";		# retrieve DSORG=PS file from Hercules dasd
+		print "Executing $cmd\n";
+		system "$cmd";
+		print "Dasdseq return code $?\n";
+#		system "ls -al";
+		chdir "$srcpath" or die "chdir to $srcpath error $!";
+		$cmd = "$annotate $plinkout $plinkpath/$dasdseqfile $plinknote";	# annnotate LKED listing
+		print "Executing $cmd\n";
+		system "$cmd";
+	}
+}
+
+sub query {
+	my $ans = <STDIN>;
+	chomp($ans);				# remove trailing \n
+	$ans = lc $ans;				# lower case reply
+	if ($ans eq 'y') {return 1;}
+	if ($ans eq 'n') {return 0;}
+	return 1;				# default: process
+}
+
+
+
+

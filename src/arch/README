@@ -1,0 +1,30 @@
+
+During the MVS38j TCP/IP Xinu port, I tried (but not very hard) to
+move platform-specific code to the src/arch source tree.  I concentrated
+my efforts on the MVS38j platform, so the other platforms may not even
+build correctly.
+
+The platform-specific code and the macros upon which they are dependent
+broke down into the following:
+
+	arch/i386	INTEL
+	arch/s370	MVS38J
+	arch/sparc	SPARC
+	arch/sun3 	SUN3
+	arch/xinu	<not applicable>
+
+The arch/xinu tree contains code which was not needed for the MVS38j
+port, since the Systems/C compiler provides its own runtime environment
+that already works under MVS38j.  The code was moved here so the
+build process would not find it and attempt to build it.  Most of the
+arch/xinu code came from the src/lib and src/h directories.
+
+Jim
+ 
+
+
+
+
+
+
+

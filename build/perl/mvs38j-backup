@@ -1,0 +1,37 @@
+#!/usr/bin/perl -w
+
+# Backup MVS38j TCP/IP (run from xinu directory)
+
+my $srcpath = `pwd`;						# path - xinu
+chomp $srcpath;							# remove \n
+#system "clear";
+print "--------------------------------------------------------------------------------------------------------------\n";
+my $v = @ARGC;							# suppress warning by referencing ARGC twice
+if (@ARGC > 0) {
+	$v = "$ARGV[0]";					# argument: version string
+} else {
+	my ($sec, $min, $hour, $day, $mon, $year, $wday, $yday, $isdst) = localtime;
+	$mon += 1;
+	$year += 1900;
+	my $ymd = sprintf "%4d-%02d-%02d-%02d-%02d", $year, $mon, $day, $hour, $min;
+	$v = "$ymd";
+}
+system "rm -rf *~";						# remove old edit backup files
+system "chown -R 3954:wheel src/*";
+my $buildlist = "build/macros.mk build/perl/*";
+my $srclist = "src/*";
+my $doclist = "support/doc/*";
+
+#	my $cmd = "tar -czvf mvs38j-ip-$v.tar.gz $buildlist $srclist $doclist";
+
+my $cmd = "tar -czvf mvs38j-ip-$v.tar.gz $buildlist $srclist";
+print "Executing $cmd\n";
+system "$cmd";
+exit $?;
+
+
+ 
+
+
+
+

@@ -1,0 +1,13 @@
+
+The following character strings are used throughout MVS-Xinu
+to flag code which requires later review, correction, etc.:
+
+	TODO	things TO DO
+	FIXME	doesn't work right, requires repair
+
+General TODO list for MVS-Xinu:
+
+	Figure out what's going on with return codes in mvs38j-compile
+	Returning non-zero rc from mvs38j-compile doesn't stop make
+
+	

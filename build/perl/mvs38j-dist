@@ -1,0 +1,39 @@
+#!/usr/bin/perl -w
+
+#
+# MVS38j TCP/IP release notes:
+#
+# Build the distribution tar.gz file for MVS38j TCP/IP
+# ----------------------------------------------------
+# Run all steps of mvs38j-build to make sure everything's fresh
+# Make clean before running this, to reduce archive size
+# Review build and src tree contents, especially making sure 
+#	src/arch/temp
+#	srch/arch/temph
+# are clean (Sorry, Jason)
+# Run this from xinu directory
+#
+# Upload newest distro, console.txt, post blurb in mvs38j-ip
+# ----------------------------------------------------------
+#
+# As time allows, update mvs38j-ip.html
+#
+
+my $xinupath = `pwd`;						# path - xinu
+chomp $xinupath;						# remove \n
+#system "clear";
+print "--------------------------------------------------------------------------------------------------------------\n";
+my $v = "$ARGV[0]";						# argument: version string
+system "rm -vrf *~";						# remove old edit backup files
+
+my $files = "README build/\* src/\*";				#  support/doc/\*
+
+system "chown -R 3954:wheel $files";
+
+my $cmd = "tar -czvf mvs38j-ip-$v.tar.gz $files";
+print "Executing $cmd\n";
+system "$cmd";
+exit $?;
+
+
+

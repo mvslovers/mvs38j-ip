@@ -1,0 +1,45 @@
+         MACRO
+&LABEL   DSCHEAPP &SECT=DSECT,&PFX=CED
+.*
+.* Copyright 2003 James M. Morrison
+.*
+         GBLA  &G#CTC
+         LCLC  &P
+&P       SETC  '&PFX'
+.*
+         AIF   ('&SECT' NE 'DSECT').LAB
+&P       DSECT ,                  Channel end appendage debug area
+         AGO   .GEN
+.LAB     ANOP  ,
+&P       DS    0D                 CED PFX=
+&LABEL   IM#SECT &SECT            conditional label
+.GEN     ANOP  ,
+*
+&P.R14   DS    A                  R14 at entry
+&P.R15   DS    A                  R15 at entry
+&P.R0    DS    A                  R0  at entry
+&P.R1    DS    A                  R1  at entry
+&P.OVLY  DS    7F                 R2-R8 at entry, unless overlaid
+&P.R9    DS    F                  R9  at entry, unless overlaid (*)
+&P.R10   DS    F                  R10 at entry, unless overlaid (**)
+&P.R11   DS    F                  R11 at entry, unless overlaid (**)
+&P.R12   DS    F                  R12 at entry, unless overlaid (**)
+&P.R13   DS    A                  R13 at entry, unless overlaid (**)
+         ORG   &P.OVLY
+         DS    9F                 available for overlay (R2-R10 slot)
+&P.@CTD  DS    A                  @ current CTDEV (R11 slot)
+&P.@XGD  DS    A                  @ XGD (R12 slot)
+&P.@SGD  DS    A                  @ SGD (R13 slot)
+         ORG   ,
+L$&P     EQU   *-&P               length
+.MEX     MEXIT ,
+.DOC     ANOP  ,
+.*---------------------------------------------------------------------
+.*  DSCHEAPP - MVS-Xinu CHannel End APPendage workarea (based R13)
+.*  Size: 16 words, as provided by IOS
+.*  Describes data area pointed to by XGD.cheapp
+.*  See IGG019X8 for doc on entry & register conventions
+.*  R9 (*) must be zeroed if used before returning to IOS
+.*  R10-R13 (**) need not be restored before returning to IOS
+.*---------------------------------------------------------------------
+         MEND

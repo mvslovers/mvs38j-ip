@@ -1,0 +1,43 @@
+#!/usr/bin/perl -w
+
+#	"cat /herc2/turnkey3/turnkey.cnf",
+#	"cat /herc2/turnkey3/console.txt",
+#	"cat /herc2/turnkey3/console.txt"
+#	"cat /herc2/mvs/ip/xinu/src/arch/s370/jcl/xinu.jcl",
+
+@cmdlist = (
+	"grep '3088' /herc2/turnkey3/turnkey.cnf",
+	"cat /proc/sys/net/ipv4/ip_forward",
+	"which hercifc hercules",
+	"ls -al /usr/local/bin/hercifc /usr/local/bin/hercules",
+	"uname -a",
+	"ls -al /dev/net/tun* /dev/tun*",
+	"lsmod",
+	"grep tun /etc/modules.conf",
+	"ifconfig",
+	"netstat -in",
+	"netstat -rn",
+	"route -n",
+	"arp -n",
+	"grep -i tun /herc2/turnkey3/console.txt"
+);
+print "-----------------------------------------------------------------------------\n";
+print "-----------------------------------------------------------------------------\n";
+print "-----------------------------------------------------------------------------\n";
+foreach $thing (@cmdlist) {
+	docmd($thing);
+}
+
+exit 0;
+
+#-------------------------------------------------------------------------------------------------------------------------------------
+
+sub docmd {
+	my $cmd = $_[0];
+	print "-----------------------------------------------------------------------------\n";
+	print "Command $cmd\n";
+	system "$cmd";
+	return 0;
+}
+
+

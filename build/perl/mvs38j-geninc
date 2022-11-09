@@ -1,0 +1,120 @@
+#!/usr/bin/perl -w
+
+# This script is run from the Xinu Makefile for 'make geninc', it is called
+# by the mvs38j-genall script.  It builds entries for compile/inc.mk.
+
+# Syntax:  mvs38j-geninc SRC OBJ DIR [FILE]
+# SRC is macro name used to define source names in directory 'dir'
+# OBJ is macro name used to define object names in directory 'dir'
+# DIR is subdirectory of source tree which is to be scanned
+# FILE is path/filename of make include file; default: compile/inc.mk
+
+my $incmk = 'compile/inc.mk';					# name of make include file
+my $srcpath = `pwd`;						# path - source
+chomp $srcpath;							# remove \n
+
+my $archobj = "../build/obj";					# path - object decks stored here
+
+my @src;							# array of source names
+my $srcindex = 0;						# index into above array
+my $asmobj = '.xsd';						# object deck extension for ASM source
+my $cobj = '.xsd';						# object deck extension for C source
+my $srcperline = 1;						# number source names per line minus one
+my $objperline = 1;						# number object names per line minus one
+my $fill = "\t";
+my $srcmac; my $objmac; my $dir;
+#system "clear";
+print "--------------------------------------------------------------------------------------------------------------\n";
+if (@ARGV > 0) { 
+	$srcmac = $ARGV[0]; 
+	$srcmac = uc($srcmac);					# macro names are upper case
+	print "Source macro $srcmac\n";
+}
+if (@ARGV > 1) { 
+	$objmac = $ARGV[1]; 
+	$objmac = uc($objmac);					# macro names are upper case
+	print "Object macro $objmac\n";
+}
+if (@ARGV > 2) { 
+	$dir = $ARGV[2]; 
+	print "Directory $dir\n";
+}
+if (@ARGV > 3) { 
+	$incmk = $ARGV[3]; 
+	print "INCMK $incmk\n";
+}
+unless (open INCLUDE, ">>$incmk") {die "Open $incmk failed: $!"};
+print "Directory to be scanned: $dir\n";
+scan($dir);							# scan directory
+gensrc();							# output SRC macro definition
+genobj();							# output OBJ macro definition
+close INCLUDE;
+exit 0;
+
+#-------------------------------------------------------------------------------------------------------------------------------------
+
+sub scan {
+	my $dir = $_[0];						# source directory to scan
+	my @files = glob "$dir/*.c $dir/*.asm";				# find source files
+	foreach $file (@files) {
+		$src[$srcindex] = $file;
+		$srcindex++;
+	}
+	foreach my $name (@src) {
+		print "   Found $name\n";
+	}
+	print "\n";
+}
+
+sub gensrc {
+	writetext("# mvs38j-geninc SOURCE definition for directory $srcpath/$dir\n");
+	my $line = "$srcmac = ";					# begin macro definition
+	for (my $i = 0; $i < $srcindex; $i++) {
+		$line = "$line" . "$src[$i]\t";
+		if (($i + 1) % ($srcperline + 1) == 0) { 
+			my $cont = "\\";				# assume continuation needed
+			if (($i + 1) == $srcindex) {
+				$cont = "";				# none needed
+			}
+			writetext("$line $cont\n");
+			$line = "$fill";
+		}
+	}
+	if ($line ne $fill) {
+		writetext("$line\n");					# spit out possible last line
+	}
+	writetext("\n");
+}
+
+sub genobj {
+	writetext("# mvs38j-geninc OBJECT definition for directory $srcpath/$dir\n");
+	my $line = "$objmac = ";					# begin macro definition
+	for (my $i = 0; $i < $srcindex; $i++) {
+		my $objname = "$src[$i]";
+		my @name = split /\//, $objname;			# split name at slash
+		$objname = "$name[-1]";
+		$objname = "$archobj/$objname";				# location for obj deck
+		$objname =~ s/\.c/$cobj/;				# build C object deck name
+		$objname =~ s/\.asm/$asmobj/;				# build ASM object deck name
+		$line = "$line" . "$objname\t";
+		if (($i + 1) % ($objperline + 1) == 0) { 
+			my $cont = "\\";				# assume continuation needed
+			if (($i + 1) == $srcindex) {
+				$cont = "";				# none needed
+			}
+			writetext("$line $cont\n");
+			$line = "$fill";
+		}
+	}
+	if ($line ne $fill) {
+		writetext("$line\n");					# spit out possible last line
+	}
+	writetext("\n");
+}
+
+sub writetext {
+	print "$_[0]";
+	print INCLUDE "$_[0]";
+}
+
+

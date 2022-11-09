@@ -1,0 +1,47 @@
+         MACRO
+         DSCTDEV ,
+.*
+.* Copyright 2003 James M. Morrison
+.*
+*----------------------------------------------------------------------
+CTDEV    DSECT ,
+CTDEYE   DS    CL8                eyecatcher
+CTDFLG1  DS    X                  status flag
+CTDF1IOP EQU   X'80'              I/O pending (started) MVS-Xinu)
+CTDF1IOC EQU   X'40'              I/O complete (CHE APP)
+*
+CTDCHEF1 DS    X                  CHE debug flag
+CTDC1FDC EQU   X'80'              found the CTDEV
+CTDC1P1  EQU   X'40'              begin POST
+CTDC1P2  EQU   X'20'              end POST
+*
+CTDDIS   DS    X                  true = device disabled
+         DS    X
+CTD@NEXT DS    A                  null or @ next CTDEV
+CTD@WORK DS    A                  @ CHE work area; ctche
+CTDECB   DS    A                  CTC device ECB
+*
+CTD@IOBK DS    A                  @ ctioblk
+CTD@IOWD DS    A                  @ read/write stat
+CTD@CFG  DS    A                  @ Config info
+         DS    A
+*
+CTDUPID  DS    F                  user's pid
+CTDIOPID DS    F                  CTCIO pid
+CTDSEM   DS    F                  semaphore #
+CTDCUU   DS    H                  CTC cuu
+         DS    H                  unused
+*
+         DS    2A                 spare
+         DS    0D
+L$CTDEV  EQU   *-CTDEV            length
+.MEX     MEXIT ,
+.DOC     ANOP  ,
+.*---------------------------------------------------------------------
+.*  Function: MVS-Xinu CTCI CTC half device information
+.*  DSCTDEV - MVS-Xinu ctdev <ctc.h>; anchored ctblk.read & ctblk.write
+.*  MUST BE KEPT IN SYNC WITH ABOVE STRUCTURE
+.*---------------------------------------------------------------------
+         MEND
+
+

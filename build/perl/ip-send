@@ -1,0 +1,41 @@
+#!/usr/bin/perl -w
+
+#
+#	ip-send		[spec]
+#
+#	spec	dotted-ip:port
+#		default: $defspec
+#
+
+use Socket;
+use IO::Socket::UNIX;
+use IO::Socket::INET;
+
+my $defspec = "192.168.200.1:150";
+my $spec;
+my $sock;
+
+if (@ARGV < 1) {
+	print STDERR "Defaulting spec: $defspec\n";
+	$spec = $defspec;
+} else {
+	$spec = shift @ARGV;
+}
+
+print "Establishing socket\n";
+if ($spec =~ m{^/}) {
+	$sock = IO::Socket::UNIX->new(Peer => $spec);
+} else {
+	$sock = IO::Socket::INET->new(PeerAddr => $spec);
+}
+
+die "Failed to connect to socket $spec: $!\n" unless defined($sock);
+print "Socket established\n";
+
+my $msg = "Hello";
+while (1) {
+	print "Sending $msg\n";
+	print $sock $msg;
+	sleep 1;
+}
+

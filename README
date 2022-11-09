@@ -1,0 +1,72 @@
+
+Welcome to the MVS38j port of Xinu, developed as part of the MVS38j TCP/IP
+project as detailed as http://ensose.com/mvs38j-ip.html and supported
+via the Yahoo mvs38j-ip group at http://groups.yahoo.com/group/mvs38j-ip .
+
+The project is currently in the research phase.  We're collecting doc and
+attempting to understand how Xinu works before we start modifying it to
+operate in the MVS environment.
+
+The source for this version of Xinu was taken from 
+ftp://ftp.cs.purdue.edu/pub/comer/TCPIP-vol2.dist.tar.gz
+on 2002-12-02, and modified as required.  In some cases, the source
+was relocated to different directories than the above distribution.
+
+The Douglas E. Comer books 
+(ftp://ftp.cs.purdue.edu/pub/comer/TCPIP-vol2.dist.tar.gz)
+proved quite helpful in the porting effort.
+
+Background:
+
+MVS 3.8J (which I tend to collapse into MVS38j) is a public domain
+operating system created by IBM back in the 1980s.  It is an outgrowth
+of earlier systems IBM created reaching back into the 1960s.  There
+are a number of Yahoo groups which support an active retro-computing
+community, such as http://groups.yahoo.com/group/H390-MVS and Volker
+Bandke's Turnkey MVS system at http://groups.yahoo.com/group/turnkey-mvs .
+
+Hercules, an emulator providing S/360, S/370, S/390 and z/Architecture
+support, was created by Roger Bowler and is currently supported via
+an active Hercules development and user community via the Yahoo 
+hercules-390 group at http://groups.yahoo.com/group/hercules-390 .
+ 
+MVS38j operates in S/370 mode, which provides 24-bit addresses
+giving us 16MB of real storage to share amongst all the address
+spaces.  Each address space (think Unix/Linux process) is allocated
+up to 16MB of dasd- (MVS term for hard drive) backed virtual storage.
+Portion of this 16MB address space are shared with the operating 
+system.  An abbreviated storage map is shown at 
+http://ensose.com/mvs38j-ip.html which provides an overview of both
+the MVS storage layout and the MVS38j TCP/IP implementation.
+The S/370 machines provide Big Endian storage.
+
+There are an immense number of additional details into which I could go 
+into describing both MVS38j facilities, and MVS38j TCP/IP.  For now,
+divining these details is left as an exercise for the reader.
+
+Nothing in the shell, or ether subdirs has been examined in regard
+to the build process.
+
+Building the MVS38j distribution (it's not even close to working):
+------------------------------------------------------------------
+
+untar the source into the directory of your choice, 
+change to the src subdir
+..build/perl/mvs38j-build
+<take default reply to all queries>
+
+
+Best regards,
+Jim Morrison
+MVS38j TCP/IP instigator
+
+
+
+Miscellaneous notes:
+
+	1)	The Doxyfile file in the source tree root is for the
+		doxygen C source cross reference tool, available
+		at http://www.stack.nl/~dimitri/doxygen .
+
+
+

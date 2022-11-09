@@ -1,0 +1,66 @@
+#!/usr/bin/perl -w
+
+# This script is run from the Xinu Makefile for 'make depend'
+# The script is optionally passed the ${OLDDEP} filename, and it's output file ${NEWDEP}.
+# Only C source will appear in the input, mkdep doesn't support S/370 assembler.
+
+# Syntax:  mvs38j-depend [dependency-file [Makefile]]
+
+my $srcpath = `pwd`;						# path - source
+chomp $srcpath;							# remove \n
+
+my $buildpath = "../build";					# path to build subdir, relative to src subdir
+my $olddep = "$buildpath/depend/olddep";			# default dependency file name from mkdep
+my $newdep = "$buildpath/depend/newdep";			# rewritten dependency file
+my $objpath = "$buildpath/obj";					# src-relative object deck path
+
+my $line;
+#system "clear";
+print "--------------------------------------------------------------------------------------------------------------\n";
+if (@ARGV > 0) { 
+	$olddep = $ARGV[0]; 
+}
+if (@ARGV > 1) { 
+	$newdep = $ARGV[1];
+}
+print "Old dependency file $olddep\nNew dependency file $newdep\n";
+unless (open OLDDEP, "<$olddep") {die "Open $olddep failed: $!"};
+unless (open NEWDEP, ">$newdep") {die "Open $newdep failed: $!"};
+#query();							# debug pause
+my $rc = 0;
+foreach $line (<OLDDEP>) {
+	if ($line =~ /:/) {					# dependency line?
+#		print "Dependency $line";
+		my @temp = split /:/, $line;			# split into pieces at colon
+#		$obj = $temp[0];				# first piece is filename.o
+		$temp[0] =~ s/\.o/\.xsd/;			# C object decks are .xsd
+		$temp[0] = "$objpath/$temp[0]";			# prepend object deck path
+		my $newline = join ':', @temp;			# reassemble line
+		writedep($newline);
+		next;
+	}
+#	print "Input: $line";
+	writedep($line);					# not dependency, just rewrite
+#	print "Comment $line";
+}
+close OLDDEP;
+close NEWDEP;
+print "mvs38j-fixdep rc $rc\n";
+#query();							# debug pause
+exit $rc;
+
+sub writedep {
+	my $line = $_[0];
+	print NEWDEP "$line";
+#	print "$line";
+}
+
+sub query {
+	my $ans = <STDIN>;
+	chomp($ans);				# remove trailing \n
+	$ans = lc $ans;				# lower case reply
+	if ($ans eq 'y') {return 1;}
+	if ($ans eq 'n') {return 0;}
+	return 1;				# default: process
+}
+

@@ -1,0 +1,45 @@
+::e u370abnd.obj
+::e u370ap00.obj	
+::e u370ap99.obj
+::e u370char.obj	
+::e u370date.obj	
+::e u370dbug.obj
+::e u370herc.obj
+::e u370hex.obj
+::e u370log.obj
+::e u370psr.obj
+::e u370qenv.obj
+::e u370qss.obj
+::e u370qtcb.obj
+::e u370sdwa.obj
+::e u370snap.obj
+::e u370stae.obj
+::e u370tiot.obj
+::e u370vadr.obj
+::e u370wto.obj
+ NAME U370CODE(R) 
+ SETCODE AC(1)
+ ORDER STCP370(P)
+::e stcp370.obj       MUST BE FIRST OBJECT DECK IN MODULE
+::e stcpopr.obj
+::e stcpss00.obj
+::e stcpss99.obj
+::e stcpsvc0.obj
+::e stcpsvc9.obj
+::e stcptskm.obj
+::e stcpvtab.obj
+ INCLUDE U370LIB(U370CODE)
+ ENTRY STCP370
+ NAME STCP370(R)
+ SETCODE AC(1)
+::e stcpinit.obj
+ NAME STCPINIT(R)
+ SETCODE AC(1)
+::e stcpopt.obj
+ NAME STCPOPTS(R)
+ SETCODE AC(1)
+::e stcplpa.obj
+ NAME STCPLPA(R)
+ SETCODE AC(1)
+::e stcpsvc.obj
+ NAME STCPSVC(R)

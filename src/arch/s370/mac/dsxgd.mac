@@ -1,0 +1,19 @@
+         MACRO
+         DSXGD ,
+.*---------------------------------------------------------------------
+XGD      DSECT ,
+XGDCHEAP DS    A                       CHE APP footprint
+XGDCHELK DS    A                       NULL or @ 1st ctdev (chain)
+XGDEYE   DC    CL4'XGD '               eyecatcher
+         DS    5F                      unused
+L$XGD    EQU   *-XGD                   length of XGD
+.MEX     MEXIT ,
+.DOC     ANOP  ,
+.*---------------------------------------------------------------------
+.*  Function: MVS-Xinu subsystem anchors
+.*  DSXGD - MVS-Xinu xgd <xgd.h>; anchored sgd.sgd@xgd
+.*  MUST BE KEPT IN SYNC WITH xgd.h
+.*---------------------------------------------------------------------
+         MEND
+
+

@@ -1,0 +1,14 @@
+         MACRO
+         RECV#BUG &PFX=TGDD
+.*
+.* Copyright 2002 James M. Morrison
+.*
+         LCLC  &P
+&P       SETC  '&PFX'
+&P.BLK   DS    C        RECVBLK
+&P.CTL   DS    C        RECVCTL
+&P.GET   DS    C        RECVGET
+&P.MSG   DS    C        RECVMSG
+&P.RCPY  DS    C        RECVRCPY
+&P.UTIL  DS    C        RECVUTIL
+         MEND  ,

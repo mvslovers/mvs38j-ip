@@ -1,0 +1,89 @@
+#!/usr/bin/perl -w
+
+my $rc;
+my $cmd;
+my $srcdir = `pwd`;					# capture pwd output
+chomp $srcdir;						# strip \n
+print "Source directory $srcdir\n";
+
+print "Cleaning up edit backup files\n";
+$cmd = "rm -virf *~";					# command to remove edit backup files
+print "Executing: $cmd\n";
+system "$cmd";
+
+print "\nConfigure Xinu? <y, n, default=y> Required for first build, or after config/Configuration change.\n";
+$run = query();
+if ($run == 1) {
+	$cmd = 'touch compile/inc.mk';
+	system "$cmd";
+	checkop();
+	$cmd = "make Configuration";
+	system "$cmd";
+	checkop() || print "Xinu configuration completed successfully\n";
+	print "\n";
+	system "ls -al compile/inc.mk h/conf.h user/conf.c";
+}
+
+print "\nRebuild compile/inc.mk? <y, n, default=y> Required for first build, or after source added/removed.\n";
+$run = query();
+if ($run == 1) {
+	$cmd = "rm -f compile/inc.mk; make -f compile/Makefile";
+	system "$cmd";
+	checkop() || print "Compile/inc.mk rebuilt successfully\n";
+}
+
+print "\nMake clean? <y, n, default=y> Required for first build.\n";
+my $run = query();
+if ($run == 1) {
+	$cmd = "make clean";
+	system "$cmd";
+	checkop() || print "Make clean completed successfully\n";
+}
+
+print "\nMake depend? <y, n, default=y> Required for first build, or after dependency changes.\n";
+$run = query();
+if ($run == 1) {
+	$cmd = "make depend";
+	system "$cmd";
+	checkop() || print "Make depend completed successfully\n";
+}
+
+print "\nMake Xinu? <y, n, default=y> Required for first build, or after source change.\n";
+$run = query();
+if ($run == 1) {
+	$cmd = 'make all';
+	system "$cmd";					# create object decks for source code
+	checkop() || print "Make completed successfully\n";
+}
+
+print "\nInstall Xinu? <y, n, default=y> Required for first build, or after make.\n";
+$run = query();
+if ($run == 1) {
+	$cmd = "make install";				# create jobstream to link Xinu, submit to MVS38j
+	system "$cmd";
+	checkop() || print "Make install completed successfully\n";
+}
+exit $?;
+
+#-----------------------------------------------------------------------------------------------------------------
+
+sub query {
+	my $ans = <STDIN>;
+	chomp($ans);				# remove trailing \n
+	$ans = lc $ans;				# lower case reply
+	if ($ans eq 'y') {return 1;}
+	if ($ans eq 'n') {return 0;}
+	return 1;				# default: process
+}
+
+sub checkop {
+	if ($?) {				# last system exit status
+		die "$cmd failed with return code $?, $!\n";
+	}
+	return 0;
+}
+
+
+
+
+

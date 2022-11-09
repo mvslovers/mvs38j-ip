@@ -1,0 +1,168 @@
+#!/usr/bin/perl -w
+
+# This script is called by mvs38j-plink to annotate the LKED SYSPRINT output
+# based on data contained in the PLINK stdout output (saved by mvs38j-plink).
+# See src/arch/s370/jcl/xinu.jcl for LKED JCL
+#
+# Syntax: mvs38j-annotate-lked-output plink-stdout lked-list output
+# Where:
+#	plink-stdout		path and filename of PLINK stdout file
+#	lked-list		path and filename of LKED SYSPRINT (ASCII)
+#	output			path and filename of our output file
+# Paths are assumed to be relative to xinu/src
+#
+
+my $srcpath = `pwd`;							# path - xinu/src
+chomp $srcpath;								# remove \n
+
+my $line;								# scratch input line
+my %symlist;
+my $rc = 0;
+print "--------------------------------------------------------------------------------------------------------------\n";
+my $plinklist = "$ARGV[0]";					# Plink stdout file
+my $lkedlist = "$ARGV[1]";					# LKED sysprint file
+my $notefile = "$ARGV[2]";					# output file
+
+unless (open PLINKFILE, "<$plinklist") {			# open PLINK stderr output
+	die "Open $plinklist failed: $!";
+}
+unless (open LKEDFILE, "<$lkedlist") {				# open LKED SYSPRINT
+	die "Open $lkedlist failed: $!";
+}
+unless (open OUTPUT, ">$notefile") {				# open our output file
+	die "Open $notefile failed: $!";
+}
+print OUTPUT "CSECT--- OFFSET LENGTH Entrypoint\n";		# Header for output file
+print "Parsing PLINK stdout\n";
+foreach $line (<PLINKFILE>) {					# read PLINK stdout line, loop until EOF
+	chomp $line;						# strip \n
+	if ($line =~ m/->/) {					# if line contains "->"
+		parseplink($line);				# parse line to extract symbol, add to symlist
+	} 
+}
+print "Parsing LKED sysprint\n";
+foreach $line (<LKEDFILE>) {					# read LKED sysprint line, loop until EOF
+	chomp $line;						# strip \n
+	my $switch = parselked($line);				# parse line to extract symbol, add to symlist
+	if ($switch) {						# done?
+		last;
+	}
+}
+print "\nNotation complete; Xinu map file: $notefile\n";
+close PLINKFILE;
+close LKEDFILE;
+exit $rc;
+
+#-------------------------------------------------------------------------------------------------------------------------------------
+
+sub parseplink {
+	my $longname = "-ERROR-";
+	my $shortname = "-ERROR-";
+	my $line = $_[0];
+	my $symclass = "[A-Za-z0-9_\@\$]";				# valid symbol name characters
+	if ($line =~ /  ($symclass+) -> ($symclass+)/) {		# remember "  longname -> shortname"
+		$longname = $1;						# retrieve memorized symbol - longname
+		$shortname = $2;					# retrieve memorized symbol - shortname
+#		print "PLINK symbol: $longname $shortname\n";
+		$symlist{$shortname} = "$longname";			# record symbol mapping
+	}
+}
+
+sub parselked {
+	my $line = $_[0];
+#	print "LKED input: $line\n";
+	my $ccclass = "[01]";						# ANSI carriage control chars
+	if ($line =~ /^$ccclass/) {					# if 1st char = CC, discard LKED page header junk
+#		print "Rejected - carriage control\n";
+		return 0;						# ignore, continue to parse LKED sysprint
+	}
+
+	my $symclass = "[A-Za-z0-9_\@\$]";				# valid symbol name characters
+	my $hexclass = "[A-Fa-f0-9]";					# valid hex characters
+	if ($line =~ /^   ($symclass+) {1,}($hexclass+) {1,}($hexclass+)/) {	# parse CSECT line; remember CSECT, addr, length
+		my $csect = $1;						# retrieve memorized CSECT symbol (name)
+		my $csectaddr = $2;					# retrieve memorized CSECT address
+		my $csectlen = $3;					# retrieve memorized CSECT length
+#		print "$csect\t$csectaddr\t$csectlen\n";		# report CSECT
+		reportlkedsym($csect, $csectaddr, $csectlen);		# report LKED symbol
+		return 0;						# continue parsing
+	}
+
+	if ($line =~ /^ {40,}($symclass+)/) {				# 40 or more leading spaces on line
+		parselkedentry($line);					# LKED entry point(s) line
+	}
+
+	my $txtlen = length $line;
+	if ($txtlen < 20) {
+#		print "Rejected - too short\n";
+		return 0;						# ignore short lines (error messages, misc junk)
+	}
+
+	my $entrytxt = "ENTRY ADDRESS";
+	my $entrytxtlen = length $entrytxt;
+	my $entrycheck = substr($line, 2, $entrytxtlen);
+	if ($entrycheck eq $entrytxt) {
+		print OUTPUT "\n$line\n";					# echo ENTRY ADDRESS (also indicates user waited
+									# long enough for LKED to complete output)
+		return 1;						# parsing complete, notify caller
+	}
+	return 0;							# continue parsing
+}
+
+sub parselkedentry {							# parse LKED entry point(s) on one line
+	my $line = "$_[0]";
+	my @fields = split ' ', $line;					# special split, no leading whitespace field
+	while (scalar @fields) {
+		my $ep = shift(@fields);
+		my $addr = shift(@fields);
+		reportlkedsym($ep, $addr, 0);				# report on lked symbol
+	}
+}
+
+sub reportlkedsym {
+	my ($sym, $addr, $len) = @_;
+	my $sym2 = $sym;						# assume entry point name (not CSECT name)
+	if ($len eq '0') {
+		$len = ' ';						# entry point: unclutter listing
+	} else {
+#		print "\n";
+		print OUTPUT "\n";
+		$sym2 = ' ';
+	}
+#	print "ReportLKEDsym: $sym $addr $len\n";
+	my $notation = $symlist{$sym};					# given shortname, attempt to recover longname
+	if (defined($notation)) {
+		$sym2 = $notation;					# annotate entry point with longname
+	}
+	if ($sym eq $sym2) {
+		$sym = ' ';						# unclutter listing when same name
+	}
+#	printf "%8s %6s %6s %s\n", $sym, $addr, $len, $sym2;
+	printf OUTPUT "%8s %6s %6s %s\n", $sym, $addr, $len, $sym2;
+#	print "List symlist? \n";
+#	my $ans = query();
+#	if ($ans == 1) {
+#		listsymlist();
+#	}
+}
+
+sub listsymlist {
+	foreach $key (sort keys %symlist) {
+		my $value = $symlist{$key};				# retrieve value
+		print "SYMLIST: -$key-$value-\n";
+	}
+}
+
+sub query {
+	my $ans = <STDIN>;
+	chomp($ans);				# remove trailing \n
+	$ans = lc $ans;				# lower case reply
+	if ($ans eq 'y') {return 1;}
+	if ($ans eq 'n') {return 0;}
+	return 1;				# default: process
+}
+
+
+
+
+

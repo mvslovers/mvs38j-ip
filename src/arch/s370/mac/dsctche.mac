@@ -1,0 +1,32 @@
+         MACRO
+         DSCTCHE ,
+.*
+.* Copyright 2003 James M. Morrison
+.*
+*----------------------------------------------------------------------
+CTCHE    DSECT ,
+CHEEYE   DS    CL16               +0x00 eyecatcher
+CHE@UCB  DS    A                  +0x10 @ UCB
+CHE@DCB  DS    A                  +0x14 @ DCB
+CHE@DEB  DS    A                  +0x18 @ DEB
+CHE@IOB  DS    A                  +0x1c @ IOB
+*
+CHE@RQE  DS    A                  +0x20 @ RQE
+CHE@CTD  DS    A                  +0x24 @ Xinu CTDEV 
+         DS    2A                 +0x28
+*
+CHEREGS  DS    16F                +0x30 R0:R15
+CHER0    EQU   CHEREGS+(R0*4)
+CHER14   EQU   CHEREGS+(R14*4)
+*
+CHECHEX  DS    16F                +0x70 whatever CHE wants
+         DS    0D
+L$CTCHE  EQU   *-CTCHE            length
+.MEX     MEXIT ,
+.DOC     ANOP  ,
+.*---------------------------------------------------------------------
+.*  Function: IGG019X8 CTCI Channel End Appendage workarea
+.*  DSCTCHE - MVS-Xinu <ctc.h> ctche; anchored ctdev.chework
+.*  MUST BE KEPT IN SYNC WITH ABOVE STRUCTURE
+.*---------------------------------------------------------------------
+         MEND

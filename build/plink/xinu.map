@@ -1,0 +1,1606 @@
+CSECT--- OFFSET LENGTH Entrypoint
+
+@SC00001     00     B0  
+             30        main
+
+  @@CRT0     B0    480  
+             E0        @crt0
+            558        @@GETM
+            610        @@FREEM
+            678        @@IGETM
+            6A0        @@IFREEM
+            718        __get
+            840        __put
+@ST00000    960        __find_member
+@ST00001    A68        __stow_member
+@ST00002    B70        __extract
+            C50        __alloc
+            DC0        __aldsn
+            FE8        __alpds
+           1248        __dealc
+@ST00003   1350        __set_MACRF_P
+           14E8        __open
+           1738        __close
+@ST00004   1860        __unalloc
+           1958        __note
+           1A20        __point
+           1AF0        __tget
+           1BD0        ___tput
+           1C98        @@IOINIT
+           1F80        @@IOFINI
+
+@$INITIO   2380    2A6  
+           23B8        @@INITIO
+           2528        __finio
+
+@$initio   2628     2C  
+           2648        __iocvt
+@ST00006   264C        __IO_init_done
+
+@$MVSARG   2658    882  
+           27A0        @@MVSARG
+
+@$mvsarg   2EE0     1F  
+
+  @$EXIT   2F00    17A  
+           2F30        exit
+
+  @$exit   3080     1C  
+           30C2        @@EXPAND
+           316C        @@CONTRA
+           3188        alloca
+
+@$RNTINI   3260   333E  
+@ST00008   3DA0        add_dictionary_entry
+           5040        @@RNTINI
+           5240        @@RNTTRM
+           5478        __ctors
+           5708        __dtors
+@ST00010   58F0        __dlerror
+           5B98        __dlopen
+@ST00011   5F10        __dlclose
+@ST00009   60A8        search_loaded_modules
+           6210        __dlsym
+
+@$rntini   65A0     30  
+
+@SC00012   65D0    20A  
+           6608        nulluser
+
+@SD00012   67E0      4  
+           67E0        nullecb
+
+@SC00013   67E8    864  
+           6818        sysinit
+
+@SC00014   7050    4A8  
+           7080        xconfig
+
+@SC00015   74F8    17C  
+           7528        clkinit
+@ST00018   7610        compute_delay
+
+@SC00016   7678     F2  
+           76A8        seminit
+
+@SC00017   7770    724  
+           77A8        netstart
+
+@SD00018   7E98    6A8  
+           7E98        ue
+@ST00016   7F4C        dummy_header_ep
+
+@SC00019   8540    162  
+           8578        xdevinit
+
+@SC00020   86A8     A8  
+@ST00015   86E0        queueinit
+
+@SD00021   8750     40  
+           8750        cpudelay
+           8754        clkruns
+           8758        count6
+           875C        count10
+           8760        ctr100
+           8764        clmutex
+           8768        clktime
+           876C        defclk
+           8770        clkdiff
+           8774        slnempty
+           8778        sltop
+           877C        clockq
+           8780        preempt
+           8784        hhsec
+@ST00022   8788        mvsstimer
+           878C        pclkint
+
+@SC00022   8790    4B0  
+           87C8        testauth
+           8870        mvsstate
+@ST00023   89A8        mvsdisable
+@ST00014   8A48        mvsenable
+@ST00024   8AF0        mvsrestore
+           8B90        pause
+
+mvsevent   8C40     A0  
+
+@SC00024   8CE0     D0  
+           8D10        findsgd
+
+@SD00025   8DB0     94  
+@ST00025   8DB0        mvsonlywto
+@ST00026   8DB4        mvsmemlen
+           8DB8        mvspmem
+           8DBC        shutxinu
+           8DC0        userpid
+           8DC4        start
+           8DC8        reboot
+           8DCC        vers
+           8E30        revision
+           8E34        sem
+           8E38        pid1
+           8E3C        pid2
+           8E40        ptid
+           8E44        intmap
+
+@SC00026   8E48    240  
+           8E78        resume
+
+@SC00027   9088    376  
+@ST00028   90C0        pentry_state
+@ST00013   92A8        procstate
+
+@SC00028   9400    1A4  
+           9438        procinit
+
+@SC00029   95A8    12E  
+           95E0        nulldisp
+
+@SD00029   96D8     48  
+           96D8        nulljump
+
+@SC00030   9720    376  
+           9750        create
+
+@SD00031   9A98   4740  
+           9A98        proctab
+           E0E8        nextproc
+           E0EC        numproc
+           E0F0        currpid
+           E0F4        lastpid
+@ST00029   E0F8        nulldisppid
+           E0FC        currSP
+@ST00027   E100        procstatdesc
+
+@SC00032   E1D8    21A  
+           E208        _mkinit
+           E2C8        mark
+
+@SC00033   E3F8    134  
+           E428        meminit
+
+@$SPRINT   E530     FC  
+           E560        sprintf
+
+@$SETVBU   E630    2B4  
+           E660        setvbuf
+
+@SD00036   E8E8    1B4  
+           E8E8        ctcdev
+           EA98        ctcecb
+
+@ST00012   EAA0     B8 mvswaitlist
+
+@SC00038   EB58    390  
+           EB88        resched
+
+@SC00039   EEE8     B0  
+           EF18        kprintf
+
+   @$WTO   EF98    17A  
+           EFC8        @@WTO
+
+   @$wto   F118     20  
+
+@$MALLOC   F138   3A76  
+           F4B0        __fremem
+           FE70        malloc
+          10850        free
+          10D08        realloc
+          111A8        memalign
+          114B0        calloc
+          11658        cfree
+@ST00031  11710        independent_calloc
+@ST00032  117F0        independent_comalloc
+          11CD8        valloc
+          11DC0        pvalloc
+@ST00033  11EC8        malloc_trim
+@ST00034  11FB0        malloc_usable_size
+          120C8        mallinfo
+@ST00035  122D8        malloc_stats
+          12440        mallopt
+          12630        @@MLLC31
+          126F0        __free31
+          127A0        @@MLLC24
+          12A58        __free24
+
+@$malloc  12BB0    490  
+
+@$cleanu  13040     28  
+          13060        @@CLEANU
+          13064        __atexit
+
+@$@@EXIT  13068     F0  
+          13098        @@exit
+
+@$enviro  13158     2C  
+@ST00007  13178        __progname
+          13180        environ
+
+@$SETENV  13188    43A  
+          131B8        setenv
+          13508        unsetenv
+
+@$setenv  135C8      4  
+
+ @$CLOSE  135D0    148  
+          13600        close
+
+ @$close  13718     1D  
+
+  @$OPEN  13738   1356  
+@ST00038  13778        __qsam_info_giveme
+@ST00039  13870        __qsam_info_takeit
+@ST00040  13938        __ibm_socket_info_giveme
+@ST00041  13A38        __ibm_socket_info_takeit
+          13AE8        open
+
+  @$open  14A90    438  
+          14AAE        __lrecl
+@ST00005  14AB0        __blksize
+          14AB4        __recfm
+          14AB8        __keylen
+@ST00042  14ABC        __preopen
+@ST00043  14AC0        __record_io
+          14AC4        __fdt
+
+@$PARSEF  14EC8    9EE  
+          14F00        @@PARSFN
+@ST00037  15770        __parse_attrs
+
+@$parsef  158B8    474  
+          158D8        _style
+
+@$NEXTFD  15D30     FE  
+          15D68        @@nextfd
+
+@$nextfd  15E30     1E  
+
+@$D2QSAM  15E50     C4  
+          15E88        @@D2QSAM
+
+@$d2qsam  15F18     21  
+
+@$TYQSAM  15F40     C8  
+          15F78        @@TYQSAM
+
+@$tyqsam  16008     23  
+
+@$CLQSAM  16030    314  
+          16068        @@CLQSAM
+
+@$clqsam  16348     23  
+
+@$WRQSAM  16370   12F6  
+          174E0        @@WRQSAM
+
+@$wrqsam  17668     23  
+
+@$LSQSAM  17690    976  
+          17878        @@LSQSAM
+
+@$lsqsam  18008     24  
+
+@$RDQSAM  18030    EDE  
+          18D88        @@RDQSAM
+
+@$rdqsam  18F10     2C  
+
+@$DDNDEF  18F40    174  
+          18F78        @@DDNDEF
+
+@$ddndef  190B8     24  
+
+@$__TOUP  190E0     EA  
+          19118        @@2upper
+
+@$GETENV  191D0    24C  
+          19208        @@FINDNV
+          19398        getenv
+
+ @$BCOPY  19420    212  
+          19450        bcopy
+
+@$errlst  19638    FA6  
+@ST00044  19638        sys_errlist
+          19778        errno
+          1977C        sys_nerr
+
+@$FPRINT  1A5E0     BC  
+          1A610        fprintf
+
+@SC00062  1A6A0   14F8  
+          1A6D0        doputc
+          1A920        doprnt
+
+@SD00062  1BB98    148  
+
+procload  1BCE0     24  
+
+@SC00064  1BD08    1B4  
+          1BD38        wakeup
+
+@SC00065  1BEC0    178  
+          1BEF0        insert
+
+@SC00066  1C038     E4  
+          1C068        getlast
+
+@SD00067  1C120   1554  
+          1C120        q
+@ST00021  1D668        nextqueue
+          1D66C        rdyhead
+          1D670        rdytail
+
+@SC00068  1D678     F4  
+          1D6A8        iohook
+
+  procsw  1D770     48  
+
+procsave  1D7B8     2E  
+
+@$WHATBU  1D7E8     D4  
+          1D820        @@swhtbf
+
+@$VFPRIN  1D8C0   3950  
+          1E0D8        vfprintf
+
+@$vfprin  21210     49  
+
+@SC00073  21260    2DC  
+@ST00030  21298        mvsallocmem
+@ST00045  214A8        mvsfreemem
+
+@SD00074  21540    C58  
+          21540        memlist
+          21548        maxaddr
+          2154C        marks
+          2159C        nmarks
+          215A0        mkmutex
+          215A4        ptmark
+          215A8        ptfree
+          215AC        ports
+          2209C        ptnextp
+          220A0        bptab
+          22190        nbpools
+          22194        bpmark
+
+@SC00075  22198    182  
+          221C8        xsignal
+
+@$MEMSET  22320    18E  
+          22350        memset
+
+@SC00077  224B0    14A  
+          224E0        getstk
+
+@SC00078  22600    426  
+@ST00047  22638        envcreate
+          226E8        envbegin
+@ST00048  227C8        envdestroy
+          22870        mvsenv
+
+@SC00079  22A28    102  
+          22A58        newpid
+
+@SC00080  22B30    18C  
+          22B60        suspend
+
+@SC00081  22CC0    160  
+          22CF8        nullkill
+
+@$SETJMP  22E20    1A8  
+          22E50        setjmp
+          22F18        longjmp
+
+@$setjmp  22FC8     1E  
+
+@SC00083  22FE8    B4E  
+@ST00049  23028        findCSECTname
+          231E0        sastate
+@ST00046  23500        stackstate
+          23668        callinfo
+          23790        funcstr
+          238E8        funchist
+
+@SC00084  23B38    114  
+          23B68        ready
+
+@SD00085  23C50    C78  
+          23C50        devtab
+
+ @@CRT9A  248C8    4F8  
+          248F8        @CRT9A
+
+@SC00087  24DC0    78C  
+@ST00020  24DF8        netup_gath
+
+@SC00088  25550    27E  
+@ST00056  25588        mvstod1970
+          25678        getutim
+
+@SC00089  257D0    152  
+          25800        rtinit
+
+@SD00089  25928    810  
+          25928        Route
+          25938        rttable
+
+@SC00090  26138    24A  
+          26168        rtdump
+
+@SC00091  26388    12C  
+          263B8        arpinit
+
+@SC00092  264B8    28E  
+          264F0        netup_rt
+
+@SC00093  26748    47E  
+@ST00019  26780        netup_nif
+
+@SD00093  26BC8      8  
+
+@SC00094  26BD0    1C6  
+          26C00        netproc
+
+@SD00095  26D98    320  
+          26D98        nif
+          270A8        Net
+
+@SC00096  270B8    11A  
+          270E8        udpinit
+
+@SC00097  271D8    BA4  
+          27208        ipproc
+
+@SC00098  27D80    114  
+          27DB0        ipfinit
+
+@SD00099  27E98     18  
+@ST00058  27E98        ip_anyaddr
+@ST00059  27E9C        ip_loopback
+          27EA0        ippid
+          27EA4        gateway
+          27EA8        bsdbrc
+@ST00057  27EAC        ip_maskall
+
+@SC00100  27EB0    1A0  
+          27EE0        wait
+
+@SC00101  28050    18E  
+          28080        screate
+
+@SC00102  281E0    3F4  
+          28210        mkpool
+
+@SC00103  285D8    28E  
+          28608        panic
+
+@SD00104  28868    C90  
+          28868        nextsem
+          2886C        semaph
+@ST00066  294EC        sema_stat
+
+@SC00105  294F8    130  
+          29530        newqueue
+
+@ST00017  29628     E8 mvsclkinit
+
+MVSTMPOP  29710    138  
+
+@ST00067  29848     A8 mvsclkoff
+
+ABEND902  298F0     3A  
+
+CLKPATCH  29930     20  
+
+@SC00107  29950    646  
+          29980        xfigkey
+          29A78        tokenize
+          29C48        xfigline
+          29DC8        xfigger
+
+@SD00107  29F98     30  
+          29F98        tokens
+
+@SC00108  29FC8    4E8  
+          2A000        xfig_prt
+
+@SD00109  2A4B0    120  
+          2A4B0        Config
+
+@SC00110  2A5D0    118  
+          2A600        dot2ip
+
+ @$INDEX  2A6E8     C8  
+          2A718        index
+
+@SC00112  2A7B0    37C  
+          2A7E0        snap
+
+@SC00113  2AB30    1DA  
+@ST00069  2AB68        xfig_gate
+
+@SC00114  2AD10    820  
+@ST00068  2AD48        xfig_iface
+
+@SD00114  2B530     5C  
+
+@$__ISTY  2B590    10E  
+          2B5C8        @@istype
+
+ @$FOPEN  2B6A0    198  
+          2B6D0        fopen
+
+ @$FGETS  2B838    23E  
+          2B868        fgets
+
+@$FCLOSE  2BA78    1B4  
+          2BAA8        fclose
+
+@SC00119  2BC30     F8  
+          2BC68        mvsabend
+
+@SC00120  2BD28    154  
+          2BD60        memstate
+
+@SC00121  2BE80    19E  
+          2BEB8        poolinit
+
+@SC00122  2C020    1AA  
+          2C050        getmem
+
+@SC00123  2C1D0    116  
+          2C200        newsem
+
+@SC00124  2C2E8     FC  
+          2C318        enqueue
+
+@SC00125  2C3E8    332  
+          2C418        ipreass
+
+@SD00125  2C720     CC  
+          2C720        ipfmutex
+          2C724        ipfqt
+
+@SC00126  2C7F0    324  
+          2C820        ipdump
+
+@SC00127  2CB18    274  
+          2CB48        ipgetp
+
+@SD00127  2CD90      4  
+
+@SD00128  2CD98    57C  
+          2CD98        SysDescr
+@ST00071  2CE98        SysContact
+          2CF98        SysName
+@ST00072  2D098        SysLocation
+@ST00073  2D198        SysUpTime
+@ST00074  2D19C        SysServices
+          2D1A0        IfNumber
+@ST00075  2D1A4        IpForwarding
+@ST00076  2D1A8        IpDefaultTTL
+@ST00077  2D1AC        IpInReceives
+@ST00062  2D1B0        IpInHdrErrors
+@ST00063  2D1B4        IpInAddrErrors
+@ST00064  2D1B8        IpForwDatagrams
+@ST00078  2D1BC        IpInUnknownProtos
+@ST00079  2D1C0        IpInDiscards
+@ST00080  2D1C4        IpInDelivers
+@ST00081  2D1C8        IpOutRequests
+@ST00082  2D1CC        IpOutDiscards
+@ST00065  2D1D0        IpOutNoRoutes
+@ST00083  2D1D4        IpReasmTimeout
+@ST00070  2D1D8        IpReasmReqds
+@ST00084  2D1DC        IpReasmOKs
+@ST00085  2D1E0        IpReasmFails
+@ST00086  2D1E4        IpFragOKs
+@ST00087  2D1E8        IpFragFails
+@ST00088  2D1EC        IpFragCreates
+@ST00089  2D1F0        IpRoutingDiscards
+@ST00090  2D1F4        IcmpInMsgs
+@ST00091  2D1F8        IcmpInErrors
+@ST00092  2D1FC        IcmpInDestUnreachs
+@ST00093  2D200        IcmpInTimeExcds
+@ST00094  2D204        IcmpInParmProbs
+@ST00095  2D208        IcmpInSrcQuenchs
+@ST00096  2D20C        IcmpInRedirects
+@ST00097  2D210        IcmpInEchos
+@ST00098  2D214        IcmpInEchoReps
+@ST00099  2D218        IcmpInTimestamps
+@ST00100  2D21C        IcmpInTimestampReps
+@ST00101  2D220        IcmpInAddrMasks
+@ST00102  2D224        IcmpInAddrMaskReps
+@ST00103  2D228        IcmpOutMsgs
+@ST00104  2D22C        IcmpOutErrors
+@ST00105  2D230        IcmpOutDestUnreachs
+@ST00106  2D234        IcmpOutTimeExcds
+@ST00107  2D238        IcmpOutParmProbs
+@ST00108  2D23C        IcmpOutSrcQuenchs
+@ST00109  2D240        IcmpOutRedirects
+@ST00110  2D244        IcmpOutEchos
+@ST00111  2D248        IcmpOutEchoReps
+@ST00112  2D24C        IcmpOutTimestamps
+@ST00113  2D250        IcmpOutTimestampReps
+@ST00114  2D254        IcmpOutAddrMasks
+@ST00115  2D258        IcmpOutAddrMaskReps
+@ST00116  2D25C        UdpInDatagrams
+@ST00117  2D260        UdpNoPorts
+@ST00118  2D264        UdpInErrors
+@ST00119  2D268        UdpOutDatagrams
+@ST00120  2D26C        TcpRtoAlgorithm
+@ST00121  2D270        TcpRtoMin
+@ST00122  2D274        TcpRtoMax
+@ST00123  2D278        TcpMaxConn
+@ST00124  2D27C        TcpActiveOpens
+@ST00125  2D280        TcpPassiveOpens
+@ST00126  2D284        TcpAttemptFails
+@ST00127  2D288        TcpEstabResets
+@ST00128  2D28C        TcpCurrEstab
+@ST00129  2D290        TcpInSegs
+@ST00130  2D294        TcpOutSegs
+@ST00131  2D298        TcpRetransSegs
+@ST00132  2D29C        TcpInErrs
+@ST00133  2D2A0        TcpOutRsts
+@ST00134  2D2A4        snmpInPkts
+@ST00135  2D2A8        snmpOutPkts
+@ST00136  2D2AC        snmpInBadVersions
+@ST00137  2D2B0        snmpInBadCommunityNames
+@ST00138  2D2B4        snmpInBadCommunityUses
+@ST00139  2D2B8        snmpInASNParseErrs
+@ST00140  2D2BC        snmpInTooBigs
+@ST00141  2D2C0        snmpInNoSuchNames
+@ST00142  2D2C4        snmpInBadValues
+@ST00143  2D2C8        snmpInReadOnlys
+@ST00144  2D2CC        snmpInGenErrs
+@ST00145  2D2D0        snmpInTotalReqVars
+@ST00146  2D2D4        snmpInTotalSetVars
+@ST00147  2D2D8        snmpInGetRequests
+@ST00148  2D2DC        snmpInGetNexts
+@ST00149  2D2E0        snmpInSetRequests
+@ST00150  2D2E4        snmpInGetResponses
+@ST00151  2D2E8        snmpInTraps
+@ST00152  2D2EC        snmpOutTooBigs
+@ST00153  2D2F0        snmpOutNoSuchNames
+@ST00154  2D2F4        snmpOutBadValues
+@ST00155  2D2F8        snmpOutGenErrs
+@ST00156  2D2FC        snmpOutGetRequests
+@ST00157  2D300        snmpOutGetNexts
+@ST00158  2D304        snmpOutSetRequests
+@ST00159  2D308        snmpOutGetResponses
+@ST00160  2D30C        snmpOutTraps
+@ST00161  2D310        snmpEnableAuthenTraps
+
+@SC00129  2D318    28E  
+@ST00061  2D350        ipredirect
+
+@SC00130  2D5A8    1D6  
+          2D5D8        rtget
+
+@SC00131  2D780    1AE  
+          2D7B0        rtfree
+
+@SC00132  2D930    1A2  
+          2D960        ipdbc
+
+@SC00133  2DAD8    51A  
+          2DB08        ipputp
+
+@SC00134  2DFF8     B8  
+          2E028        ipnet2h
+
+@SC00135  2E0B0     B8  
+          2E0E0        iph2net
+
+@SC00136  2E168    274  
+@ST00162  2E1A0        stevens_cksum
+          2E2C0        ipcksum
+
+@SC00137  2E3E0    2AC  
+          2E410        freebuf
+
+@SC00138  2E690    2CA  
+          2E6C0        udp_in
+
+@SD00138  2E960      4  
+          2E960        udpmutex
+
+@SC00139  2E968    15A  
+          2E998        upalloc
+
+@SD00139  2EAC8     C0  
+          2EAC8        upqs
+
+@SC00140  2EB88    2DA  
+          2EBB8        ni_in
+
+@SC00141  2EE68     F8  
+          2EEA0        xdevread
+
+@SC00142  2EF60    612  
+          2EF90        getbuf
+          2F2F0        nbgetbuf
+
+@SC00143  2F578    278  
+          2F5B0        loopinit
+
+@SC00144  2F7F0    636  
+@ST00060  2F828        efaceinit
+
+@SD00144  2FE28      C  
+
+@SC00145  2FE38    73C  
+          2FE68        rtadd
+
+@SD00146  30578    710  
+          30578        rarpsem
+          3057C        rarppid
+          30580        arptable
+
+@SC00147  30C88    33A  
+          30CB8        rtprint
+
+@SC00148  30FC8    15C  
+          30FF8        ip2dot
+
+@SC00149  31128    2E8  
+          31158        getname
+          31218        getiname
+
+@SC00150  31410    272  
+          31448        getiaddr
+
+@SC00151  31688    3EA  
+          316B8        icmp
+
+@SC00152  31A78    5D0  
+          31AA8        nifdump
+
+@SC00153  32048    17A  
+          32078        sleep
+
+@SC00154  321C8    19E  
+          321F8        recvtim
+
+@SC00155  32368     D0  
+          32398        tcpputc
+
+@SC00156  32438     E0  
+          32468        tcpgetc
+
+@SC00157  32518    24C  
+          32548        tcpcntl
+
+@SC00158  32768     D8  
+          327A0        tcpwrite
+
+@SC00159  32840    29C  
+          32870        tcpread
+
+@SC00160  32AE0    21E  
+          32B18        tcpclose
+
+@SC00161  32D00    15C  
+          32D30        tcpinit
+
+@SD00161  32E60    C44  
+          32E64        tcbtab
+
+@SC00162  33AA8    100  
+          33AE0        tcpmcntl
+
+@SC00163  33BA8    1AE  
+          33BE0        tcpmopen
+
+@SC00164  33D58    154  
+          33D88        dgcntl
+
+@SC00165  33EB0    24A  
+          33EE0        dgwrite
+
+@SC00166  34100    298  
+          34130        dgread
+
+@SC00167  34398    138  
+          343C8        dgclose
+
+@SC00168  344D0     E8  
+          34500        dginit
+
+@SD00168  345B8    244  
+          345B8        dgtab
+          347F8        dgmutex
+
+@SC00169  34800     B4  
+          34830        dgmcntl
+
+@SC00170  348B8     A4  
+          348E8        nowrite
+
+@SC00171  34960     A4  
+          34990        noread
+
+@SC00172  34A08    244  
+          34A38        dgmopen
+
+@SC00173  34C50     98  
+          34C80        nooint
+
+@SC00174  34CE8     98  
+          34D18        noiint
+
+@SC00175  34D80     A4  
+          34DB0        noputc
+
+@SC00176  34E28     A4  
+          34E58        nogetc
+
+@SC00177  34ED0     A4  
+          34F00        nocntl
+
+@SC00178  34F78     A4  
+          34FA8        noseek
+
+@SC00179  35020    65A  
+          35058        ctwfresh
+@ST00055  351F0        ctci_write
+
+@SC00180  35680    7D6  
+@ST00054  356B8        ctci_read
+
+@SC00181  35E58     A4  
+          35E88        noclose
+
+@SC00182  35F00     A4  
+          35F30        noopen
+
+@SC00183  35FA8    644  
+@ST00053  35FE0        ctci_init
+
+@SC00184  365F0     A0  
+@ST00052  36628        oprconsoin
+
+@SC00185  36690     A0  
+@ST00051  366C8        oprconsiin
+
+@SC00186  36730     C4  
+@ST00050  36768        mvsconswrite
+
+@SC00187  367F8     98  
+          36828        ioerr
+
+@SC00188  36890     A0  
+          368C0        ionull
+
+@SC00189  36930    2EE  
+          36960        killpid
+
+@@DIVI64  36C20     F6  
+
+@@DIVU64  36D18     B2  
+
+  @$DTOA  36DD0   344E  
+          38B60        @@dtoa
+
+  @$dtoa  3A220    140  
+
+ @$ISINF  3A360    140  
+          3A390        isnan
+          3A430        isinf
+
+@$FVWRIT  3A4A0    8A0  
+          3A4D8        @@sfvwrt
+
+@$WSETUP  3AD40    1D2  
+          3AD78        @@swstup
+
+ @$ABORT  3AF18     C8  
+          3AF48        abort
+
+@$FFLUSH  3AFE0    274  
+          3B010        fflush
+          3B120        __sflush
+
+@SC00198  3B258    11C  
+          3B288        findxgd
+
+@SC00199  3B378     F4  
+          3B3A8        dequeue
+
+@SC00200  3B470     EC  
+          3B4A8        getfirst
+
+@SC00201  3B560    14E  
+          3B590        mvswto
+
+ mvsdoze  3B6B0    104  
+
+@$SNPRIN  3B7B8    11A  
+          3B7F0        snprintf
+
+@$___TOU  3B8D8     A8  
+          3B910        @@@2uppr
+
+ @$table  3B980    C60  
+@ST00179  3B980        _DefaultRuneLocale
+          3C5D4        @crntlcl
+@ST00180  3C5D8        __mb_cur_max
+@ST00181  3C5DC        _PathLocale
+
+@$R@BSAM  3C5E0    3B4  
+          3C618        @@R@BSAM
+
+@$r@bsam  3C998     25  
+
+  @$TPUT  3C9C0    188  
+          3C9F0        @@TPUT
+
+  @$tput  3CB48     24  
+
+@$FLQSAM  3CB70    29A  
+          3CBA8        @@FLQSAM
+
+@$flqsam  3CE10     22  
+
+  @$ATOI  3CE38     B4  
+          3CE68        atoi
+
+@$STRCAS  3CEF0    142  
+          3CF28        strc@cmp
+
+@$__TOLO  3D038     EA  
+          3D070        @@2lower
+
+@$NSPUTR  3D128     E6  
+          3D160        @nsputrn
+
+@$NSGETR  3D210     F8  
+          3D248        @nsgetrn
+
+ @$FWALK  3D308     EE  
+          3D338        @fwalk
+
+ @$RAISE  3D3F8     B4  
+          3D428        raise
+
+ @$raise  3D4B0     1D  
+
+@$MAKEBU  3D4D0    198  
+          3D508        @@smkbuf
+
+@SC00217  3D668    210  
+          3D698        unsleep
+
+@SC00218  3D878     EA  
+@ST00176  3D8B0        xdevclose
+
+@SC00219  3D968    1A4  
+          3D998        freemem
+
+@SC00220  3DB10    1B4  
+          3DB40        xdone
+
+@SC00221  3DCC8    D06  
+@ST00175  3DD00        ctci_iowrite
+
+@SC00222  3E9D0    BFE  
+@ST00174  3EA08        ctci_ioread
+
+@SC00223  3F5D0    436  
+@ST00173  3F608        ipshowhdr
+
+@SD00223  3FA08     30  
+          3FA08        iptxt
+
+@SC00224  3FA38    146  
+          3FA68        udpnxtp
+
+@SD00224  3FB80      2  
+
+@SC00225  3FB88    188  
+          3FBB8        dnparse
+
+@SC00226  3FD10    132  
+          3FD40        dgalloc
+
+@SC00227  3FE48    154  
+          3FE78        pdelete
+
+@SC00228  3FFA0    2F4  
+          3FFD0        udpsend
+
+@SC00229  40298    154  
+          402C8        preset
+
+@SC00230  403F0    206  
+          40420        tcpcon
+
+@SC00231  405F8    228  
+          40628        tcpbind
+
+@SC00232  40820    142  
+@ST00172  40858        tcpserver
+
+@SC00233  40968    1BC  
+          40998        tcpsync
+
+@SC00234  40B28    136  
+          40B60        tcballoc
+
+@SC00235  40C60    208  
+          40C90        sdelete
+
+@SC00236  40E68    298  
+          40E98        tcpinp
+
+@SD00236  41100     10  
+@ST00186  41100        tcps_oport
+@ST00187  41104        tcps_iport
+@ST00170  41108        tcps_lqsize
+@ST00171  4110C        tcps_tmutex
+
+@SC00237  41110    170  
+          41140        tcpkick
+
+@SC00238  41280    1D6  
+@ST00169  412B8        tcbdealloc
+
+@SC00239  41458    1E6  
+@ST00168  41490        tcpgetdata
+
+@SC00240  41640    1EE  
+@ST00167  41678        tcpwakeup
+
+@SC00241  41830     FA  
+          41860        tcpuopt
+
+@SC00242  41930    15E  
+          41960        tcpstat
+
+@SC00243  41A90    100  
+          41AC0        tcplq
+
+@SC00244  41B90    1D4  
+          41BC8        preceive
+
+@SC00245  41D68    216  
+          41D98        tcpwr
+
+@SC00246  41F80    1B0  
+          41FB0        insertd
+
+@SC00247  42130    1F4  
+          42160        sleep10
+
+@SC00248  42328    168  
+@ST00166  42360        hwa2string
+
+@SC00249  42490    260  
+@ST00165  424C8        icsetdata
+
+@SC00250  426F0    17C  
+          42728        icsetsrc
+
+@SC00251  42870    168  
+          428A0        icerrok
+
+@SC00252  429D8    46A  
+          42A10        icsetbuf
+
+@SC00253  42E48    2BE  
+          42E78        ipsend
+
+@SD00253  43108      4  
+
+@SC00254  43110    15C  
+          43140        cksum
+
+@SC00255  43270    46C  
+          432A8        rarpsend
+
+@SC00256  436E0    168  
+          43710        ip2name
+
+@SC00257  43848    1F8  
+          43878        rtnew
+
+@SC00258  43A40    A5C  
+          43A70        setmask
+
+@SC00259  444A0    19C  
+          444D0        netnum
+
+@SC00260  44640    1BC  
+@ST00164  44678        initutdev
+
+@SD00260  44800     14  
+
+@SC00261  44818    14A  
+          44850        ethmcast
+
+@SD00261  44968      6  
+@ST00193  44968        multitemplate
+
+@SD00262  44970      9  
+@ST00163  44970        loopback_text
+
+@SC00263  44980     E4  
+          449B0        scount
+
+@SC00264  44A68    284  
+          44A98        ip_in
+
+@SC00265  44CF0    25C  
+          44D20        rarp_in
+
+@SC00266  44F50    3CA  
+          44F80        arp_in
+
+@SC00267  45320    21C  
+          45350        pcreate
+
+@SC00268  45540     BC  
+          45578        udpnet2h
+
+@SC00269  45600    182  
+          45638        udpcksum
+
+@SC00270  45788    20E  
+          457B8        psend
+
+@SC00271  45998    160  
+          459C8        pcount
+
+@SC00272  45AF8    332  
+          45B28        xsend
+
+@SC00273  45E30    5A2  
+          45E68        netwrite
+
+@SC00274  463D8    2B6  
+          46410        ipfhcopy
+
+@SC00275  46690    210  
+          466C0        ipfsend
+
+@SC00276  468A0    18A  
+          468D0        isbrc
+
+@SC00277  46A30    1A0  
+          46A60        rthash
+
+@SC00278  46BD0    306  
+          46C08        netmatch
+
+@SC00279  46ED8    394  
+          46F08        netmask
+
+@SC00280  47270    F86  
+          472A0        enq
+          47570        deq
+          477C8        headq
+          479C0        seeq
+          47C28        newq
+          47E78        freeq
+          48028        lenq
+
+@SD00280  481F8    C84  
+
+@SC00281  48E80     F4  
+          48EB0        recvclr
+
+@SC00282  48F78    1DE  
+          48FA8        receive
+
+@SC00283  49158    DE2  
+          49190        ospfdump
+
+@SC00284  49F40    3F8  
+          49F78        icmpdump
+
+@SC00285  4A338    222  
+          4A368        tcpdump
+
+@SC00286  4A560    172  
+          4A590        udpdump
+
+@SC00287  4A6D8    1CE  
+          4A708        ipfjoin
+
+@SC00288  4A8A8    194  
+          4A8D8        ipfadd
+
+@$REFILL  4AA40    376  
+          4AB40        @@srefil
+
+ @$FLAGS  4ADB8    4E8  
+          4B0F0        @@sflags
+
+@$SCLOSE  4B2A0     BC  
+          4B2D8        @@sclose
+
+ @$SSEEK  4B360    120  
+          4B390        @@sseek
+
+@$SWRITE  4B480    128  
+          4B4B8        @@swrite
+
+ @$SREAD  4B5A8    10E  
+          4B5D8        @@sread
+
+@$RUNETY  4B6B8     A8  
+          4B6F0        @@@rntyp
+
+ @$STRTL  4B760    356  
+          4B790        strtol
+
+ @$strtl  4BAB8    100  
+
+@$ISPRIN  4BBB8     B8  
+          4BBE8        isprint
+
+  @$READ  4BC70    178  
+          4BCA0        read
+
+  @$read  4BDE8     1D  
+
+ @$WRITE  4BE08    17C  
+          4BE38        write
+
+ @$write  4BF88     1E  
+
+ @$LSEEK  4BFA8    1B4  
+          4BFD8        lseek
+
+ @$lseek  4C160     1C  
+
+@SC00301  4C180    2C8  
+          4C1B0        ipfcons
+
+@SC00302  4C448    220  
+          4C478        hexdump
+
+@$SIGNAL  4C668    124  
+          4C698        signal
+
+@$signal  4C790     1E  
+
+@SC00304  4C7B0    2E2  
+          4C7E0        arpsend
+
+@SC00305  4CA98    15C  
+          4CAD0        arpalloc
+
+@SD00305  4CBF8      4  
+
+@SC00306  4CC00    336  
+@ST00194  4CC38        local_out
+
+@SC00307  4CF38    172  
+          4CF68        pinit
+
+@SC00308  4D0B0    114  
+          4D0E8        arpqsend
+
+@SC00309  4D1C8    15A  
+          4D1F8        arpfind
+
+@SC00310  4D328    184  
+          4D358        arpadd
+
+@SC00311  4D4B0    334  
+          4D4E0        rtdel
+
+@SC00312  4D7E8     FA  
+          4D820        xdevopen
+
+@SC00313  4D8E8    128  
+@ST00192  4D920        xdevcontrol
+
+@SC00314  4DA10    314  
+          4DA40        mkarp
+
+@SC00315  4DD28    1AC  
+@ST00191  4DD60        xdevwrite
+
+@SC00316  4DED8    16C  
+@ST00190  4DF10        tcpgetspace
+
+@SC00317  4E048    110  
+@ST00189  4E080        tcprwindow
+
+@SC00318  4E158    144  
+@ST00188  4E190        tcpkilltimers
+
+@SC00319  4E2A0    1FC  
+          4E2D0        tmset
+
+@SC00320  4E4A0    140  
+          4E4D0        tmleft
+
+@SC00321  4E5E0    250  
+          4E610        tcpopts
+
+@SC00322  4E830    27A  
+          4E868        tcpackit
+
+@SC00323  4EAB0    22E  
+          4EAE0        tcpok
+
+@SC00324  4ECE0    2B0  
+          4ED18        tcpdemux
+
+@SD00325  4EF90    15E  
+          4EF90        tcperror
+@ST00185  4EFAC        tcpswitch
+@ST00206  4EFDC        tcposwitch
+
+@SC00326  4F0F0    29E  
+          4F128        tcpreset
+
+@SC00327  4F390     D8  
+          4F3C8        tcpnet2h
+
+@SC00328  4F468    1AC  
+          4F4A0        tcpcksum
+
+@SC00329  4F618     CC  
+          4F648        tcpiss
+
+@SD00329  4F6E8      4  
+
+@SC00330  4F6F0    1E2  
+          4F720        tcpnxtp
+
+@SD00330  4F8D8      2  
+
+@SC00331  4F8E0    102  
+          4F918        hglookup
+
+@SC00332  4F9E8    1D4  
+          4FA18        hginit
+
+@SD00332  4FBC0     FC  
+@ST00184  4FBC0        HostGroup
+          4FBCC        hgtable
+
+@SC00333  4FCC0     BC  
+          4FCF8        udph2net
+
+@SC00334  4FD80    190  
+          4FDB8        _ptclear
+
+@$__ISCT  4FF10     EE  
+          4FF48        @@isctyp
+
+@SC00336  50000    338  
+@ST00183  50038        ctcpostread
+
+@SC00337  50338    306  
+@ST00182  50370        ctcpostwrite
+
+  mvsctc  50640    310  
+
+@$ISATTY  50950    10C  
+          50980        isatty
+
+@$isatty  50A60     1E  
+
+  @$KILL  50A80    514  
+@ST00178  50AC0        __handle_sigabrt
+          50B88        __kill
+          50F10        kill
+
+@$FINDFP  50F98    520  
+          510F8        __sfp
+@ST00210  51280        f_prealloc
+          51380        _cleanup
+          51430        __sinit
+
+@$findfp  514B8    760  
+@ST00177  514B8        __sdidinit
+          51AA8        __sF
+          51BB0        @@SGLUE
+
+@$___TOL  51C18     A8  
+          51C50        @@@2lowr
+
+@$GETDTA  51CC0     A0  
+          51CF8        @gdtblsz
+
+ @$ABEND  51D60     DE  
+          51D90        @@ABEND
+
+@$TRACEB  51E40    112  
+          51E78        @@trcbck
+
+@$traceb  51F58     21  
+
+ @$FPUTS  51F80     F6  
+          51FB0        fputs
+
+@SC00347  52078    1AA  
+          520A8        sreset
+
+@SC00348  52228     D8  
+          52258        hgrand
+
+@SD00348  52300      C  
+          52300        modulus
+          52304        offset
+          52308        hgseed
+
+@SC00349  52310    22A  
+          52340        hgjoin
+
+@SC00350  52540    174  
+          52570        igmp
+
+@SD00350  526B8      8  
+@ST00208  526B8        ig_allhosts
+@ST00209  526BC        ig_allDmask
+
+@SC00351  526C0    154  
+@ST00207  526F8        igmp_update
+
+@SC00352  52818    166  
+@ST00205  52850        tcppersist
+
+@SC00353  52980     C8  
+          529B0        tcpidle
+
+@SC00354  52A48    14C  
+@ST00204  52A80        tcptimewait
+
+@SC00355  52B98    168  
+@ST00203  52BD0        tcplastack
+
+@SC00356  52D00    16E  
+@ST00202  52D38        tcpclosing
+
+@SC00357  52E70    1A8  
+@ST00201  52EA8        tcpclosewait
+
+@SC00358  53018    182  
+          53048        tcpfin2
+
+@SC00359  531A0    1F4  
+          531D0        tcpfin1
+
+@SC00360  53398    1E4  
+@ST00200  533D0        tcpestablished
+
+@SC00361  53580    356  
+@ST00199  535B8        tcpsynrcvd
+
+@SC00362  538D8    24E  
+@ST00198  53910        tcpsynsent
+
+@SC00363  53B28    202  
+@ST00197  53B60        tcplisten
+
+@SC00364  53D30     C0  
+@ST00196  53D68        tcpclosed
+
+@SC00365  53DF0    32A  
+          53E20        tcpxmit
+
+@SC00366  54120    208  
+          54158        tcprexmt
+
+@SC00367  54328     D8  
+          54360        tcph2net
+
+@SC00368  54400    168  
+          54430        tcpsmss
+
+@SC00369  54568    248  
+          545A0        tcptimer
+
+@SD00369  547B0      C  
+          547B0        tqmutex
+          547B4        tqpid
+          547B8        tqhead
+
+@SC00370  547C0    19A  
+          547F0        tmclear
+
+@SC00371  54960    236  
+          54990        igmp_in
+
+@SC00372  54B98    11C  
+          54BC8        tcp_in
+
+@SC00373  54CB8    68E  
+          54CE8        icmp_in
+
+@SC00374  55348    1D2  
+@ST00195  55380        ipdstopts
+
+@SC00375  55520    15C  
+          55550        arpdq
+
+  @$sigt  55680     A0  
+          5569C        @@SIGT
+
+@SC00377  55720    1BA  
+@ST00214  55758        icredirect
+
+@SC00378  558E0    164  
+@ST00213  55918        igmp_settimers
+
+@SC00379  55A48     EC  
+@ST00212  55A80        tcphowmuch
+
+@SC00380  55B38    1F4  
+          55B70        tcpwinit
+
+@SC00381  55D30    1B6  
+@ST00211  55D68        tcpswindow
+
+@SC00382  55EE8     F4  
+          55F20        tcpabort
+
+@SC00383  55FE0    306  
+          56018        tcpacked
+
+@SC00384  562E8    2F0  
+          56318        tcpdata
+
+@SC00385  565D8    10C  
+          56608        tcpwait
+
+@SC00386  566E8    564  
+          56718        tcpsend
+
+@SC00387  56C50    212  
+          56C80        hgadd
+
+@SD00387  56E68      4  
+
+@SC00388  56E70    230  
+          56EA8        hgarpadd
+
+@SC00389  570A0    116  
+@ST00216  570D8        tcpsndlen
+
+@SC00390  571B8    140  
+          571E8        tcprmss
+
+@SC00391  572F8    202  
+          57330        tcpdodat
+
+@SC00392  57500    1E8  
+          57530        tcprtt
+
+@SC00393  576E8    100  
+@ST00215  57720        tcpostate
+
+@SC00394  577E8    148  
+          57820        tfinsert
+
+@SC00395  57930    2CE  
+@ST00217  57968        tfcoalesce
+
+  ENTRY ADDRESS       E0

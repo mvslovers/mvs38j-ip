@@ -1,0 +1,2161 @@
+1
+  F64-LEVEL LINKAGE EDITOR OPTIONS SPECIFIED LET,MAP,LIST,TEST,XREF
+           DEFAULT OPTION(S) USED -  SIZE=(165888,55296)
+ IEW0000     SETCODE AC(1)
+ IEW0000     PAGE @SC00001
+ IEW0000     NAME XINU(R)
+ ****XINU      NOW REPLACED IN DATA SET
+ AUTHORIZATION CODE IS         1.
+0
+0                                                CROSS REFERENCE TABLE
+
+0  CONTROL SECTION                       ENTRY
+0    NAME    ORIGIN  LENGTH                NAME   LOCATION     NAME   LOCATION     NAME   LOCATION     NAME   LOCATION
+   @SC00001      00      B0
+                                         main          30
+   @@CRT0        B0     480
+                                         @crt0         E0
+   ##GETM       530     120
+                                         @@GETM       558    @@FREEM      610
+   ##IGETM      650      70
+                                         @@IGETM      678    @@IFREEM     6A0
+   ##IO         6C0    1CC0
+                                         __get        718    __put        840    @ST00000     960    @ST00001     A68
+                                         @ST00002     B70    __alloc      C50    __aldsn      DC0    __alpds      FE8
+                                         __dealc     1248    @ST00003    1350    __open      14E8    __close     1738
+                                         @ST00004    1860    __note      1958    __point     1A20    __tget      1AF0
+                                         ___tput     1BD0    @@IOINIT    1C98    @@IOFINI    1F80
+   @$INITIO    2380     2A6
+                                         @@INITIO    23B8    __finio     2528
+   @$initio    2628      2C
+                                         __iocvt     2648    @ST00006    264C
+   @$MVSARG    2658     882
+                                         @@MVSARG    27A0
+   @$mvsarg    2EE0      1F
+   @$EXIT      2F00     17A
+                                         exit        2F30
+   @$exit      3080      1C
+   ##EXPAND    30A0     1C0
+                                         @@EXPAND    30C2    @@CONTRA    316C    alloca      3188
+   @$RNTINI    3260    333E
+                                         @ST00008    3DA0    @@RNTINI    5040    @@RNTTRM    5240    __ctors     5478
+                                         __dtors     5708    @ST00010    58F0    __dlopen    5B98    @ST00011    5F10
+                                         @ST00009    60A8    __dlsym     6210
+   @$rntini    65A0      30
+   @SC00012    65D0     20A
+                                         nulluser    6608
+   @SD00012    67E0       4
+                                         nullecb     67E0
+   @SC00013    67E8     864
+                                         sysinit     6818
+   @SC00014    7050     4A8
+                                         xconfig     7080
+1
+0    NAME    ORIGIN  LENGTH                NAME   LOCATION     NAME   LOCATION     NAME   LOCATION     NAME   LOCATION
+   @SC00015    74F8     17C
+                                         clkinit     7528    @ST00018    7610
+   @SC00016    7678      F2
+                                         seminit     76A8
+   @SC00017    7770     724
+                                         netstart    77A8
+   @SD00018    7E98     6A8
+                                         ue          7E98    @ST00016    7F4C
+   @SC00019    8540     162
+                                         xdevinit    8578
+   @SC00020    86A8      A8
+                                         @ST00015    86E0
+   @SD00021    8750      40
+                                         cpudelay    8750    clkruns     8754    count6      8758    count10     875C
+                                         ctr100      8760    clmutex     8764    clktime     8768    defclk      876C
+                                         clkdiff     8770    slnempty    8774    sltop       8778    clockq      877C
+                                         preempt     8780    hhsec       8784    @ST00022    8788    pclkint     878C
+   @SC00022    8790     4B0
+                                         testauth    87C8    mvsstate    8870    @ST00023    89A8    @ST00014    8A48
+                                         @ST00024    8AF0    pause       8B90
+   mvsevent    8C40      A0
+   @SC00024    8CE0      D0
+                                         findsgd     8D10
+   @SD00025    8DB0      94
+                                         @ST00025    8DB0    @ST00026    8DB4    mvspmem     8DB8    shutxinu    8DBC
+                                         userpid     8DC0    start       8DC4    reboot      8DC8    vers        8DCC
+                                         revision    8E30    sem         8E34    pid1        8E38    pid2        8E3C
+                                         ptid        8E40    intmap      8E44
+   @SC00026    8E48     240
+                                         resume      8E78
+   @SC00027    9088     376
+                                         @ST00028    90C0    @ST00013    92A8
+   @SC00028    9400     1A4
+                                         procinit    9438
+   @SC00029    95A8     12E
+                                         nulldisp    95E0
+   @SD00029    96D8      48
+                                         nulljump    96D8
+   @SC00030    9720     376
+                                         create      9750
+   @SD00031    9A98    4740
+                                         proctab     9A98    nextproc    E0E8    numproc     E0EC    currpid     E0F0
+                                         lastpid     E0F4    @ST00029    E0F8    currSP      E0FC    @ST00027    E100
+   @SC00032    E1D8     21A
+                                         _mkinit     E208    mark        E2C8
+   @SC00033    E3F8     134
+                                         meminit     E428
+   @$SPRINT    E530      FC
+                                         sprintf     E560
+   @$SETVBU    E630     2B4
+                                         setvbuf     E660
+   @SD00036    E8E8     1B4
+1
+0    NAME    ORIGIN  LENGTH                NAME   LOCATION     NAME   LOCATION     NAME   LOCATION     NAME   LOCATION
+                                         ctcdev      E8E8    ctcecb      EA98
+   @ST00012    EAA0      B8
+   @SC00038    EB58     390
+                                         resched     EB88
+   @SC00039    EEE8      B0
+                                         kprintf     EF18
+   @$WTO       EF98     17A
+                                         @@WTO       EFC8
+   @$wto       F118      20
+   @$MALLOC    F138    3A76
+                                         __fremem    F4B0    malloc      FE70    free       10850    realloc    10D08
+                                         memalign   111A8    calloc     114B0    cfree      11658    @ST00031   11710
+                                         @ST00032   117F0    valloc     11CD8    pvalloc    11DC0    @ST00033   11EC8
+                                         @ST00034   11FB0    mallinfo   120C8    @ST00035   122D8    mallopt    12440
+                                         @@MLLC31   12630    __free31   126F0    @@MLLC24   127A0    __free24   12A58
+   @$malloc   12BB0     490
+   @$cleanu   13040      28
+                                         @@CLEANU   13060    __atexit   13064
+   @$@@EXIT   13068      F0
+                                         @@exit     13098
+   @$enviro   13158      2C
+                                         @ST00007   13178    environ    13180
+   @$SETENV   13188     43A
+                                         setenv     131B8    unsetenv   13508
+   @$setenv   135C8       4
+   @$CLOSE    135D0     148
+                                         close      13600
+   @$close    13718      1D
+   @$OPEN     13738    1356
+                                         @ST00038   13778    @ST00039   13870    @ST00040   13938    @ST00041   13A38
+                                         open       13AE8
+   @$open     14A90     438
+                                         __lrecl    14AAE    @ST00005   14AB0    __recfm    14AB4    __keylen   14AB8
+                                         @ST00042   14ABC    @ST00043   14AC0    __fdt      14AC4
+   @$PARSEF   14EC8     9EE
+                                         @@PARSFN   14F00    @ST00037   15770
+   @$parsef   158B8     474
+                                         _style     158D8
+   @$NEXTFD   15D30      FE
+                                         @@nextfd   15D68
+   @$nextfd   15E30      1E
+   @$D2QSAM   15E50      C4
+                                         @@D2QSAM   15E88
+   @$d2qsam   15F18      21
+   @$TYQSAM   15F40      C8
+                                         @@TYQSAM   15F78
+   @$tyqsam   16008      23
+   @$CLQSAM   16030     314
+                                         @@CLQSAM   16068
+   @$clqsam   16348      23
+   @$WRQSAM   16370    12F6
+                                         @@WRQSAM   174E0
+1
+0    NAME    ORIGIN  LENGTH                NAME   LOCATION     NAME   LOCATION     NAME   LOCATION     NAME   LOCATION
+   @$wrqsam   17668      23
+   @$LSQSAM   17690     976
+                                         @@LSQSAM   17878
+   @$lsqsam   18008      24
+   @$RDQSAM   18030     EDE
+                                         @@RDQSAM   18D88
+   @$rdqsam   18F10      2C
+   @$DDNDEF   18F40     174
+                                         @@DDNDEF   18F78
+   @$ddndef   190B8      24
+   @$__TOUP   190E0      EA
+                                         @@2upper   19118
+   @$GETENV   191D0     24C
+                                         @@FINDNV   19208    getenv     19398
+   @$BCOPY    19420     212
+                                         bcopy      19450
+   @$errlst   19638     FA6
+                                         @ST00044   19638    errno      19778    sys_nerr   1977C
+   @$FPRINT   1A5E0      BC
+                                         fprintf    1A610
+   @SC00062   1A6A0    14F8
+                                         doputc     1A6D0    doprnt     1A920
+   @SD00062   1BB98     148
+   procload   1BCE0      24
+   @SC00064   1BD08     1B4
+                                         wakeup     1BD38
+   @SC00065   1BEC0     178
+                                         insert     1BEF0
+   @SC00066   1C038      E4
+                                         getlast    1C068
+   @SD00067   1C120    1554
+                                         q          1C120    @ST00021   1D668    rdyhead    1D66C    rdytail    1D670
+   @SC00068   1D678      F4
+                                         iohook     1D6A8
+   procsw     1D770      48
+   procsave   1D7B8      2E
+   @$WHATBU   1D7E8      D4
+                                         @@swhtbf   1D820
+   @$VFPRIN   1D8C0    3950
+                                         vfprintf   1E0D8
+   @$vfprin   21210      49
+   @SC00073   21260     2DC
+                                         @ST00030   21298    @ST00045   214A8
+   @SD00074   21540     C58
+                                         memlist    21540    maxaddr    21548    marks      2154C    nmarks     2159C
+                                         mkmutex    215A0    ptmark     215A4    ptfree     215A8    ports      215AC
+                                         ptnextp    2209C    bptab      220A0    nbpools    22190    bpmark     22194
+   @SC00075   22198     182
+                                         xsignal    221C8
+   @$MEMSET   22320     18E
+                                         memset     22350
+   @SC00077   224B0     14A
+1
+0    NAME    ORIGIN  LENGTH                NAME   LOCATION     NAME   LOCATION     NAME   LOCATION     NAME   LOCATION
+                                         getstk     224E0
+   @SC00078   22600     426
+                                         @ST00047   22638    envbegin   226E8    @ST00048   227C8    mvsenv     22870
+   @SC00079   22A28     102
+                                         newpid     22A58
+   @SC00080   22B30     18C
+                                         suspend    22B60
+   @SC00081   22CC0     160
+                                         nullkill   22CF8
+   @$SETJMP   22E20     1A8
+                                         setjmp     22E50    longjmp    22F18
+   @$setjmp   22FC8      1E
+   @SC00083   22FE8     B4E
+                                         @ST00049   23028    sastate    231E0    @ST00046   23500    callinfo   23668
+                                         funcstr    23790    funchist   238E8
+   @SC00084   23B38     114
+                                         ready      23B68
+   @SD00085   23C50     C78
+                                         devtab     23C50
+   @@CRT9A    248C8     4F8
+                                         @CRT9A     248F8
+   @SC00087   24DC0     78C
+                                         @ST00020   24DF8
+   @SC00088   25550     27E
+                                         @ST00056   25588    getutim    25678
+   @SC00089   257D0     152
+                                         rtinit     25800
+   @SD00089   25928     810
+                                         Route      25928    rttable    25938
+   @SC00090   26138     24A
+                                         rtdump     26168
+   @SC00091   26388     12C
+                                         arpinit    263B8
+   @SC00092   264B8     28E
+                                         netup_rt   264F0
+   @SC00093   26748     47E
+                                         @ST00019   26780
+   @SD00093   26BC8       8
+   @SC00094   26BD0     1C6
+                                         netproc    26C00
+   @SD00095   26D98     320
+                                         nif        26D98    Net        270A8
+   @SC00096   270B8     11A
+                                         udpinit    270E8
+   @SC00097   271D8     BA4
+                                         ipproc     27208
+   @SC00098   27D80     114
+                                         ipfinit    27DB0
+   @SD00099   27E98      18
+                                         @ST00058   27E98    @ST00059   27E9C    ippid      27EA0    gateway    27EA4
+                                         bsdbrc     27EA8    @ST00057   27EAC
+   @SC00100   27EB0     1A0
+1
+0    NAME    ORIGIN  LENGTH                NAME   LOCATION     NAME   LOCATION     NAME   LOCATION     NAME   LOCATION
+                                         wait       27EE0
+   @SC00101   28050     18E
+                                         screate    28080
+   @SC00102   281E0     3F4
+                                         mkpool     28210
+   @SC00103   285D8     28E
+                                         panic      28608
+   @SD00104   28868     C90
+                                         nextsem    28868    semaph     2886C    @ST00066   294EC
+   @SC00105   294F8     130
+                                         newqueue   29530
+   @ST00017   29628      E8
+   MVSTMPOP   29710     138
+   @ST00067   29848      A8
+   ABEND902   298F0      3A
+   CLKPATCH   29930      20
+   @SC00107   29950     646
+                                         xfigkey    29980    tokenize   29A78    xfigline   29C48    xfigger    29DC8
+   @SD00107   29F98      30
+                                         tokens     29F98
+   @SC00108   29FC8     4E8
+                                         xfig_prt   2A000
+   @SD00109   2A4B0     120
+                                         Config     2A4B0
+   @SC00110   2A5D0     118
+                                         dot2ip     2A600
+   @$INDEX    2A6E8      C8
+                                         index      2A718
+   @SC00112   2A7B0     37C
+                                         snap       2A7E0
+   @SC00113   2AB30     1DA
+                                         @ST00069   2AB68
+   @SC00114   2AD10     820
+                                         @ST00068   2AD48
+   @SD00114   2B530      5C
+   @$__ISTY   2B590     10E
+                                         @@istype   2B5C8
+   @$FOPEN    2B6A0     198
+                                         fopen      2B6D0
+   @$FGETS    2B838     23E
+                                         fgets      2B868
+   @$FCLOSE   2BA78     1B4
+                                         fclose     2BAA8
+   @SC00119   2BC30      F8
+                                         mvsabend   2BC68
+   @SC00120   2BD28     154
+                                         memstate   2BD60
+   @SC00121   2BE80     19E
+                                         poolinit   2BEB8
+   @SC00122   2C020     1AA
+                                         getmem     2C050
+   @SC00123   2C1D0     116
+1
+0    NAME    ORIGIN  LENGTH                NAME   LOCATION     NAME   LOCATION     NAME   LOCATION     NAME   LOCATION
+                                         newsem     2C200
+   @SC00124   2C2E8      FC
+                                         enqueue    2C318
+   @SC00125   2C3E8     332
+                                         ipreass    2C418
+   @SD00125   2C720      CC
+                                         ipfmutex   2C720    ipfqt      2C724
+   @SC00126   2C7F0     324
+                                         ipdump     2C820
+   @SC00127   2CB18     274
+                                         ipgetp     2CB48
+   @SD00127   2CD90       4
+   @SD00128   2CD98     57C
+                                         SysDescr   2CD98    @ST00071   2CE98    SysName    2CF98    @ST00072   2D098
+                                         @ST00073   2D198    @ST00074   2D19C    IfNumber   2D1A0    @ST00075   2D1A4
+                                         @ST00076   2D1A8    @ST00077   2D1AC    @ST00062   2D1B0    @ST00063   2D1B4
+                                         @ST00064   2D1B8    @ST00078   2D1BC    @ST00079   2D1C0    @ST00080   2D1C4
+                                         @ST00081   2D1C8    @ST00082   2D1CC    @ST00065   2D1D0    @ST00083   2D1D4
+                                         @ST00070   2D1D8    @ST00084   2D1DC    @ST00085   2D1E0    @ST00086   2D1E4
+                                         @ST00087   2D1E8    @ST00088   2D1EC    @ST00089   2D1F0    @ST00090   2D1F4
+                                         @ST00091   2D1F8    @ST00092   2D1FC    @ST00093   2D200    @ST00094   2D204
+                                         @ST00095   2D208    @ST00096   2D20C    @ST00097   2D210    @ST00098   2D214
+                                         @ST00099   2D218    @ST00100   2D21C    @ST00101   2D220    @ST00102   2D224
+                                         @ST00103   2D228    @ST00104   2D22C    @ST00105   2D230    @ST00106   2D234
+                                         @ST00107   2D238    @ST00108   2D23C    @ST00109   2D240    @ST00110   2D244
+                                         @ST00111   2D248    @ST00112   2D24C    @ST00113   2D250    @ST00114   2D254
+                                         @ST00115   2D258    @ST00116   2D25C    @ST00117   2D260    @ST00118   2D264
+                                         @ST00119   2D268    @ST00120   2D26C    @ST00121   2D270    @ST00122   2D274
+                                         @ST00123   2D278    @ST00124   2D27C    @ST00125   2D280    @ST00126   2D284
+                                         @ST00127   2D288    @ST00128   2D28C    @ST00129   2D290    @ST00130   2D294
+                                         @ST00131   2D298    @ST00132   2D29C    @ST00133   2D2A0    @ST00134   2D2A4
+                                         @ST00135   2D2A8    @ST00136   2D2AC    @ST00137   2D2B0    @ST00138   2D2B4
+                                         @ST00139   2D2B8    @ST00140   2D2BC    @ST00141   2D2C0    @ST00142   2D2C4
+                                         @ST00143   2D2C8    @ST00144   2D2CC    @ST00145   2D2D0    @ST00146   2D2D4
+                                         @ST00147   2D2D8    @ST00148   2D2DC    @ST00149   2D2E0    @ST00150   2D2E4
+                                         @ST00151   2D2E8    @ST00152   2D2EC    @ST00153   2D2F0    @ST00154   2D2F4
+                                         @ST00155   2D2F8    @ST00156   2D2FC    @ST00157   2D300    @ST00158   2D304
+                                         @ST00159   2D308    @ST00160   2D30C    @ST00161   2D310
+   @SC00129   2D318     28E
+                                         @ST00061   2D350
+   @SC00130   2D5A8     1D6
+                                         rtget      2D5D8
+   @SC00131   2D780     1AE
+                                         rtfree     2D7B0
+   @SC00132   2D930     1A2
+                                         ipdbc      2D960
+   @SC00133   2DAD8     51A
+                                         ipputp     2DB08
+   @SC00134   2DFF8      B8
+                                         ipnet2h    2E028
+   @SC00135   2E0B0      B8
+                                         iph2net    2E0E0
+1
+0    NAME    ORIGIN  LENGTH                NAME   LOCATION     NAME   LOCATION     NAME   LOCATION     NAME   LOCATION
+   @SC00136   2E168     274
+                                         @ST00162   2E1A0    ipcksum    2E2C0
+   @SC00137   2E3E0     2AC
+                                         freebuf    2E410
+   @SC00138   2E690     2CA
+                                         udp_in     2E6C0
+   @SD00138   2E960       4
+                                         udpmutex   2E960
+   @SC00139   2E968     15A
+                                         upalloc    2E998
+   @SD00139   2EAC8      C0
+                                         upqs       2EAC8
+   @SC00140   2EB88     2DA
+                                         ni_in      2EBB8
+   @SC00141   2EE68      F8
+                                         xdevread   2EEA0
+   @SC00142   2EF60     612
+                                         getbuf     2EF90    nbgetbuf   2F2F0
+   @SC00143   2F578     278
+                                         loopinit   2F5B0
+   @SC00144   2F7F0     636
+                                         @ST00060   2F828
+   @SD00144   2FE28       C
+   @SC00145   2FE38     73C
+                                         rtadd      2FE68
+   @SD00146   30578     710
+                                         rarpsem    30578    rarppid    3057C    arptable   30580
+   @SC00147   30C88     33A
+                                         rtprint    30CB8
+   @SC00148   30FC8     15C
+                                         ip2dot     30FF8
+   @SC00149   31128     2E8
+                                         getname    31158    getiname   31218
+   @SC00150   31410     272
+                                         getiaddr   31448
+   @SC00151   31688     3EA
+                                         icmp       316B8
+   @SC00152   31A78     5D0
+                                         nifdump    31AA8
+   @SC00153   32048     17A
+                                         sleep      32078
+   @SC00154   321C8     19E
+                                         recvtim    321F8
+   @SC00155   32368      D0
+                                         tcpputc    32398
+   @SC00156   32438      E0
+                                         tcpgetc    32468
+   @SC00157   32518     24C
+                                         tcpcntl    32548
+   @SC00158   32768      D8
+                                         tcpwrite   327A0
+   @SC00159   32840     29C
+1
+0    NAME    ORIGIN  LENGTH                NAME   LOCATION     NAME   LOCATION     NAME   LOCATION     NAME   LOCATION
+                                         tcpread    32870
+   @SC00160   32AE0     21E
+                                         tcpclose   32B18
+   @SC00161   32D00     15C
+                                         tcpinit    32D30
+   @SD00161   32E60     C44
+                                         tcbtab     32E64
+   @SC00162   33AA8     100
+                                         tcpmcntl   33AE0
+   @SC00163   33BA8     1AE
+                                         tcpmopen   33BE0
+   @SC00164   33D58     154
+                                         dgcntl     33D88
+   @SC00165   33EB0     24A
+                                         dgwrite    33EE0
+   @SC00166   34100     298
+                                         dgread     34130
+   @SC00167   34398     138
+                                         dgclose    343C8
+   @SC00168   344D0      E8
+                                         dginit     34500
+   @SD00168   345B8     244
+                                         dgtab      345B8    dgmutex    347F8
+   @SC00169   34800      B4
+                                         dgmcntl    34830
+   @SC00170   348B8      A4
+                                         nowrite    348E8
+   @SC00171   34960      A4
+                                         noread     34990
+   @SC00172   34A08     244
+                                         dgmopen    34A38
+   @SC00173   34C50      98
+                                         nooint     34C80
+   @SC00174   34CE8      98
+                                         noiint     34D18
+   @SC00175   34D80      A4
+                                         noputc     34DB0
+   @SC00176   34E28      A4
+                                         nogetc     34E58
+   @SC00177   34ED0      A4
+                                         nocntl     34F00
+   @SC00178   34F78      A4
+                                         noseek     34FA8
+   @SC00179   35020     65A
+                                         ctwfresh   35058    @ST00055   351F0
+   @SC00180   35680     7D6
+                                         @ST00054   356B8
+   @SC00181   35E58      A4
+                                         noclose    35E88
+   @SC00182   35F00      A4
+                                         noopen     35F30
+   @SC00183   35FA8     644
+1
+0    NAME    ORIGIN  LENGTH                NAME   LOCATION     NAME   LOCATION     NAME   LOCATION     NAME   LOCATION
+                                         @ST00053   35FE0
+   @SC00184   365F0      A0
+                                         @ST00052   36628
+   @SC00185   36690      A0
+                                         @ST00051   366C8
+   @SC00186   36730      C4
+                                         @ST00050   36768
+   @SC00187   367F8      98
+                                         ioerr      36828
+   @SC00188   36890      A0
+                                         ionull     368C0
+   @SC00189   36930     2EE
+                                         killpid    36960
+   @@DIVI64   36C20      F6
+   @@DIVU64   36D18      B2
+   @$DTOA     36DD0    344E
+                                         @@dtoa     38B60
+   @$dtoa     3A220     140
+   @$ISINF    3A360     140
+                                         isnan      3A390    isinf      3A430
+   @$FVWRIT   3A4A0     8A0
+                                         @@sfvwrt   3A4D8
+   @$WSETUP   3AD40     1D2
+                                         @@swstup   3AD78
+   @$ABORT    3AF18      C8
+                                         abort      3AF48
+   @$FFLUSH   3AFE0     274
+                                         fflush     3B010    __sflush   3B120
+   @SC00198   3B258     11C
+                                         findxgd    3B288
+   @SC00199   3B378      F4
+                                         dequeue    3B3A8
+   @SC00200   3B470      EC
+                                         getfirst   3B4A8
+   @SC00201   3B560     14E
+                                         mvswto     3B590
+   mvsdoze    3B6B0     104
+   @$SNPRIN   3B7B8     11A
+                                         snprintf   3B7F0
+   @$___TOU   3B8D8      A8
+                                         @@@2uppr   3B910
+   @$table    3B980     C60
+                                         @ST00179   3B980    @crntlcl   3C5D4    @ST00180   3C5D8    @ST00181   3C5DC
+   @$R@BSAM   3C5E0     3B4
+                                         @@R@BSAM   3C618
+   @$r@bsam   3C998      25
+   @$TPUT     3C9C0     188
+                                         @@TPUT     3C9F0
+   @$tput     3CB48      24
+   @$FLQSAM   3CB70     29A
+                                         @@FLQSAM   3CBA8
+   @$flqsam   3CE10      22
+1
+0    NAME    ORIGIN  LENGTH                NAME   LOCATION     NAME   LOCATION     NAME   LOCATION     NAME   LOCATION
+   @$ATOI     3CE38      B4
+                                         atoi       3CE68
+   @$STRCAS   3CEF0     142
+                                         strc@cmp   3CF28
+   @$__TOLO   3D038      EA
+                                         @@2lower   3D070
+   @$NSPUTR   3D128      E6
+                                         @nsputrn   3D160
+   @$NSGETR   3D210      F8
+                                         @nsgetrn   3D248
+   @$FWALK    3D308      EE
+                                         @fwalk     3D338
+   @$RAISE    3D3F8      B4
+                                         raise      3D428
+   @$raise    3D4B0      1D
+   @$MAKEBU   3D4D0     198
+                                         @@smkbuf   3D508
+   @SC00217   3D668     210
+                                         unsleep    3D698
+   @SC00218   3D878      EA
+                                         @ST00176   3D8B0
+   @SC00219   3D968     1A4
+                                         freemem    3D998
+   @SC00220   3DB10     1B4
+                                         xdone      3DB40
+   @SC00221   3DCC8     D06
+                                         @ST00175   3DD00
+   @SC00222   3E9D0     BFE
+                                         @ST00174   3EA08
+   @SC00223   3F5D0     436
+                                         @ST00173   3F608
+   @SD00223   3FA08      30
+                                         iptxt      3FA08
+   @SC00224   3FA38     146
+                                         udpnxtp    3FA68
+   @SD00224   3FB80       2
+   @SC00225   3FB88     188
+                                         dnparse    3FBB8
+   @SC00226   3FD10     132
+                                         dgalloc    3FD40
+   @SC00227   3FE48     154
+                                         pdelete    3FE78
+   @SC00228   3FFA0     2F4
+                                         udpsend    3FFD0
+   @SC00229   40298     154
+                                         preset     402C8
+   @SC00230   403F0     206
+                                         tcpcon     40420
+   @SC00231   405F8     228
+                                         tcpbind    40628
+   @SC00232   40820     142
+                                         @ST00172   40858
+1
+0    NAME    ORIGIN  LENGTH                NAME   LOCATION     NAME   LOCATION     NAME   LOCATION     NAME   LOCATION
+   @SC00233   40968     1BC
+                                         tcpsync    40998
+   @SC00234   40B28     136
+                                         tcballoc   40B60
+   @SC00235   40C60     208
+                                         sdelete    40C90
+   @SC00236   40E68     298
+                                         tcpinp     40E98
+   @SD00236   41100      10
+                                         @ST00186   41100    @ST00187   41104    @ST00170   41108    @ST00171   4110C
+   @SC00237   41110     170
+                                         tcpkick    41140
+   @SC00238   41280     1D6
+                                         @ST00169   412B8
+   @SC00239   41458     1E6
+                                         @ST00168   41490
+   @SC00240   41640     1EE
+                                         @ST00167   41678
+   @SC00241   41830      FA
+                                         tcpuopt    41860
+   @SC00242   41930     15E
+                                         tcpstat    41960
+   @SC00243   41A90     100
+                                         tcplq      41AC0
+   @SC00244   41B90     1D4
+                                         preceive   41BC8
+   @SC00245   41D68     216
+                                         tcpwr      41D98
+   @SC00246   41F80     1B0
+                                         insertd    41FB0
+   @SC00247   42130     1F4
+                                         sleep10    42160
+   @SC00248   42328     168
+                                         @ST00166   42360
+   @SC00249   42490     260
+                                         @ST00165   424C8
+   @SC00250   426F0     17C
+                                         icsetsrc   42728
+   @SC00251   42870     168
+                                         icerrok    428A0
+   @SC00252   429D8     46A
+                                         icsetbuf   42A10
+   @SC00253   42E48     2BE
+                                         ipsend     42E78
+   @SD00253   43108       4
+   @SC00254   43110     15C
+                                         cksum      43140
+   @SC00255   43270     46C
+                                         rarpsend   432A8
+   @SC00256   436E0     168
+                                         ip2name    43710
+   @SC00257   43848     1F8
+1
+0    NAME    ORIGIN  LENGTH                NAME   LOCATION     NAME   LOCATION     NAME   LOCATION     NAME   LOCATION
+                                         rtnew      43878
+   @SC00258   43A40     A5C
+                                         setmask    43A70
+   @SC00259   444A0     19C
+                                         netnum     444D0
+   @SC00260   44640     1BC
+                                         @ST00164   44678
+   @SD00260   44800      14
+   @SC00261   44818     14A
+                                         ethmcast   44850
+   @SD00261   44968       6
+                                         @ST00193   44968
+   @SD00262   44970       9
+                                         @ST00163   44970
+   @SC00263   44980      E4
+                                         scount     449B0
+   @SC00264   44A68     284
+                                         ip_in      44A98
+   @SC00265   44CF0     25C
+                                         rarp_in    44D20
+   @SC00266   44F50     3CA
+                                         arp_in     44F80
+   @SC00267   45320     21C
+                                         pcreate    45350
+   @SC00268   45540      BC
+                                         udpnet2h   45578
+   @SC00269   45600     182
+                                         udpcksum   45638
+   @SC00270   45788     20E
+                                         psend      457B8
+   @SC00271   45998     160
+                                         pcount     459C8
+   @SC00272   45AF8     332
+                                         xsend      45B28
+   @SC00273   45E30     5A2
+                                         netwrite   45E68
+   @SC00274   463D8     2B6
+                                         ipfhcopy   46410
+   @SC00275   46690     210
+                                         ipfsend    466C0
+   @SC00276   468A0     18A
+                                         isbrc      468D0
+   @SC00277   46A30     1A0
+                                         rthash     46A60
+   @SC00278   46BD0     306
+                                         netmatch   46C08
+   @SC00279   46ED8     394
+                                         netmask    46F08
+   @SC00280   47270     F86
+                                         enq        472A0    deq        47570    headq      477C8    seeq       479C0
+                                         newq       47C28    freeq      47E78    lenq       48028
+   @SD00280   481F8     C84
+1
+0    NAME    ORIGIN  LENGTH                NAME   LOCATION     NAME   LOCATION     NAME   LOCATION     NAME   LOCATION
+   @SC00281   48E80      F4
+                                         recvclr    48EB0
+   @SC00282   48F78     1DE
+                                         receive    48FA8
+   @SC00283   49158     DE2
+                                         ospfdump   49190
+   @SC00284   49F40     3F8
+                                         icmpdump   49F78
+   @SC00285   4A338     222
+                                         tcpdump    4A368
+   @SC00286   4A560     172
+                                         udpdump    4A590
+   @SC00287   4A6D8     1CE
+                                         ipfjoin    4A708
+   @SC00288   4A8A8     194
+                                         ipfadd     4A8D8
+   @$REFILL   4AA40     376
+                                         @@srefil   4AB40
+   @$FLAGS    4ADB8     4E8
+                                         @@sflags   4B0F0
+   @$SCLOSE   4B2A0      BC
+                                         @@sclose   4B2D8
+   @$SSEEK    4B360     120
+                                         @@sseek    4B390
+   @$SWRITE   4B480     128
+                                         @@swrite   4B4B8
+   @$SREAD    4B5A8     10E
+                                         @@sread    4B5D8
+   @$RUNETY   4B6B8      A8
+                                         @@@rntyp   4B6F0
+   @$STRTL    4B760     356
+                                         strtol     4B790
+   @$strtl    4BAB8     100
+   @$ISPRIN   4BBB8      B8
+                                         isprint    4BBE8
+   @$READ     4BC70     178
+                                         read       4BCA0
+   @$read     4BDE8      1D
+   @$WRITE    4BE08     17C
+                                         write      4BE38
+   @$write    4BF88      1E
+   @$LSEEK    4BFA8     1B4
+                                         lseek      4BFD8
+   @$lseek    4C160      1C
+   @SC00301   4C180     2C8
+                                         ipfcons    4C1B0
+   @SC00302   4C448     220
+                                         hexdump    4C478
+   @$SIGNAL   4C668     124
+                                         signal     4C698
+   @$signal   4C790      1E
+   @SC00304   4C7B0     2E2
+1
+0    NAME    ORIGIN  LENGTH                NAME   LOCATION     NAME   LOCATION     NAME   LOCATION     NAME   LOCATION
+                                         arpsend    4C7E0
+   @SC00305   4CA98     15C
+                                         arpalloc   4CAD0
+   @SD00305   4CBF8       4
+   @SC00306   4CC00     336
+                                         @ST00194   4CC38
+   @SC00307   4CF38     172
+                                         pinit      4CF68
+   @SC00308   4D0B0     114
+                                         arpqsend   4D0E8
+   @SC00309   4D1C8     15A
+                                         arpfind    4D1F8
+   @SC00310   4D328     184
+                                         arpadd     4D358
+   @SC00311   4D4B0     334
+                                         rtdel      4D4E0
+   @SC00312   4D7E8      FA
+                                         xdevopen   4D820
+   @SC00313   4D8E8     128
+                                         @ST00192   4D920
+   @SC00314   4DA10     314
+                                         mkarp      4DA40
+   @SC00315   4DD28     1AC
+                                         @ST00191   4DD60
+   @SC00316   4DED8     16C
+                                         @ST00190   4DF10
+   @SC00317   4E048     110
+                                         @ST00189   4E080
+   @SC00318   4E158     144
+                                         @ST00188   4E190
+   @SC00319   4E2A0     1FC
+                                         tmset      4E2D0
+   @SC00320   4E4A0     140
+                                         tmleft     4E4D0
+   @SC00321   4E5E0     250
+                                         tcpopts    4E610
+   @SC00322   4E830     27A
+                                         tcpackit   4E868
+   @SC00323   4EAB0     22E
+                                         tcpok      4EAE0
+   @SC00324   4ECE0     2B0
+                                         tcpdemux   4ED18
+   @SD00325   4EF90     15E
+                                         tcperror   4EF90    @ST00185   4EFAC    @ST00206   4EFDC
+   @SC00326   4F0F0     29E
+                                         tcpreset   4F128
+   @SC00327   4F390      D8
+                                         tcpnet2h   4F3C8
+   @SC00328   4F468     1AC
+                                         tcpcksum   4F4A0
+   @SC00329   4F618      CC
+                                         tcpiss     4F648
+1
+0    NAME    ORIGIN  LENGTH                NAME   LOCATION     NAME   LOCATION     NAME   LOCATION     NAME   LOCATION
+   @SD00329   4F6E8       4
+   @SC00330   4F6F0     1E2
+                                         tcpnxtp    4F720
+   @SD00330   4F8D8       2
+   @SC00331   4F8E0     102
+                                         hglookup   4F918
+   @SC00332   4F9E8     1D4
+                                         hginit     4FA18
+   @SD00332   4FBC0      FC
+                                         @ST00184   4FBC0    hgtable    4FBCC
+   @SC00333   4FCC0      BC
+                                         udph2net   4FCF8
+   @SC00334   4FD80     190
+                                         _ptclear   4FDB8
+   @$__ISCT   4FF10      EE
+                                         @@isctyp   4FF48
+   @SC00336   50000     338
+                                         @ST00183   50038
+   @SC00337   50338     306
+                                         @ST00182   50370
+   mvsctc     50640     310
+   @$ISATTY   50950     10C
+                                         isatty     50980
+   @$isatty   50A60      1E
+   @$KILL     50A80     514
+                                         @ST00178   50AC0    __kill     50B88    kill       50F10
+   @$FINDFP   50F98     520
+                                         __sfp      510F8    @ST00210   51280    _cleanup   51380    __sinit    51430
+   @$findfp   514B8     760
+                                         @ST00177   514B8    __sF       51AA8    @@SGLUE    51BB0
+   @$___TOL   51C18      A8
+                                         @@@2lowr   51C50
+   @$GETDTA   51CC0      A0
+                                         @gdtblsz   51CF8
+   @$ABEND    51D60      DE
+                                         @@ABEND    51D90
+   @$TRACEB   51E40     112
+                                         @@trcbck   51E78
+   @$traceb   51F58      21
+   @$FPUTS    51F80      F6
+                                         fputs      51FB0
+   @SC00347   52078     1AA
+                                         sreset     520A8
+   @SC00348   52228      D8
+                                         hgrand     52258
+   @SD00348   52300       C
+                                         modulus    52300    offset     52304    hgseed     52308
+   @SC00349   52310     22A
+                                         hgjoin     52340
+   @SC00350   52540     174
+                                         igmp       52570
+   @SD00350   526B8       8
+1
+0    NAME    ORIGIN  LENGTH                NAME   LOCATION     NAME   LOCATION     NAME   LOCATION     NAME   LOCATION
+                                         @ST00208   526B8    @ST00209   526BC
+   @SC00351   526C0     154
+                                         @ST00207   526F8
+   @SC00352   52818     166
+                                         @ST00205   52850
+   @SC00353   52980      C8
+                                         tcpidle    529B0
+   @SC00354   52A48     14C
+                                         @ST00204   52A80
+   @SC00355   52B98     168
+                                         @ST00203   52BD0
+   @SC00356   52D00     16E
+                                         @ST00202   52D38
+   @SC00357   52E70     1A8
+                                         @ST00201   52EA8
+   @SC00358   53018     182
+                                         tcpfin2    53048
+   @SC00359   531A0     1F4
+                                         tcpfin1    531D0
+   @SC00360   53398     1E4
+                                         @ST00200   533D0
+   @SC00361   53580     356
+                                         @ST00199   535B8
+   @SC00362   538D8     24E
+                                         @ST00198   53910
+   @SC00363   53B28     202
+                                         @ST00197   53B60
+   @SC00364   53D30      C0
+                                         @ST00196   53D68
+   @SC00365   53DF0     32A
+                                         tcpxmit    53E20
+   @SC00366   54120     208
+                                         tcprexmt   54158
+   @SC00367   54328      D8
+                                         tcph2net   54360
+   @SC00368   54400     168
+                                         tcpsmss    54430
+   @SC00369   54568     248
+                                         tcptimer   545A0
+   @SD00369   547B0       C
+                                         tqmutex    547B0    tqpid      547B4    tqhead     547B8
+   @SC00370   547C0     19A
+                                         tmclear    547F0
+   @SC00371   54960     236
+                                         igmp_in    54990
+   @SC00372   54B98     11C
+                                         tcp_in     54BC8
+   @SC00373   54CB8     68E
+                                         icmp_in    54CE8
+   @SC00374   55348     1D2
+                                         @ST00195   55380
+   @SC00375   55520     15C
+1
+0    NAME    ORIGIN  LENGTH                NAME   LOCATION     NAME   LOCATION     NAME   LOCATION     NAME   LOCATION
+                                         arpdq      55550
+   @$sigt     55680      A0
+                                         @@SIGT     5569C
+   @SC00377   55720     1BA
+                                         @ST00214   55758
+   @SC00378   558E0     164
+                                         @ST00213   55918
+   @SC00379   55A48      EC
+                                         @ST00212   55A80
+   @SC00380   55B38     1F4
+                                         tcpwinit   55B70
+   @SC00381   55D30     1B6
+                                         @ST00211   55D68
+   @SC00382   55EE8      F4
+                                         tcpabort   55F20
+   @SC00383   55FE0     306
+                                         tcpacked   56018
+   @SC00384   562E8     2F0
+                                         tcpdata    56318
+   @SC00385   565D8     10C
+                                         tcpwait    56608
+   @SC00386   566E8     564
+                                         tcpsend    56718
+   @SC00387   56C50     212
+                                         hgadd      56C80
+   @SD00387   56E68       4
+   @SC00388   56E70     230
+                                         hgarpadd   56EA8
+   @SC00389   570A0     116
+                                         @ST00216   570D8
+   @SC00390   571B8     140
+                                         tcprmss    571E8
+   @SC00391   572F8     202
+                                         tcpdodat   57330
+   @SC00392   57500     1E8
+                                         tcprtt     57530
+   @SC00393   576E8     100
+                                         @ST00215   57720
+   @SC00394   577E8     148
+                                         tfinsert   57820
+   @SC00395   57930     2CE
+                                         @ST00217   57968
+0
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+        70            nulluser        @SC00012                      74            sysinit         @SC00013
+       4D8            main            @SC00001                     4E0            @@IGETM         ##IGETM
+       4E8            @@EXPAND        ##EXPAND                     4EC            @@CONTRA        ##EXPAND
+       4F8            @@GETM          ##GETM                       4FC            @@RINIT#       $UNRESOLVED(W)
+       500            @@SOLST#       $UNRESOLVED(W)                504            @@RNTINI        @$RNTINI
+       50C            exit            @$EXIT                       510            @@MVSARG        @$MVSARG
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+       514            @@INITIO        @$INITIO                     518            @@LINKL#       $UNRESOLVED(W)
+       51C            __ctors         @$RNTINI                     520            @@RNTTRM        @$RNTINI
+       524            @@FREEM         ##GETM                       528            @@IFREEM        ##IGETM
+       D88            @@GETM          ##GETM                       FB4            @@GETM          ##GETM
+      1214            @@GETM          ##GETM                      1314            @@FREEM         ##GETM
+      1DB0            @@GETM          ##GETM                      4310            @$rntini        @$rntini
+      4804            @@SODEF#       $UNRESOLVED(W)               24A8            __recfm         @$open
+      24AC            @ST00005        @$open                      24B0            __lrecl         @$open
+      24B4            @$initio        @$initio                    24B8            @@IOINIT        ##IO
+      24CC            open            @$OPEN                      255C            __fdt           @$open
+      2564            close           @$CLOSE                     2570            @$initio        @$initio
+      2574            @@IOFINI        ##IO                        2718            @@MLLC24        @$MALLOC
+      2720            __free24        @$MALLOC                    2814            malloc          @$MALLOC
+      2834            @ST00007        @$enviro                    2864            environ         @$enviro
+      2868            setenv          @$SETENV                    2F78            __atexit        @$cleanu
+      2F8C            __dtors         @$RNTINI                    2F90            @@CLEANU        @$cleanu
+      2F94            @@exit          @$@@EXIT                    2FCC            @@LINKL#       $UNRESOLVED(W)
+      3164            @@GETM          ##GETM                      3258            @@GETM          ##GETM
+      3310            @@WTO           @$WTO                       33D8            @@GETM          ##GETM
+      3508            @@FREEM         ##GETM                      35C0            @$rntini        @$rntini
+      35C8            @@MLLC31        @$MALLOC                    6670            kprintf         @SC00039
+      6674            currpid         @SD00031                    667C            ctcecb          @SD00036
+      6680            @ST00012        @ST00012                    6684            @SD00012        @SD00012
+      6688            resched         @SC00038                    66EC            shutxinu        @SD00025
+      69F0            setvbuf         @$SETVBU                    69F8            __sF            @$findfp
+      6A20            exit            @$EXIT                      6A24            kprintf         @SC00039
+      6A48            vers            @SD00025                    6A5C            sprintf         @$SPRINT
+      6A88            reboot          @SD00025                    6A98            testauth        @SC00022
+      6AF4            findsgd         @SC00024                    6AF8            mvsevent        mvsevent
+      6AFC            mvsstate        @SC00022                    6B68            meminit         @SC00033
+      6B80            @ST00015        @SC00020                    6B98            procinit        @SC00028
+      6BB0            seminit         @SC00016                    6BC8            _mkinit         @SC00032
+      6BE0            clkinit         @SC00015                    6C10            clkruns         @SD00021
+      6C1C            nulldisp        @SC00029                    6C2C            xconfig         @SC00014
+      6C30            resume          @SC00026                    6C34            create          @SC00030
+      6C50            xdevinit        @SC00019                    6C78            @ST00014        @SC00022
+      6CAC            userpid         @SD00025                    6CEC            netstart        @SC00017
+      6D14            numproc         @SD00031                    6D2C            @ST00013        @SC00027
+      7380            Config          @SD00109                    7394            dot2ip          @SC00110
+      748C            xfigger         @SC00107                    7490            kprintf         @SC00039
+      74C0            xfig_prt        @SC00108                    7588            @ST00017        @ST00017
+      7590            preempt         @SD00021                    7594            clockq          @SD00021
+      7598            newqueue        @SC00105                    76E8            nextsem         @SD00104
+      76F4            newqueue        @SC00105                    76F8            semaph          @SD00104
+      77B4            @CRT9A          @@CRT9A                     78F8            clkruns         @SD00021
+      78FC            kprintf         @SC00039                    7914            panic           @SC00103
+      7930            Net             @SD00095                    7934            mkpool          @SC00102
+      7950            ipfinit         @SC00098                    7954            arpinit         @SC00091
+      7958            udpinit         @SC00096                    795C            screate         @SC00101
+      798C            Config          @SD00109                    79A0            gateway         @SD00099
+      79C4            rtinit          @SC00089                    79F0            @ST00019        @SC00093
+      7A18            netup_rt        @SC00092                    7A38            ipproc          @SC00097
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+      7A4C            wait            @SC00100                    7A50            resume          @SC00026
+      7A54            create          @SC00030                    7A74            getutim         @SC00088
+      7A78            @ST00020        @SC00087                    7B34            userpid         @SD00025
+      7B68            @ST00013        @SC00027                    7B90            netproc         @SC00094
+      7BCC            rtdump          @SC00090                    8620            kprintf         @SC00039
+      8624            devtab          @SD00085                    8748            @ST00021        @SD00067
+      88F8            kprintf         @SC00039                    8C08            kprintf         @SC00039
+      8F50            funcstr         @SC00083                    8F88            kprintf         @SC00039
+      8F8C            currpid         @SD00031                    8FAC            @ST00023        @SC00022
+      8FB8            proctab         @SD00031                    8FBC            @ST00024        @SC00022
+      8FD4            ready           @SC00084                    9144            proctab         @SD00031
+      9170            kprintf         @SC00039                    9174            @ST00027        @SD00031
+      918C            funchist        @SC00083                    9344            funcstr         @SC00083
+      9374            kprintf         @SC00039                    9378            preempt         @SD00021
+      937C            currpid         @SD00031                    9388            proctab         @SD00031
+      9480            nextproc        @SD00031                    9484            numproc         @SD00031
+      9494            proctab         @SD00031                    94A8            rdyhead         @SD00067
+      94AC            rdytail         @SD00067                    94B0            newqueue        @SC00105
+      94B4            currpid         @SD00031                    94B8            nulluser        @SC00012
+      95EC            @CRT9A          @@CRT9A                     9630            currpid         @SD00031
+      9634            @ST00029        @SD00031                    963C            setjmp          @$SETJMP
+      9640            @SD00029        @SD00029                    9644            nullkill        @SC00081
+      9648            suspend         @SC00080                    964C            shutxinu        @SD00025
+      97C8            kprintf         @SC00039                    97D0            getstk          @SC00077
+      97F4            newpid          @SC00079                    982C            mvsenv          @SC00078
+      9830            memset          @$MEMSET                    9838            proctab         @SD00031
+      983C            numproc         @SD00031                    9840            @ST00023        @SC00022
+      9850            @ST00024        @SC00022                    9888            funcstr         @SC00083
+      E288            nmarks          @SD00074                    E28C            mkmutex         @SD00074
+      E290            screate         @SC00101                    E334            nmarks          @SD00074
+      E338            marks           @SD00074                    E344            xsignal         @SC00075
+      E348            mkmutex         @SD00074                    E350            wait            @SC00100
+      E508            memlist         @SD00074                    E50C            maxaddr         @SD00074
+      E510            @ST00030        @SC00073                    E518            kprintf         @SC00039
+      E5E8            vfprintf        @$VFPRIN                    E6D0            __sflush        @$FFLUSH
+      E6D4            free            @$MALLOC                    E6E0            @@swhtbf        @$WHATBU
+      E6E4            malloc          @$MALLOC                    E6F0            _cleanup        @$FINDFP
+      E6F4            @@CLEANU        @$cleanu                    EC30            iohook          @SC00068
+      EC38            preempt         @SD00021                    EC3C            wakeup          @SC00064
+      EC44            proctab         @SD00031                    EC48            currpid         @SD00031
+      EC4C            q               @SD00067                    EC50            rdytail         @SD00067
+      EC54            insert          @SC00065                    EC58            rdyhead         @SD00067
+      EC5C            getlast         @SC00066                    EC60            lastpid         @SD00031
+      EC68            procsave        procsave                    EC80            @ST00013        @SC00027
+      EC84            @ST00029        @SD00031                    EC88            procsw          procsw
+      EDF4            procload        procload                    EDF8            longjmp         @$SETJMP
+      EDFC            nulljump        @SD00029                    EF90            doprnt          @SC00062
+      F040            @$wto           @$wto                       F044            @@MLLC31        @$MALLOC
+     10D60            @$malloc        @$malloc                   10D70            errno           @$errlst
+     1120C            errno           @$errlst                   1193C            @$malloc        @$malloc
+     11D4C            @$malloc        @$malloc                    F250            @$malloc        @$malloc
+      F25C            @@GETM          ##GETM                      F388            @@GETM          ##GETM
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+      F3A0            @$malloc        @$malloc                    F4E8            @$malloc        @$malloc
+      F4F4            @@FREEM         ##GETM                      F6D4            @$malloc        @$malloc
+      F9FC            errno           @$errlst                    FED4            @$malloc        @$malloc
+      FEE0            errno           @$errlst                   108E8            @$malloc        @$malloc
+     11E44            @$malloc        @$malloc                   11F30            @$malloc        @$malloc
+     12140            @$malloc        @$malloc                   123B0            __sF            @$findfp
+     123D8            fprintf         @$FPRINT                   12494            @$malloc        @$malloc
+     127F0            @$malloc        @$malloc                   1280C            @@GETM          ##GETM
+     12AA0            @$malloc        @$malloc                   13150            __finio         @$INITIO
+     13154            @ST00036       $UNRESOLVED(W)              13218            @@FINDNV        @$GETENV
+     13220            environ         @$enviro                   13224            @$setenv        @$setenv
+     13228            realloc         @$MALLOC                   13234            malloc          @$MALLOC
+     13238            bcopy           @$BCOPY                    13544            environ         @$enviro
+     13548            @@FINDNV        @$GETENV                   13664            errno           @$errlst
+     13668            __fdt           @$open                     137C8            @$open          @$open
+     137D0            malloc          @$MALLOC                   138E8            @$open          @$open
+     13988            @$open          @$open                     13990            malloc          @$MALLOC
+     13AB0            @$open          @$open                     13BE0            @@nextfd        @$NEXTFD
+     13BE8            errno           @$errlst                   13BEC            @@PARSFN        @$PARSEF
+     13BF0            @ST00037        @$PARSEF                   13BF4            @$open          @$open
+     13C00            sprintf         @$SPRINT                   13C10            malloc          @$MALLOC
+     13C24            @@2upper        @$__TOUP                   13C28            @@DDNDEF        @$DDNDEF
+     13C2C            @ST00006        @$initio                   13C30            __alloc         ##IO
+     13C34            __iocvt         @$initio                   13C38            __alpds         ##IO
+     13C3C            __aldsn         ##IO                       14318            __open          ##IO
+     14320            __iocvt         @$initio                   14324            @ST00003        ##IO
+     14328            @$open          @$open                     1432C            @ST00006        @$initio
+     14330            @ST00004        ##IO                       14338            errno           @$errlst
+     1433C            __dealc         ##IO                       1434C            @ST00000        ##IO
+     14350            __close         ##IO                       14354            __note          ##IO
+     14358            @@GETM          ##GETM                     1436C            @@D2QSAM        @$D2QSAM
+     14370            @@LSQSAM        @$LSQSAM                   14374            @@TYQSAM        @$TYQSAM
+     14378            @@CLQSAM        @$CLQSAM                   1437C            @@WRQSAM        @$WRQSAM
+     14380            @@RDQSAM        @$RDQSAM                   14F8C            @$parsef        @$parsef
+     14F98            strc@cmp        @$STRCAS                   15544            strc@cmp        @$STRCAS
+     1554C            __recfm         @$open                     15560            @ST00005        @$open
+     15564            atoi            @$ATOI                     15570            __lrecl         @$open
+     1557C            __keylen        @$open                     15588            @ST00042        @$open
+     1559C            @ST00043        @$open                     15DA8            __fdt           @$open
+     16168            @@FLQSAM        @$FLQSAM                   16170            @ST00001        ##IO
+     16174            __iocvt         @$initio                   16180            errno           @$errlst
+     16184            __close         ##IO                       16188            @ST00004        ##IO
+     1618C            @@FREEM         ##GETM                     161A0            __dealc         ##IO
+     161A4            free            @$MALLOC                   161A8            @ST00039        @$OPEN
+     1640C            @@TPUT          @$TPUT                     166D8            __put           ##IO
+     166DC            __iocvt         @$initio                   166E0            errno           @$errlst
+     16C90            __put           ##IO                       16C94            __iocvt         @$initio
+     16C98            errno           @$errlst                   17118            __put           ##IO
+     1711C            __iocvt         @$initio                   17120            errno           @$errlst
+     17560            @@R@BSAM        @$R@BSAM                   17568            errno           @$errlst
+     1772C            malloc          @$MALLOC                   1792C            @@FLQSAM        @$FLQSAM
+     17930            errno           @$errlst                   1793C            __point         ##IO
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     17940            __iocvt         @$initio                   17948            @@RDQSAM        @$RDQSAM
+     17950            __note          ##IO                       18110            @$rdqsam        @$rdqsam
+     18118            __free31        @$MALLOC                   1811C            @@MLLC31        @$MALLOC
+     18124            errno           @$errlst                   18128            __tget          ##IO
+     1812C            __iocvt         @$initio                   184F4            __get           ##IO
+     184F8            __iocvt         @$initio                   184FC            errno           @$errlst
+     18998            __get           ##IO                       1899C            __iocvt         @$initio
+     189A0            errno           @$errlst                   18E08            @@R@BSAM        @$R@BSAM
+     18E10            errno           @$errlst                   18FBC            @ST00002        ##IO
+     18FC0            __iocvt         @$initio                   19178            @@@2uppr        @$___TOU
+     1917C            @crntlcl        @$table                    1925C            environ         @$enviro
+     1A660            vfprintf        @$VFPRIN                   1A7AC            @SD00062        @SD00062
+     1A7B4            __sF            @$findfp                   1A7D8            fprintf         @$FPRINT
+     1A7E4            panic           @SC00103                   1A7F4            snprintf        @$SNPRIN
+     1A7F8            @ST00025        @SD00025                   1A7FC            mvswto          @SC00201
+     1A804            mvsdoze         mvsdoze                    1BD70            ready           @SC00084
+     1BD74            getfirst        @SC00200                   1BD78            clockq          @SD00021
+     1BD80            q               @SD00067                   1BD84            slnempty        @SD00021
+     1BD88            sltop           @SD00021                   1BF40            q               @SD00067
+     1C0D4            q               @SD00067                   1C0DC            dequeue         @SC00199
+     1D6E0            findxgd         @SC00198                   1D6EC            resume          @SC00026
+     1D94C            @@sfvwrt        @$FVWRIT                   1DAD4            fflush          @$FFLUSH
+     1DBA4            abort           @$ABORT                    1DDD8            @@DIVU64        @@DIVU64
+     1DDE8            @@DIVI64        @@DIVI64                   1DE08            abort           @$ABORT
+     1E150            @@swstup        @$WSETUP                   1E8D8            isinf           @$ISINF
+     1E8EC            isnan           @$ISINF                    1F18C            @$vfprin        @$vfprin
+     1FA04            @$vfprin        @$vfprin                   20380            @$vfprin        @$vfprin
+     20D04            @@dtoa          @$DTOA                     20D0C            @$vfprin        @$vfprin
+     210B8            @$vfprin        @$vfprin                   2135C            malloc          @$MALLOC
+     21360            kprintf         @SC00039                   21384            panic           @SC00103
+     21394            mvspmem         @SD00025                   21398            @ST00026        @SD00025
+     214F8            @ST00026        @SD00025                   21500            free            @$MALLOC
+     21504            mvspmem         @SD00025                   2226C            semaph          @SD00104
+     22270            @ST00023        @SC00022                   2227C            @ST00024        @SC00022
+     22284            ready           @SC00084                   22288            getfirst        @SC00200
+     22528            memlist         @SD00074                   22644            @CRT9A          @@CRT9A
+     226F4            @CRT9A          @@CRT9A                    22788            @ST00046        @SC00083
+     227D4            @CRT9A          @@CRT9A                    228C4            panic           @SC00103
+     228FC            kprintf         @SC00039                   22A8C            nextproc        @SD00031
+     22A94            proctab         @SD00031                   22C18            @ST00023        @SC00022
+     22C24            proctab         @SD00031                   22C2C            @ST00024        @SC00022
+     22C30            dequeue         @SC00199                   22C34            resched         @SC00038
+     22DE8            proctab         @SD00031                   22DEC            currpid         @SD00031
+     22E14            killpid         @SC00189                   22E18            mvsenv          @SC00078
+     22E1C            kprintf         @SC00039                   2309C            sprintf         @$SPRINT
+     232D8            kprintf         @SC00039                   233C8            main            @SC00001
+     235C4            kprintf         @SC00039                   235CC            proctab         @SD00031
+     235D0            currpid         @SD00031                   23758            kprintf         @SC00039
+     23BBC            insert          @SC00065                   23BC0            rdyhead         @SD00067
+     23BC8            proctab         @SD00031                   23BCC            resched         @SC00038
+     23DC0            dginit          @SC00168                   23DC4            noopen          @SC00182
+     23DC8            dgclose         @SC00167                   23DCC            dgread          @SC00166
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     23DD0            dgwrite         @SC00165                   23DD4            noseek          @SC00178
+     23DD8            nogetc          @SC00176                   23DDC            noputc          @SC00175
+     23DE0            dgcntl          @SC00164                   23DF0            noiint          @SC00174
+     23DF4            nooint          @SC00173                   23E08            dginit          @SC00168
+     23E0C            noopen          @SC00182                   23E10            dgclose         @SC00167
+     23E14            dgread          @SC00166                   23E18            dgwrite         @SC00165
+     23E1C            noseek          @SC00178                   23E20            nogetc          @SC00176
+     23E24            noputc          @SC00175                   23E28            dgcntl          @SC00164
+     23E38            noiint          @SC00174                   23E3C            nooint          @SC00173
+     23E50            dginit          @SC00168                   23E54            noopen          @SC00182
+     23E58            dgclose         @SC00167                   23E5C            dgread          @SC00166
+     23E60            dgwrite         @SC00165                   23E64            noseek          @SC00178
+     23E68            nogetc          @SC00176                   23E6C            noputc          @SC00175
+     23E70            dgcntl          @SC00164                   23E80            noiint          @SC00174
+     23E84            nooint          @SC00173                   23E98            dginit          @SC00168
+     23E9C            noopen          @SC00182                   23EA0            dgclose         @SC00167
+     23EA4            dgread          @SC00166                   23EA8            dgwrite         @SC00165
+     23EAC            noseek          @SC00178                   23EB0            nogetc          @SC00176
+     23EB4            noputc          @SC00175                   23EB8            dgcntl          @SC00164
+     23EC8            noiint          @SC00174                   23ECC            nooint          @SC00173
+     23EE0            dginit          @SC00168                   23EE4            noopen          @SC00182
+     23EE8            dgclose         @SC00167                   23EEC            dgread          @SC00166
+     23EF0            dgwrite         @SC00165                   23EF4            noseek          @SC00178
+     23EF8            nogetc          @SC00176                   23EFC            noputc          @SC00175
+     23F00            dgcntl          @SC00164                   23F10            noiint          @SC00174
+     23F14            nooint          @SC00173                   23F28            dginit          @SC00168
+     23F2C            noopen          @SC00182                   23F30            dgclose         @SC00167
+     23F34            dgread          @SC00166                   23F38            dgwrite         @SC00165
+     23F3C            noseek          @SC00178                   23F40            nogetc          @SC00176
+     23F44            noputc          @SC00175                   23F48            dgcntl          @SC00164
+     23F58            noiint          @SC00174                   23F5C            nooint          @SC00173
+     23F70            dginit          @SC00168                   23F74            noopen          @SC00182
+     23F78            dgclose         @SC00167                   23F7C            dgread          @SC00166
+     23F80            dgwrite         @SC00165                   23F84            noseek          @SC00178
+     23F88            nogetc          @SC00176                   23F8C            noputc          @SC00175
+     23F90            dgcntl          @SC00164                   23FA0            noiint          @SC00174
+     23FA4            nooint          @SC00173                   23FB8            dginit          @SC00168
+     23FBC            noopen          @SC00182                   23FC0            dgclose         @SC00167
+     23FC4            dgread          @SC00166                   23FC8            dgwrite         @SC00165
+     23FCC            noseek          @SC00178                   23FD0            nogetc          @SC00176
+     23FD4            noputc          @SC00175                   23FD8            dgcntl          @SC00164
+     23FE8            noiint          @SC00174                   23FEC            nooint          @SC00173
+     24000            dginit          @SC00168                   24004            noopen          @SC00182
+     24008            dgclose         @SC00167                   2400C            dgread          @SC00166
+     24010            dgwrite         @SC00165                   24014            noseek          @SC00178
+     24018            nogetc          @SC00176                   2401C            noputc          @SC00175
+     24020            dgcntl          @SC00164                   24030            noiint          @SC00174
+     24034            nooint          @SC00173                   24048            dginit          @SC00168
+     2404C            noopen          @SC00182                   24050            dgclose         @SC00167
+     24054            dgread          @SC00166                   24058            dgwrite         @SC00165
+     2405C            noseek          @SC00178                   24060            nogetc          @SC00176
+     24064            noputc          @SC00175                   24068            dgcntl          @SC00164
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     24078            noiint          @SC00174                   2407C            nooint          @SC00173
+     24090            dginit          @SC00168                   24094            noopen          @SC00182
+     24098            dgclose         @SC00167                   2409C            dgread          @SC00166
+     240A0            dgwrite         @SC00165                   240A4            noseek          @SC00178
+     240A8            nogetc          @SC00176                   240AC            noputc          @SC00175
+     240B0            dgcntl          @SC00164                   240C0            noiint          @SC00174
+     240C4            nooint          @SC00173                   240D8            dginit          @SC00168
+     240DC            noopen          @SC00182                   240E0            dgclose         @SC00167
+     240E4            dgread          @SC00166                   240E8            dgwrite         @SC00165
+     240EC            noseek          @SC00178                   240F0            nogetc          @SC00176
+     240F4            noputc          @SC00175                   240F8            dgcntl          @SC00164
+     24108            noiint          @SC00174                   2410C            nooint          @SC00173
+     24120            dginit          @SC00168                   24124            noopen          @SC00182
+     24128            dgclose         @SC00167                   2412C            dgread          @SC00166
+     24130            dgwrite         @SC00165                   24134            noseek          @SC00178
+     24138            nogetc          @SC00176                   2413C            noputc          @SC00175
+     24140            dgcntl          @SC00164                   24150            noiint          @SC00174
+     24154            nooint          @SC00173                   24168            dginit          @SC00168
+     2416C            noopen          @SC00182                   24170            dgclose         @SC00167
+     24174            dgread          @SC00166                   24178            dgwrite         @SC00165
+     2417C            noseek          @SC00178                   24180            nogetc          @SC00176
+     24184            noputc          @SC00175                   24188            dgcntl          @SC00164
+     24198            noiint          @SC00174                   2419C            nooint          @SC00173
+     241B0            dginit          @SC00168                   241B4            noopen          @SC00182
+     241B8            dgclose         @SC00167                   241BC            dgread          @SC00166
+     241C0            dgwrite         @SC00165                   241C4            noseek          @SC00178
+     241C8            nogetc          @SC00176                   241CC            noputc          @SC00175
+     241D0            dgcntl          @SC00164                   241E0            noiint          @SC00174
+     241E4            nooint          @SC00173                   241F8            dginit          @SC00168
+     241FC            noopen          @SC00182                   24200            dgclose         @SC00167
+     24204            dgread          @SC00166                   24208            dgwrite         @SC00165
+     2420C            noseek          @SC00178                   24210            nogetc          @SC00176
+     24214            noputc          @SC00175                   24218            dgcntl          @SC00164
+     24228            noiint          @SC00174                   2422C            nooint          @SC00173
+     24240            ionull          @SC00188                   24244            tcpmopen        @SC00163
+     24248            noclose         @SC00181                   2424C            noread          @SC00171
+     24250            nowrite         @SC00170                   24254            noseek          @SC00178
+     24258            nogetc          @SC00176                   2425C            noputc          @SC00175
+     24260            tcpmcntl        @SC00162                   24270            noiint          @SC00174
+     24274            nooint          @SC00173                   24288            tcpinit         @SC00161
+     2428C            noopen          @SC00182                   24290            tcpclose        @SC00160
+     24294            tcpread         @SC00159                   24298            tcpwrite        @SC00158
+     2429C            noseek          @SC00178                   242A0            tcpgetc         @SC00156
+     242A4            tcpputc         @SC00155                   242A8            tcpcntl         @SC00157
+     242B8            noiint          @SC00174                   242BC            nooint          @SC00173
+     242D0            tcpinit         @SC00161                   242D4            noopen          @SC00182
+     242D8            tcpclose        @SC00160                   242DC            tcpread         @SC00159
+     242E0            tcpwrite        @SC00158                   242E4            noseek          @SC00178
+     242E8            tcpgetc         @SC00156                   242EC            tcpputc         @SC00155
+     242F0            tcpcntl         @SC00157                   24300            noiint          @SC00174
+     24304            nooint          @SC00173                   24318            tcpinit         @SC00161
+     2431C            noopen          @SC00182                   24320            tcpclose        @SC00160
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     24324            tcpread         @SC00159                   24328            tcpwrite        @SC00158
+     2432C            noseek          @SC00178                   24330            tcpgetc         @SC00156
+     24334            tcpputc         @SC00155                   24338            tcpcntl         @SC00157
+     24348            noiint          @SC00174                   2434C            nooint          @SC00173
+     24360            tcpinit         @SC00161                   24364            noopen          @SC00182
+     24368            tcpclose        @SC00160                   2436C            tcpread         @SC00159
+     24370            tcpwrite        @SC00158                   24374            noseek          @SC00178
+     24378            tcpgetc         @SC00156                   2437C            tcpputc         @SC00155
+     24380            tcpcntl         @SC00157                   24390            noiint          @SC00174
+     24394            nooint          @SC00173                   243A8            tcpinit         @SC00161
+     243AC            noopen          @SC00182                   243B0            tcpclose        @SC00160
+     243B4            tcpread         @SC00159                   243B8            tcpwrite        @SC00158
+     243BC            noseek          @SC00178                   243C0            tcpgetc         @SC00156
+     243C4            tcpputc         @SC00155                   243C8            tcpcntl         @SC00157
+     243D8            noiint          @SC00174                   243DC            nooint          @SC00173
+     243F0            tcpinit         @SC00161                   243F4            noopen          @SC00182
+     243F8            tcpclose        @SC00160                   243FC            tcpread         @SC00159
+     24400            tcpwrite        @SC00158                   24404            noseek          @SC00178
+     24408            tcpgetc         @SC00156                   2440C            tcpputc         @SC00155
+     24410            tcpcntl         @SC00157                   24420            noiint          @SC00174
+     24424            nooint          @SC00173                   24438            tcpinit         @SC00161
+     2443C            noopen          @SC00182                   24440            tcpclose        @SC00160
+     24444            tcpread         @SC00159                   24448            tcpwrite        @SC00158
+     2444C            noseek          @SC00178                   24450            tcpgetc         @SC00156
+     24454            tcpputc         @SC00155                   24458            tcpcntl         @SC00157
+     24468            noiint          @SC00174                   2446C            nooint          @SC00173
+     24480            tcpinit         @SC00161                   24484            noopen          @SC00182
+     24488            tcpclose        @SC00160                   2448C            tcpread         @SC00159
+     24490            tcpwrite        @SC00158                   24494            noseek          @SC00178
+     24498            tcpgetc         @SC00156                   2449C            tcpputc         @SC00155
+     244A0            tcpcntl         @SC00157                   244B0            noiint          @SC00174
+     244B4            nooint          @SC00173                   244C8            tcpinit         @SC00161
+     244CC            noopen          @SC00182                   244D0            tcpclose        @SC00160
+     244D4            tcpread         @SC00159                   244D8            tcpwrite        @SC00158
+     244DC            noseek          @SC00178                   244E0            tcpgetc         @SC00156
+     244E4            tcpputc         @SC00155                   244E8            tcpcntl         @SC00157
+     244F8            noiint          @SC00174                   244FC            nooint          @SC00173
+     24510            tcpinit         @SC00161                   24514            noopen          @SC00182
+     24518            tcpclose        @SC00160                   2451C            tcpread         @SC00159
+     24520            tcpwrite        @SC00158                   24524            noseek          @SC00178
+     24528            tcpgetc         @SC00156                   2452C            tcpputc         @SC00155
+     24530            tcpcntl         @SC00157                   24540            noiint          @SC00174
+     24544            nooint          @SC00173                   24558            tcpinit         @SC00161
+     2455C            noopen          @SC00182                   24560            tcpclose        @SC00160
+     24564            tcpread         @SC00159                   24568            tcpwrite        @SC00158
+     2456C            noseek          @SC00178                   24570            tcpgetc         @SC00156
+     24574            tcpputc         @SC00155                   24578            tcpcntl         @SC00157
+     24588            noiint          @SC00174                   2458C            nooint          @SC00173
+     245A0            tcpinit         @SC00161                   245A4            noopen          @SC00182
+     245A8            tcpclose        @SC00160                   245AC            tcpread         @SC00159
+     245B0            tcpwrite        @SC00158                   245B4            noseek          @SC00178
+     245B8            tcpgetc         @SC00156                   245BC            tcpputc         @SC00155
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     245C0            tcpcntl         @SC00157                   245D0            noiint          @SC00174
+     245D4            nooint          @SC00173                   245E8            tcpinit         @SC00161
+     245EC            noopen          @SC00182                   245F0            tcpclose        @SC00160
+     245F4            tcpread         @SC00159                   245F8            tcpwrite        @SC00158
+     245FC            noseek          @SC00178                   24600            tcpgetc         @SC00156
+     24604            tcpputc         @SC00155                   24608            tcpcntl         @SC00157
+     24618            noiint          @SC00174                   2461C            nooint          @SC00173
+     24630            tcpinit         @SC00161                   24634            noopen          @SC00182
+     24638            tcpclose        @SC00160                   2463C            tcpread         @SC00159
+     24640            tcpwrite        @SC00158                   24644            noseek          @SC00178
+     24648            tcpgetc         @SC00156                   2464C            tcpputc         @SC00155
+     24650            tcpcntl         @SC00157                   24660            noiint          @SC00174
+     24664            nooint          @SC00173                   24678            tcpinit         @SC00161
+     2467C            noopen          @SC00182                   24680            tcpclose        @SC00160
+     24684            tcpread         @SC00159                   23C58            ionull          @SC00188
+     23C5C            ionull          @SC00188                   23C60            ionull          @SC00188
+     23C64            ioerr           @SC00187                   23C68            @ST00050        @SC00186
+     23C6C            ioerr           @SC00187                   23C70            ioerr           @SC00187
+     23C74            ioerr           @SC00187                   23C78            ionull          @SC00188
+     23C88            @ST00051        @SC00185                   23C8C            @ST00052        @SC00184
+     23CA0            @ST00053        @SC00183                   23CA4            noopen          @SC00182
+     23CA8            noclose         @SC00181                   23CAC            @ST00054        @SC00180
+     23CB0            @ST00055        @SC00179                   23CB4            noseek          @SC00178
+     23CB8            nogetc          @SC00176                   23CBC            noputc          @SC00175
+     23CC0            nocntl          @SC00177                   23CD0            noiint          @SC00174
+     23CD4            nooint          @SC00173                   23CE8            @ST00053        @SC00183
+     23CEC            noopen          @SC00182                   23CF0            noclose         @SC00181
+     23CF4            @ST00054        @SC00180                   23CF8            @ST00055        @SC00179
+     23CFC            noseek          @SC00178                   23D00            nogetc          @SC00176
+     23D04            noputc          @SC00175                   23D08            nocntl          @SC00177
+     23D18            noiint          @SC00174                   23D1C            nooint          @SC00173
+     23D30            @ST00053        @SC00183                   23D34            noopen          @SC00182
+     23D38            noclose         @SC00181                   23D3C            @ST00054        @SC00180
+     23D40            @ST00055        @SC00179                   23D44            noseek          @SC00178
+     23D48            nogetc          @SC00176                   23D4C            noputc          @SC00175
+     23D50            nocntl          @SC00177                   23D60            noiint          @SC00174
+     23D64            nooint          @SC00173                   23D78            ionull          @SC00188
+     23D7C            dgmopen         @SC00172                   23D80            noclose         @SC00181
+     23D84            noread          @SC00171                   23D88            nowrite         @SC00170
+     23D8C            noseek          @SC00178                   23D90            nogetc          @SC00176
+     23D94            noputc          @SC00175                   23D98            dgmcntl         @SC00169
+     23DA8            noiint          @SC00174                   23DAC            nooint          @SC00173
+     24688            tcpwrite        @SC00158                   2468C            noseek          @SC00178
+     24690            tcpgetc         @SC00156                   24694            tcpputc         @SC00155
+     24698            tcpcntl         @SC00157                   246A8            noiint          @SC00174
+     246AC            nooint          @SC00173                   246C0            tcpinit         @SC00161
+     246C4            noopen          @SC00182                   246C8            tcpclose        @SC00160
+     246CC            tcpread         @SC00159                   246D0            tcpwrite        @SC00158
+     246D4            noseek          @SC00178                   246D8            tcpgetc         @SC00156
+     246DC            tcpputc         @SC00155                   246E0            tcpcntl         @SC00157
+     246F0            noiint          @SC00174                   246F4            nooint          @SC00173
+     24D74            @@IGETM         ##IGETM                    24D7C            @@EXPAND        ##EXPAND
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     24D80            @@CONTRA        ##EXPAND                   24D8C            @@GETM          ##GETM
+     24D90            @@RINIT#       $UNRESOLVED(W)              24D94            @@SOLST#       $UNRESOLVED(W)
+     24D98            @@RNTINI        @$RNTINI                   24DA0            @@INITIO        @$INITIO
+     24DA4            @@LINKL#       $UNRESOLVED(W)              24DA8            __ctors         @$RNTINI
+     24DAC            exit            @$EXIT                     24DB0            @@RNTTRM        @$RNTINI
+     24DB4            @@FREEM         ##GETM                     24DB8            @@IFREEM        ##IGETM
+     24E58            kprintf         @SC00039                   24F18            nifdump         @SC00152
+     24F1C            nif             @SD00095                   24F78            getiaddr        @SC00150
+     24F9C            ip2dot          @SC00148                   24FEC            recvtim         @SC00154
+     24FF0            icmp            @SC00151                   25050            getiname        @SC00149
+     250D8            Net             @SD00095                   25744            kprintf         @SC00039
+     25854            kprintf         @SC00039                   2585C            @SD00089        @SD00089
+     25864            screate         @SC00101                   25868            mkpool          @SC00102
+     26230            Route           @SD00089                   26250            rtinit          @SC00089
+     26254            kprintf         @SC00039                   26258            rtprint         @SC00147
+     2625C            funcstr         @SC00083                   26260            rttable         @SD00089
+     2626C            sprintf         @$SPRINT                   26414            rarppid         @SD00146
+     26418            rarpsem         @SD00146                   2641C            screate         @SC00101
+     26428            arptable        @SD00146                   26444            kprintf         @SC00039
+     2655C            Config          @SD00109                   26560            kprintf         @SC00039
+     26564            @ST00059        @SD00099                   26594            panic           @SC00103
+     265C0            rtadd           @SC00145                   265C4            @ST00057        @SD00099
+     265E8            @ST00058        @SD00099                   267F8            kprintf         @SC00039
+     267FC            Config          @SD00109                   26800            nif             @SD00095
+     26868            loopinit        @SC00143                   268A0            @ST00060        @SC00144
+     268A4            ctcdev          @SD00036                   268E8            Net             @SD00095
+     26924            rtdump          @SC00090                   26C0C            @CRT9A          @@CRT9A
+     26CE0            nif             @SD00095                   26CFC            kprintf         @SC00039
+     26D04            xdevread        @SC00141                   26D08            getbuf          @SC00142
+     26D0C            Net             @SD00095                   26D3C            shutxinu        @SD00025
+     26D40            ni_in           @SC00140                   27120            upqs            @SD00139
+     27128            udpmutex        @SD00138                   2712C            screate         @SC00101
+     27144            kprintf         @SC00039                   27214            @CRT9A          @@CRT9A
+     27298            xsignal         @SC00075                   2729C            Net             @SD00095
+     272A0            currpid         @SD00031                   272A4            ippid           @SD00099
+     272A8            kprintf         @SC00039                   272DC            rtdump          @SC00090
+     272E0            ip2dot          @SC00148                   272E4            ipgetp          @SC00127
+     272EC            proctab         @SD00031                   2733C            ipdump          @SC00126
+     27344            @ST00062        @SD00128                   27368            freebuf         @SC00137
+     27374            @ST00063        @SD00128                   27394            ipcksum         @SC00136
+     27404            ipnet2h         @SC00134                   27448            rtget           @SC00130
+     27478            gateway         @SD00099                   27480            iph2net         @SC00135
+     274A8            icmp            @SC00151                   274AC            @ST00065        @SD00128
+     27514            @ST00064        @SD00128                   27518            @ST00058        @SD00099
+     27544            nif             @SD00095                   27B48            rtfree          @SC00131
+     27B4C            icmp            @SC00151                   27B58            iph2net         @SC00135
+     27B5C            kprintf         @SC00039                   27B90            @ST00061        @SC00129
+     27B94            ipdbc           @SC00132                   27BDC            ipputp          @SC00133
+     27C00            shutxinu        @SD00025                   27DF8            ipfmutex        @SD00125
+     27DFC            screate         @SC00101                   27E08            ipfqt           @SD00125
+     27E24            kprintf         @SC00039                   27F68            semaph          @SD00104
+     27F88            @ST00023        @SC00022                   27F94            @ST00024        @SC00022
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     27F98            resched         @SC00038                   27F9C            enqueue         @SC00124
+     27FA0            currpid         @SD00031                   27FA8            proctab         @SD00031
+     28130            newsem          @SC00123                   28134            @ST00023        @SC00022
+     2813C            @ST00066        @SD00104                   28140            @ST00024        @SC00022
+     28144            semaph          @SD00104                   28418            funcstr         @SC00083
+     28454            bpmark          @SD00074                   28458            kprintf         @SC00039
+     2845C            nmarks          @SD00074                   28460            marks           @SD00074
+     28464            poolinit        @SC00121                   2847C            nbpools         @SD00074
+     28484            getmem          @SC00122                   28500            panic           @SC00103
+     28504            bptab           @SD00074                   28508            screate         @SC00101
+     2870C            kprintf         @SC00039                   28714            proctab         @SD00031
+     28718            currpid         @SD00031                   2874C            @ST00013        @SC00027
+     2876C            memstate        @SC00120                   2878C            @ST00046        @SC00083
+     287DC            exit            @$EXIT                     287E0            mvsabend        @SC00119
+     295E4            q               @SD00067                   295EC            @ST00021        @SD00067
+     29700            ABEND902        ABEND902                   29704            hhsec           @SD00021
+     29708            MVSTMPOP        MVSTMPOP                   2970C            @ST00022        @SD00021
+     29830            ABEND902        ABEND902                   29834            slnempty        @SD00021
+     29838            sltop           @SD00021                   2983C            preempt         @SD00021
+     29840            nullecb         @SD00012                   29844            @ST00017        @ST00017
+     298E8            ABEND902        ABEND902                   298EC            @ST00022        @SD00021
+     299C4            strc@cmp        @$STRCAS                   29AB4            @@istype        @$__ISTY
+     29AB8            @SD00107        @SD00107                   29AEC            kprintf         @SC00039
+     29CD8            @SD00107        @SD00107                   29CE4            strc@cmp        @$STRCAS
+     29CE8            @ST00068        @SC00114                   29CF4            @ST00069        @SC00113
+     29D1C            kprintf         @SC00039                   29E38            fopen           @$FOPEN
+     29E58            kprintf         @SC00039                   29E8C            fgets           @$FGETS
+     29EC8            fclose          @$FCLOSE                   2A06C            snap            @SC00112
+     2A070            Config          @SD00109                   2A09C            kprintf         @SC00039
+     2A0C4            ip2dot          @SC00148                   2A64C            index           @$INDEX
+     2A650            atoi            @$ATOI                     2A8F4            funcstr         @SC00083
+     2A904            kprintf         @SC00039                   2A938            isprint         @$ISPRIN
+     2ABAC            strc@cmp        @$STRCAS                   2ABB0            Config          @SD00109
+     2ABF8            kprintf         @SC00039                   2AD90            strc@cmp        @$STRCAS
+     2AD94            atoi            @$ATOI                     2AD98            @SD00114        @SD00114
+     2ADA4            Config          @SD00109                   2AE10            kprintf         @SC00039
+     2AE18            dot2ip          @SC00110                   2AE84            strtol          @$STRTL
+     2B4F4            kprintf         @SC00039                   2B638            @@@rntyp        @$RUNETY
+     2B63C            @crntlcl        @$table                    2B728            @@sflags        @$FLAGS
+     2B730            __sfp           @$FINDFP                   2B734            open            @$OPEN
+     2B73C            @@sclose        @$SCLOSE                   2B740            @@sseek         @$SSEEK
+     2B744            @@swrite        @$SWRITE                   2B748            @@sread         @$SREAD
+     2B74C            @@sseek         @$SSEEK                    2B8B0            @@srefil        @$REFILL
+     2BB00            errno           @$errlst                   2BB08            __sflush        @$FFLUSH
+     2BB10            free            @$MALLOC                   2BD24            kprintf         @SC00039
+     2BDB0            memlist         @SD00074                   2BDDC            kprintf         @SC00039
+     2BF68            kprintf         @SC00039                   2BF70            mark            @SC00032
+     2BF74            bpmark          @SD00074                   2BF78            nbpools         @SD00074
+     2BFC0            panic           @SC00103                   2C0CC            memlist         @SD00074
+     2C0E0            memstate        @SC00120                   2C0E4            kprintf         @SC00039
+     2C234            nextsem         @SD00104                   2C238            semaph          @SD00104
+     2C3A8            q               @SD00067                   2C494            wait            @SC00100
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     2C498            @SD00125        @SD00125                   2C4A0            xsignal         @SC00075
+     2C4AC            @ST00070        @SD00128                   2C4B0            ipfadd          @SC00288
+     2C4B4            ipfjoin         @SC00287                   2C4BC            freebuf         @SC00137
+     2C4C0            newq            @SC00280                   2C8AC            kprintf         @SC00039
+     2C908            ip2dot          @SC00148                   2C90C            udpdump         @SC00286
+     2C910            tcpdump         @SC00285                   2C914            icmpdump        @SC00284
+     2C918            ospfdump        @SC00283                   2CBAC            recvclr         @SC00281
+     2CBB0            kprintf         @SC00039                   2CBB4            Net             @SD00095
+     2CBB8            @SD00127        @SD00127                   2CBBC            nif             @SD00095
+     2CBE4            deq             @SC00280                   2CC14            receive         @SC00282
+     2D3E4            kprintf         @SC00039                   2D3E8            rtdump          @SC00090
+     2D3EC            rtget           @SC00130                   2D434            rtfree          @SC00131
+     2D458            netmask         @SC00279                   2D45C            ipdump          @SC00126
+     2D460            panic           @SC00103                   2D464            icmp            @SC00151
+     2D658            Route           @SD00089                   2D660            rtinit          @SC00089
+     2D664            rttable         @SD00089                   2D668            rthash          @SC00277
+     2D66C            wait            @SC00100                   2D674            netmatch        @SC00278
+     2D680            xsignal         @SC00075                   2D808            Route           @SD00089
+     2D840            kprintf         @SC00039                   2D844            wait            @SC00100
+     2D848            funcstr         @SC00083                   2D84C            freebuf         @SC00137
+     2D850            xsignal         @SC00075                   2D9E4            kprintf         @SC00039
+     2D9EC            isbrc           @SC00276                   2DA50            panic           @SC00103
+     2DBD0            ip2dot          @SC00148                   2DBD4            nif             @SD00095
+     2DC08            kprintf         @SC00039                   2DC0C            freebuf         @SC00137
+     2DC38            netwrite        @SC00273                   2DC40            ipcksum         @SC00136
+     2DC48            iph2net         @SC00135                   2DC50            icmp            @SC00151
+     2DC5C            @ST00087        @SD00128                   2DC6C            ipfsend         @SC00275
+     2DC70            @ST00082        @SD00128                   2DC94            @ST00088        @SD00128
+     2DC98            ipfhcopy        @SC00274                   2DC9C            @ST00086        @SD00128
+     2E3A4            kprintf         @SC00039                   2E5A0            bpmark          @SD00074
+     2E5A4            funcstr         @SC00083                   2E5AC            nmarks          @SD00074
+     2E5B0            marks           @SD00074                   2E5D0            kprintf         @SC00039
+     2E5EC            panic           @SC00103                   2E5F4            nbpools         @SD00074
+     2E610            bptab           @SD00074                   2E614            xsignal         @SC00075
+     2E654            currpid         @SD00031                   2E744            udpcksum        @SC00269
+     2E74C            freebuf         @SC00137                   2E750            wait            @SC00100
+     2E754            @SD00138        @SD00138                   2E758            udpnet2h        @SC00268
+     2E75C            upqs            @SD00139                   2E764            pcount          @SC00271
+     2E76C            @ST00118        @SD00128                   2E770            xsignal         @SC00075
+     2E774            @ST00116        @SD00128                   2E778            psend           @SC00270
+     2E77C            xsend           @SC00272                   2E784            icmp            @SC00151
+     2E78C            @ST00117        @SD00128                   2E9E0            wait            @SC00100
+     2E9E4            udpmutex        @SD00138                   2E9EC            @SD00139        @SD00139
+     2E9F0            xsignal         @SC00075                   2E9F4            pcreate         @SC00267
+     2ECD4            kprintf         @SC00039                   2ECE4            nif             @SD00095
+     2ECE8            @ST00013        @SC00027                   2ED10            arp_in          @SC00266
+     2ED14            rarp_in         @SC00265                   2ED18            ip_in           @SC00264
+     2ED1C            freebuf         @SC00137                   2EEFC            devtab          @SD00085
+     2F1A8            bpmark          @SD00074                   2F1AC            funcstr         @SC00083
+     2F1B4            nmarks          @SD00074                   2F1B8            marks           @SD00074
+     2F1E0            poolinit        @SC00121                   2F1E4            kprintf         @SC00039
+     2F1E8            nbpools         @SD00074                   2F224            panic           @SC00103
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     2F228            wait            @SC00100                   2F22C            bptab           @SD00074
+     2F230            scount          @SC00263                   2F278            proctab         @SD00031
+     2F27C            currpid         @SD00031                   2F3F0            bpmark          @SD00074
+     2F3F8            nmarks          @SD00074                   2F3FC            marks           @SD00074
+     2F41C            kprintf         @SC00039                   2F438            panic           @SC00103
+     2F43C            nbpools         @SD00074                   2F45C            scount          @SC00263
+     2F460            bptab           @SD00074                   2F464            wait            @SC00100
+     2F660            nif             @SD00095                   2F698            kprintf         @SC00039
+     2F6BC            panic           @SC00103                   2F6C0            Config          @SD00109
+     2F6F8            @ST00163        @SD00262                   2F6FC            newq            @SC00280
+     2F70C            nifdump         @SC00152                   2FC38            devtab          @SD00085
+     2FC3C            nif             @SD00095                   2FC80            kprintf         @SC00039
+     2FCA4            @ST00164        @SC00260                   2FCA8            newq            @SC00280
+     2FCAC            ethmcast        @SC00261                   2FCD4            setmask         @SC00258
+     2FCD8            netmask         @SC00279                   2FCDC            netnum          @SC00259
+     2FCE0            Config          @SD00109                   2FD40            rtadd           @SC00145
+     2FD44            @ST00057        @SD00099                   2FD4C            rtdump          @SC00090
+     2FD90            @SD00144        @SD00144                   2FDC8            nifdump         @SC00152
+     2FF80            ip2dot          @SC00148                   2FFC8            Route           @SD00089
+     2FFCC            kprintf         @SC00039                   2FFF4            rtinit          @SC00089
+     2FFFC            rtnew           @SC00257                   30018            funchist        @SC00083
+     30024            @ST00058        @SD00099                   30028            wait            @SC00100
+     3005C            freebuf         @SC00137                   30060            xsignal         @SC00075
+     30094            rttable         @SD00089                   30098            rthash          @SC00277
+     30178            rtdump          @SC00090                   30E64            kprintf         @SC00039
+     30EAC            ip2dot          @SC00148                   31070            sprintf         @$SPRINT
+     312B8            kprintf         @SC00039                   312BC            Net             @SD00095
+     312D8            nif             @SD00095                   312DC            ip2name         @SC00256
+     312E0            getiaddr        @SC00150                   314E4            kprintf         @SC00039
+     314E8            Net             @SD00095                   31504            wait            @SC00100
+     31508            rarpsem         @SD00146                   3150C            nif             @SD00095
+     31548            rarpsend        @SC00255                   3154C            xsignal         @SC00075
+     317A8            ip2dot          @SC00148                   317E8            icsetbuf        @SC00252
+     317F0            @ST00103        @SD00128                   317F4            kprintf         @SC00039
+     317F8            @ST00104        @SD00128                   3181C            icerrok         @SC00251
+     31820            freebuf         @SC00137                   31838            icsetsrc        @SC00250
+     3183C            @ST00058        @SD00099                   31840            currpid         @SD00031
+     31844            ipsend          @SC00253                   31848            ipdump          @SC00126
+     3184C            cksum           @SC00254                   31850            @ST00165        @SC00249
+     31B38            funcstr         @SC00083                   31B68            kprintf         @SC00039
+     31BB8            ip2dot          @SC00148                   31C40            @ST00166        @SC00248
+     31D20            snap            @SC00112                   320DC            clkruns         @SD00021
+     320FC            kprintf         @SC00039                   32118            resched         @SC00038
+     3211C            @ST00023        @SC00022                   32120            @ST00024        @SC00022
+     32124            sleep10         @SC00247                   3224C            clkruns         @SD00021
+     32258            proctab         @SD00031                   3225C            currpid         @SD00031
+     32260            resched         @SC00038                   32264            q               @SD00067
+     32268            clockq          @SD00021                   3226C            sltop           @SD00021
+     32270            slnempty        @SD00021                   32274            insertd         @SC00246
+     323F8            tcpwr           @SC00245                   324C0            tcpread         @SC00159
+     325A8            wait            @SC00100                   325B0            preceive        @SC00244
+     325B4            xsignal         @SC00075                   325B8            tcplq           @SC00243
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     325BC            tcpstat         @SC00242                   325C0            tcpuopt         @SC00241
+     325C4            tcpwr           @SC00245                   32800            tcpwr           @SC00245
+     328D8            wait            @SC00100                   328DC            xsignal         @SC00075
+     328E0            @ST00167        @SC00240                   328EC            proctab         @SD00031
+     328F0            currpid         @SD00031                   328F8            @ST00168        @SC00239
+     32B68            wait            @SC00100                   32B74            xsignal         @SC00075
+     32B88            @ST00169        @SC00238                   32B90            @ST00128        @SD00128
+     32B98            tcpkick         @SC00237                   32E08            @SD00161        @SD00161
+     32E10            nmarks          @SD00074                   32E14            marks           @SD00074
+     32E18            @ST00170        @SD00236                   32E1C            @ST00171        @SD00236
+     32E20            screate         @SC00101                   32E24            mark            @SC00032
+     33B30            devtab          @SD00085                   33B3C            @ST00170        @SD00236
+     33C34            tcballoc        @SC00234                   33C40            proctab         @SD00031
+     33C44            currpid         @SD00031                   33C48            @ST00172        @SC00232
+     33C54            tcpbind         @SC00231                   33C58            tcpsync         @SC00233
+     33C5C            sdelete         @SC00235                   33C60            tcpcon          @SC00230
+     33DFC            @ST00023        @SC00022                   33E00            preset          @SC00229
+     33E04            freebuf         @SC00137                   33E14            @ST00024        @SC00022
+     33F34            getbuf          @SC00142                   33F38            Net             @SD00095
+     33F4C            freebuf         @SC00137                   33F50            udpsend         @SC00228
+     341B8            upqs            @SD00139                   341C4            pcount          @SC00271
+     341CC            recvtim         @SC00154                   341D0            currpid         @SD00031
+     341DC            preceive        @SC00244                   341E0            freebuf         @SC00137
+     34480            wait            @SC00100                   34484            udpmutex        @SD00138
+     34488            upqs            @SD00139                   34490            pdelete         @SC00227
+     34494            freebuf         @SC00137                   34498            xsignal         @SC00075
+     34578            screate         @SC00101                   3457C            @SD00168        @SD00168
+     34A94            dgalloc         @SC00226                   34A9C            wait            @SC00100
+     34AA0            udpmutex        @SD00138                   34AA4            dgtab           @SD00168
+     34AAC            udpnxtp         @SC00224                   34AB0            upqs            @SD00139
+     34AB4            xsignal         @SC00075                   34AC0            dnparse         @SC00225
+     34AC4            upalloc         @SC00139                   350E4            getbuf          @SC00142
+     350E8            xsignal         @SC00075                   3510C            kprintf         @SC00039
+     35110            wait            @SC00100                   35348            ctcdev          @SD00036
+     3534C            kprintf         @SC00039                   35370            panic           @SC00103
+     35374            wait            @SC00100                   353A8            xsignal         @SC00075
+     35418            ready           @SC00084                   35444            @ST00013        @SC00027
+     35840            funchist        @SC00083                   35868            kprintf         @SC00039
+     35898            ctcdev          @SD00036                   358D0            panic           @SC00103
+     35904            wait            @SC00100                   359B4            snap            @SC00112
+     359B8            suspend         @SC00080                   359BC            xsignal         @SC00075
+     359C0            currpid         @SD00031                   35A5C            @ST00173        @SC00223
+     35A8C            freebuf         @SC00137                   360E8            funcstr         @SC00083
+     36118            kprintf         @SC00039                   3614C            Config          @SD00109
+     36150            ctcdev          @SD00036                   3619C            findxgd         @SC00198
+     361AC            wait            @SC00100                   361B0            screate         @SC00101
+     361C8            create          @SC00030                   361CC            @ST00174        @SC00222
+     361D0            snprintf        @$SNPRIN                   361F4            proctab         @SD00031
+     36204            @ST00175        @SC00221                   36208            resume          @SC00026
+     3620C            ctcecb          @SD00036                   36250            snap            @SC00112
+     367B8            mvswto          @SC00201                   36A08            @ST00023        @SC00022
+     36A14            proctab         @SD00031                   36A1C            @ST00024        @SC00022
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     36A20            numproc         @SD00031                   36A24            xdone           @SC00220
+     36A2C            @ST00176        @SC00218                   36A30            xsend           @SC00272
+     36A34            freemem         @SC00219                   36A44            resched         @SC00038
+     36A4C            semaph          @SD00104                   36A50            dequeue         @SC00199
+     36A54            unsleep         @SC00217                   36E58            @$dtoa          @$dtoa
+     36E60            malloc          @$MALLOC                   36F6C            @$dtoa          @$dtoa
+     37AEC            @$dtoa          @$dtoa                     38BF8            @$dtoa          @$dtoa
+     394A0            @$dtoa          @$dtoa                     3A52C            @@swstup        @$WSETUP
+     3A554            fflush          @$FFLUSH                   3ADE0            @ST00177        @$findfp
+     3ADE8            __sinit         @$FINDFP                   3ADFC            free            @$MALLOC
+     3AE04            @@smkbuf        @$MAKEBU                   3AFD0            @@CLEANU        @$cleanu
+     3AFD4            raise           @$RAISE                    3AFDC            @ST00178        @$KILL
+     3B064            @fwalk          @$FWALK                    3B074            errno           @$errlst
+     3B2F8            findsgd         @SC00024                   3B320            panic           @SC00103
+     3B430            q               @SD00067                   3B514            q               @SD00067
+     3B51C            dequeue         @SC00199                   3B7B0            @ST00017        @ST00017
+     3B844            vfprintf        @$VFPRIN                   3B9A8            @nsgetrn        @$NSGETR
+     3B9AC            @nsputrn        @$NSPUTR                   3C6B8            @@FLQSAM        @$FLQSAM
+     3C6BC            __note          ##IO                       3C6C0            __iocvt         @$initio
+     3C6C4            __close         ##IO                       3C6C8            free            @$MALLOC
+     3C6D0            __dealc         ##IO                       3C6D8            __open          ##IO
+     3C6E4            __alloc         ##IO                       3C6E8            __point         ##IO
+     3CAB8            @$tput          @$tput                     3CAC0            __free24        @$MALLOC
+     3CAC4            @@MLLC24        @$MALLOC                   3CAD4            ___tput         ##IO
+     3CAD8            __iocvt         @$initio                   3CC10            __put           ##IO
+     3CC14            __iocvt         @$initio                   3CEB0            strtol          @$STRTL
+     3CF6C            @@2lower        @$__TOLO                   3D0D0            @@@2lowr        @$___TOL
+     3D0D4            @crntlcl        @$table                    3D2B0            @crntlcl        @$table
+     3D370            @@SGLUE         @$findfp                   3D470            kill            @$KILL
+     3D568            malloc          @$MALLOC                   3D56C            @@swhtbf        @$WHATBU
+     3D574            _cleanup        @$FINDFP                   3D578            @@CLEANU        @$cleanu
+     3D57C            isatty          @$ISATTY                   3D750            @ST00023        @SC00022
+     3D75C            proctab         @SD00031                   3D764            @ST00024        @SC00022
+     3D768            q               @SD00067                   3D76C            clockq          @SD00021
+     3D770            dequeue         @SC00199                   3D774            sltop           @SD00021
+     3D778            slnempty        @SD00021                   3D904            devtab          @SD00085
+     3D9FC            maxaddr         @SD00074                   3DA00            memlist         @SD00074
+     3DC7C            @ST00067        @ST00067                   3DC80            kprintf         @SC00039
+     3DC90            findsgd         @SC00024                   3DC94            @ST00045        @SC00073
+     3DC98            panic           @SC00103                   3DCB8            mvsstate        @SC00022
+     3DCBC            mvsevent        mvsevent                   3DCC0            exit            @$EXIT
+     3DD0C            @CRT9A          @@CRT9A                    3DDA8            currpid         @SD00031
+     3DDAC            kprintf         @SC00039                   3DDB0            ctcdev          @SD00036
+     3DDD8            panic           @SC00103                   3DE18            getmem          @SC00122
+     3DF10            mvsctc          mvsctc                     3DF3C            snap            @SC00112
+     3DFEC            mkpool          @SC00102                   3E008            xsignal         @SC00075
+     3E00C            wait            @SC00100                   3E058            suspend         @SC00080
+     3E674            snap            @SC00112                   3E6C8            xsignal         @SC00075
+     3E6CC            mvsctc          mvsctc                     3E6D0            kprintf         @SC00039
+     3E6D4            @ST00173        @SC00223                   3E708            suspend         @SC00080
+     3E744            @ST00182        @SC00337                   3E748            wait            @SC00100
+     3E74C            ctcecb          @SD00036                   3E778            freebuf         @SC00137
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     3E7C0            freemem         @SC00219                   3EA14            @CRT9A          @@CRT9A
+     3EAB0            currpid         @SD00031                   3EAB4            kprintf         @SC00039
+     3EAB8            ctcdev          @SD00036                   3EAE0            panic           @SC00103
+     3EB1C            getmem          @SC00122                   3EC10            mvsctc          mvsctc
+     3EC3C            snap            @SC00112                   3ECCC            mkpool          @SC00102
+     3ECE8            xsignal         @SC00075                   3ECEC            getbuf          @SC00142
+     3ED04            wait            @SC00100                   3F410            xsignal         @SC00075
+     3F414            mvsctc          mvsctc                     3F418            kprintf         @SC00039
+     3F434            suspend         @SC00080                   3F47C            @ST00183        @SC00336
+     3F480            ctcecb          @SD00036                   3F49C            panic           @SC00103
+     3F4D8            wait            @SC00100                   3F4DC            resume          @SC00026
+     3F50C            freemem         @SC00219                   3F6FC            @SD00223        @SD00223
+     3F708            ip2dot          @SC00148                   3F7C8            ipdump          @SC00126
+     3F7CC            kprintf         @SC00039                   3FAA0            @SD00224        @SD00224
+     3FAA4            upqs            @SD00139                   3FC0C            index           @$INDEX
+     3FC10            dot2ip          @SC00110                   3FC1C            @@isctyp        @$__ISCT
+     3FD88            wait            @SC00100                   3FD8C            dgmutex         @SD00168
+     3FD94            dgtab           @SD00168                   3FD98            xsignal         @SC00075
+     3FF30            ptmark          @SD00074                   3FF34            nmarks          @SD00074
+     3FF38            marks           @SD00074                   3FF3C            ports           @SD00074
+     3FF44            _ptclear        @SC00334                   400BC            udph2net        @SC00333
+     400C8            rtget           @SC00130                   400D4            freebuf         @SC00137
+     400DC            @ST00065        @SD00128                   400E0            nif             @SD00095
+     400E4            udpcksum        @SC00269                   400E8            rtfree          @SC00131
+     400F8            @ST00119        @SD00128                   400FC            hglookup        @SC00331
+     40100            wait            @SC00100                   40104            @ST00184        @SD00332
+     40108            xsignal         @SC00075                   4010C            ipsend          @SC00253
+     40380            ptmark          @SD00074                   40384            nmarks          @SD00074
+     40388            marks           @SD00074                   4038C            ports           @SD00074
+     40394            _ptclear        @SC00334                   40498            rtget           @SC00130
+     404A4            rtfree          @SC00131                   404AC            wait            @SC00100
+     404B0            xsignal         @SC00075                   404B8            @ST00124        @SD00128
+     404C0            tcpkick         @SC00237                   404C8            @ST00169        @SC00238
+     40684            dnparse         @SC00225                   4068C            rtget           @SC00130
+     40694            nif             @SD00095                   40698            rtfree          @SC00131
+     4069C            tcpnxtp         @SC00330                   406A0            tcbtab          @SD00161
+     408C0            sdelete         @SC00235                   408C4            xsignal         @SC00075
+     408C8            pcreate         @SC00267                   408CC            @ST00170        @SD00236
+     40AD4            screate         @SC00101                   40AE0            getmem          @SC00122
+     40AE8            tcpiss          @SC00329                   40BA8            tcbtab          @SD00161
+     40BAC            wait            @SC00100                   40BB0            @ST00171        @SD00236
+     40BC0            screate         @SC00101                   40BC8            xsignal         @SC00075
+     40D34            @ST00023        @SC00022                   40D3C            semaph          @SD00104
+     40D44            @ST00024        @SC00022                   40D48            @ST00066        @SD00104
+     40D5C            panic           @SC00103                   40D64            q               @SD00067
+     40D68            ready           @SC00084                   40D6C            getfirst        @SC00200
+     40D70            resched         @SC00038                   40EA4            @CRT9A          @@CRT9A
+     40F78            xsignal         @SC00075                   40F7C            Net             @SD00095
+     40F80            @SD00236        @SD00236                   40F84            pcreate         @SC00267
+     40F90            preceive        @SC00244                   40F94            tcpcksum        @SC00328
+     40F9C            freebuf         @SC00137                   40FA4            @ST00132        @SD00128
+     40FA8            tcpdemux        @SC00324                   40FB0            tcpnet2h        @SC00327
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     40FB4            tcpreset        @SC00326                   40FBC            tcpok           @SC00323
+     40FC0            tcpackit        @SC00322                   40FC4            @ST00185        @SD00325
+     40FC8            tcpopts         @SC00321                   411F4            tcbtab          @SD00161
+     411FC            tmleft          @SC00320                   41200            @ST00186        @SD00236
+     41204            tmset           @SC00319                   4120C            pcount          @SC00271
+     41210            psend           @SC00270                   412FC            freemem         @SC00219
+     41300            sdelete         @SC00235                   41304            @ST00188        @SC00318
+     41308            freeq           @SC00280                   4130C            pdelete         @SC00227
+     41314            xsignal         @SC00075                   41534            @ST00189        @SC00317
+     41538            tcpkick         @SC00237                   41740            @ST00023        @SC00022
+     41750            scount          @SC00263                   41754            xsignal         @SC00075
+     41760            @ST00024        @SC00022                   419A4            @ST00131        @SD00128
+     419A8            @ST00127        @SD00128                   419AC            @ST00124        @SD00128
+     41B14            pcreate         @SC00267                   41B18            pdelete         @SC00227
+     41C78            ptmark          @SD00074                   41C7C            nmarks          @SD00074
+     41C80            marks           @SD00074                   41C84            ports           @SD00074
+     41C8C            wait            @SC00100                   41C90            xsignal         @SC00075
+     41C94            ptfree          @SD00074                   41E08            @ST00190        @SC00316
+     41E14            xsignal         @SC00075                   41E18            @ST00167        @SC00240
+     41E1C            tcpkick         @SC00237                   42008            q               @SD00067
+     421C4            clkruns         @SD00021                   421E8            kprintf         @SC00039
+     42208            @ST00023        @SC00022                   42210            proctab         @SD00031
+     42214            currpid         @SD00031                   42218            slnempty        @SD00021
+     4221C            q               @SD00067                   42220            clockq          @SD00021
+     42224            sltop           @SD00021                   42228            insertd         @SC00246
+     4222C            resched         @SC00038                   42230            @ST00024        @SC00022
+     423E4            sprintf         @$SPRINT                   42520            @ST00058        @SD00099
+     42768            netmatch        @SC00278                   4276C            nif             @SD00095
+     42774            Net             @SD00095                   42778            @ST00058        @SD00099
+     42908            isbrc           @SC00276                   42A68            getbuf          @SC00142
+     42A6C            Net             @SD00095                   42A7C            freebuf         @SC00137
+     42A80            @ST00104        @SD00128                   42AA8            kprintf         @SC00039
+     42AE4            @ST00110        @SD00128                   42AE8            @ST00111        @SD00128
+     42AEC            @ST00105        @SD00128                   42AF0            @ST00108        @SD00128
+     42AF4            @ST00109        @SD00128                   42AF8            @ST00106        @SD00128
+     42AFC            @ST00107        @SD00128                   42B00            @ST00112        @SD00128
+     42B04            @ST00113        @SD00128                   42B08            @ST00114        @SD00128
+     42B0C            @ST00115        @SD00128                   43008            ip2dot          @SC00148
+     43060            @SD00253        @SD00253                   4306C            kprintf         @SC00039
+     43070            @ST00058        @SD00099                   43098            @ST00191        @SC00315
+     430BC            @ST00081        @SD00128                   431FC            kprintf         @SC00039
+     43208            @ST00162        @SC00136                   4320C            callinfo        @SC00083
+     43328            nif             @SD00095                   43348            currpid         @SD00031
+     4334C            kprintf         @SC00039                   43394            mkarp           @SC00314
+     433C4            rarppid         @SD00146                   433C8            @ST00023        @SC00022
+     433CC            recvclr         @SC00281                   433D0            @ST00024        @SC00022
+     43404            @ST00191        @SC00315                   43430            recvtim         @SC00154
+     4346C            rtadd           @SC00145                   43470            @ST00057        @SD00099
+     434DC            panic           @SC00103                   43798            ip2dot          @SC00148
+     437C0            kprintf         @SC00039                   43924            getbuf          @SC00142
+     43928            Route           @SD00089                   43934            @ST00089        @SD00128
+     43960            kprintf         @SC00039                   4399C            funchist        @SC00083
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     43D18            ip2dot          @SC00148                   43D1C            nif             @SD00095
+     43D20            funcstr         @SC00083                   43D54            kprintf         @SC00039
+     43D78            panic           @SC00103                   43DA0            rtdel           @SC00311
+     43DA4            @ST00057        @SD00099                   43DCC            bsdbrc          @SD00099
+     43DD4            netmask         @SC00279                   43E34            rtadd           @SC00145
+     43F64            rtdump          @SC00090                   445B8            funcstr         @SC00083
+     44600            kprintf         @SC00039                   44604            ip2dot          @SC00148
+     4476C            newq            @SC00280                   44770            ue              @SD00018
+     447C0            kprintf         @SC00039                   448C4            @SD00261        @SD00261
+     448CC            @ST00192        @SC00313                   44A18            semaph          @SD00104
+     44BB0            enq             @SC00280                   44BBC            @ST00077        @SD00128
+     44BC0            ipdump          @SC00126                   44BC4            kprintf         @SC00039
+     44BC8            @ST00079        @SD00128                   44BFC            freebuf         @SC00137
+     44C04            nif             @SD00095                   44C3C            xsend           @SC00272
+     44C40            ippid           @SD00099                   44EC0            devtab          @SD00085
+     44EC4            setmask         @SC00258                   44EC8            netmask         @SC00279
+     44ECC            netnum          @SC00259                   44EE0            rarppid         @SD00146
+     44EE4            @ST00023        @SC00022                   44EEC            xsend           @SC00272
+     44EF4            @ST00024        @SC00022                   44EF8            freebuf         @SC00137
+     45010            freebuf         @SC00137                   45014            arpfind         @SC00309
+     45028            arpadd          @SC00310                   45030            arpqsend        @SC00308
+     45040            @ST00191        @SC00315                   45400            kprintf         @SC00039
+     4540C            callinfo        @SC00083                   45414            mark            @SC00032
+     45418            ptmark          @SD00074                   4541C            pinit           @SC00307
+     45420            ptnextp         @SD00074                   45424            ports           @SD00074
+     45428            screate         @SC00101                   45868            ptmark          @SD00074
+     4586C            nmarks          @SD00074                   45870            marks           @SD00074
+     45874            ports           @SD00074                   4587C            wait            @SC00100
+     45880            ptfree          @SD00074                   4589C            panic           @SC00103
+     458A0            xsignal         @SC00075                   45A78            ptmark          @SD00074
+     45A7C            nmarks          @SD00074                   45A80            marks           @SD00074
+     45A84            ports           @SD00074                   45A8C            scount          @SC00263
+     45C14            kprintf         @SC00039                   45C1C            proctab         @SD00031
+     45C20            currpid         @SD00031                   45C30            callinfo        @SC00083
+     45C70            snap            @SC00112                   45C98            ready           @SC00084
+     45CC0            unsleep         @SC00217                   45EFC            nif             @SD00095
+     45F10            kprintf         @SC00039                   45F48            freebuf         @SC00137
+     45F74            @ST00194        @SC00306                   45F7C            isbrc           @SC00276
+     45F9C            @ST00191        @SC00315                   45FD8            arpfind         @SC00309
+     45FDC            @ST00023        @SC00022                   45FF0            @ST00024        @SC00022
+     46050            arpalloc        @SC00305                   46054            arpsend         @SC00304
+     46058            newq            @SC00280                   4605C            enq             @SC00280
+     4671C            getbuf          @SC00142                   46720            Net             @SD00095
+     4672C            cksum           @SC00254                   46734            iph2net         @SC00135
+     4673C            ipfhcopy        @SC00274                   4674C            netwrite        @SC00273
+     46928            @ST00058        @SD00099                   46930            @ST00057        @SD00099
+     46934            nif             @SD00095                   4693C            Net             @SD00095
+     46CC0            funcstr         @SC00083                   46CC4            ip2dot          @SC00148
+     46D10            kprintf         @SC00039                   46D2C            isbrc           @SC00276
+     46D38            @ST00057        @SD00099                   46F80            kprintf         @SC00039
+     46F84            netnum          @SC00259                   46F88            ip2dot          @SC00148
+     46F8C            nif             @SD00095                   46FC4            Net             @SD00095
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     47A68            signal          @$SIGNAL                   47CB4            @SD00280        @SD00280
+     47CB8            kprintf         @SC00039                   47CE0            screate         @SC00101
+     47CE4            getmem          @SC00122                   47EE8            kprintf         @SC00039
+     47EF0            @SD00280        @SD00280                   47EF8            freemem         @SC00219
+     47EFC            sdelete         @SC00235                   480B0            kprintf         @SC00039
+     480B8            @SD00280        @SD00280                   48190            @SD00280        @SD00280
+     48F30            proctab         @SD00031                   48F34            currpid         @SD00031
+     49098            kprintf         @SC00039                   4909C            currpid         @SD00031
+     490A4            proctab         @SD00031                   490E0            resched         @SC00038
+     4730C            kprintf         @SC00039                   47318            @SD00280        @SD00280
+     47338            @ST00023        @SC00022                   4733C            wait            @SC00100
+     47340            @ST00024        @SC00022                   47344            signal          @$SIGNAL
+     475E0            kprintf         @SC00039                   475E8            @SD00280        @SD00280
+     47608            @ST00023        @SC00022                   4760C            wait            @SC00100
+     47610            @ST00024        @SC00022                   47614            signal          @$SIGNAL
+     47838            kprintf         @SC00039                   47840            @SD00280        @SD00280
+     47860            @ST00023        @SC00022                   47864            wait            @SC00100
+     47868            @ST00024        @SC00022                   4786C            signal          @$SIGNAL
+     47A30            kprintf         @SC00039                   47A38            @SD00280        @SD00280
+     47A58            @ST00023        @SC00022                   47A5C            wait            @SC00100
+     47A64            @ST00024        @SC00022                   49228            kprintf         @SC00039
+     4929C            hexdump         @SC00302                   4958C            kprintf         @SC00039
+     49750            kprintf         @SC00039                   498A0            kprintf         @SC00039
+     49AE8            kprintf         @SC00039                   49C60            kprintf         @SC00039
+     49DC8            kprintf         @SC00039                   4A028            kprintf         @SC00039
+     4A158            hexdump         @SC00302                   4A408            kprintf         @SC00039
+     4A444            hexdump         @SC00302                   4A628            hexdump         @SC00302
+     4A630            kprintf         @SC00039                   4A758            seeq            @SC00280
+     4A764            freebuf         @SC00137                   4A768            deq             @SC00280
+     4A76C            freeq           @SC00280                   4A774            ipfcons         @SC00301
+     4A92C            freebuf         @SC00137                   4A930            enq             @SC00280
+     4A93C            @ST00085        @SD00128                   4A940            deq             @SC00280
+     4A944            freeq           @SC00280                   4AAC8            __sflush        @$FFLUSH
+     4ABA0            @ST00177        @$findfp                   4ABA8            __sinit         @$FINDFP
+     4ABBC            errno           @$errlst                   4ABC4            __sflush        @$FFLUSH
+     4ABCC            free            @$MALLOC                   4ABD0            @@smkbuf        @$MAKEBU
+     4ABD8            @fwalk          @$FWALK                    4AE7C            strc@cmp        @$STRCAS
+     4B144            errno           @$errlst                   4B320            close           @$CLOSE
+     4B418            lseek           @$LSEEK                    4B560            lseek           @$LSEEK
+     4B56C            write           @$WRITE                    4B660            read            @$READ
+     4B82C            @@istype        @$__ISTY                   4B844            @@isctyp        @$__ISCT
+     4B84C            @$strtl         @$strtl                    4B854            errno           @$errlst
+     4BC30            @@istype        @$__ISTY                   4BD0C            errno           @$errlst
+     4BD10            __fdt           @$open                     4BEA4            errno           @$errlst
+     4BEA8            __fdt           @$open                     4C050            errno           @$errlst
+     4C054            __fdt           @$open                     4C20C            getbuf          @SC00142
+     4C210            Net             @SD00095                   4C218            freebuf         @SC00137
+     4C220            @ST00085        @SD00128                   4C224            deq             @SC00280
+     4C228            freeq           @SC00280                   4C24C            @ST00084        @SD00128
+     4C4F8            kprintf         @SC00039                   4C704            errno           @$errlst
+     4C710            @@SIGT          @$sigt                     4C844            getbuf          @SC00142
+     4C848            Net             @SD00095                   4C86C            @ST00191        @SC00315
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     4CB04            arptable        @SD00146                   4CB08            @SD00305        @SD00305
+     4CB14            arpdq           @SC00375                   4CCD0            nif             @SD00095
+     4CCF4            ipreass         @SC00125                   4CCFC            ipnet2h         @SC00134
+     4CD00            kprintf         @SC00039                   4CD40            @ST00195        @SC00374
+     4CD7C            icmp_in         @SC00373                   4CD80            igmp_in         @SC00371
+     4CD84            tcp_in          @SC00372                   4CD88            udp_in          @SC00138
+     4CD8C            icmp            @SC00151                   4CD98            @ST00078        @SD00128
+     4CDA4            @ST00080        @SD00128                   4CFDC            ptfree          @SD00074
+     4CFE0            getmem          @SC00122                   4D004            panic           @SC00103
+     4D00C            ports           @SD00074                   4D014            ptnextp         @SD00074
+     4D138            netwrite        @SC00273                   4D13C            deq             @SC00280
+     4D140            freeq           @SC00280                   4D23C            arptable        @SD00146
+     4D3F0            arpalloc        @SC00305                   4D5A4            Route           @SD00089
+     4D5A8            kprintf         @SC00039                   4D5AC            ip2dot          @SC00148
+     4D5C4            wait            @SC00100                   4D5C8            freebuf         @SC00137
+     4D5CC            xsignal         @SC00075                   4D5F4            rttable         @SD00089
+     4D5F8            rthash          @SC00277                   4D87C            devtab          @SD00085
+     4D978            devtab          @SD00085                   4DB20            getbuf          @SC00142
+     4DB24            Net             @SD00095                   4DB28            kprintf         @SC00039
+     4DB44            nif             @SD00095                   4DB80            snap            @SC00112
+     4DE0C            kprintf         @SC00039                   4DE34            devtab          @SD00085
+     4DF60            wait            @SC00100                   4DF68            xsignal         @SC00075
+     4DF6C            @ST00167        @SC00240                   4E248            tmclear         @SC00370
+     4E250            @ST00186        @SD00236                   4E260            tcbtab          @SD00161
+     4E3B8            tqhead          @SD00369                   4E3BC            wait            @SC00100
+     4E3C0            tqmutex         @SD00369                   4E3C4            tmclear         @SC00370
+     4E3C8            ctr100          @SD00021                   4E3CC            getmem          @SC00122
+     4E3D4            xsignal         @SC00075                   4E3D8            resume          @SC00026
+     4E3DC            tqpid           @SD00369                   4E520            tqhead          @SD00369
+     4E528            wait            @SC00100                   4E52C            tqmutex         @SD00369
+     4E530            xsignal         @SC00075                   4E674            tcpsmss         @SC00368
+     4E8D0            getbuf          @SC00142                   4E8D4            Net             @SD00095
+     4E8D8            ipsend          @SC00253                   4E8E4            @ST00130        @SD00128
+     4E8E8            tcpcksum        @SC00328                   4E8F0            tcph2net        @SC00367
+     4E8F4            @ST00189        @SC00317                   4ED74            wait            @SC00100
+     4ED78            @ST00171        @SD00236                   4ED80            tcbtab          @SD00161
+     4ED90            xsignal         @SC00075                   4EFB0            @ST00196        @SC00364
+     4EFB4            @ST00197        @SC00363                   4EFB8            @ST00198        @SC00362
+     4EFBC            @ST00199        @SC00361                   4EFC0            @ST00200        @SC00360
+     4EFC4            tcpfin1         @SC00359                   4EFC8            tcpfin2         @SC00358
+     4EFCC            @ST00201        @SC00357                   4EFD0            @ST00203        @SC00355
+     4EFD4            @ST00202        @SC00356                   4EFD8            @ST00204        @SC00354
+     4EFDC            tcpidle         @SC00353                   4EFE0            @ST00205        @SC00352
+     4EFE4            tcpxmit         @SC00365                   4EFE8            tcprexmt        @SC00366
+     4F184            getbuf          @SC00142                   4F188            Net             @SD00095
+     4F1A0            ipsend          @SC00253                   4F1A8            @ST00133        @SD00128
+     4F1AC            @ST00130        @SD00128                   4F1B0            tcpcksum        @SC00328
+     4F1B4            tcph2net        @SC00367                   4F6A0            @SD00329        @SD00329
+     4F6A8            clktime         @SD00021                   4F780            @SD00330        @SD00330
+     4F784            wait            @SC00100                   4F788            @ST00171        @SD00236
+     4F794            tcbtab          @SD00161                   4F7B0            panic           @SC00103
+     4F7B4            xsignal         @SC00075                   4F960            hgtable         @SD00332
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     4FA98            @ST00207        @SC00351                   4FA9C            @SD00332        @SD00332
+     4FAA0            screate         @SC00101                   4FAB4            resume          @SC00026
+     4FAB8            create          @SC00030                   4FAC4            hgjoin          @SC00349
+     4FACC            @ST00208        @SD00350                   4FAD0            rtadd           @SC00145
+     4FAD4            @ST00209        @SD00350                   4FAD8            xsignal         @SC00075
+     4FADC            nif             @SD00095                   4FAE0            hgseed          @SD00348
+     4FE28            ptfree          @SD00074                   4FE30            sreset          @SC00347
+     4FE34            sdelete         @SC00235                   4FFA0            @ST00179        @$table
+     5018C            kprintf         @SC00039                   5023C            snap            @SC00112
+     504C4            kprintf         @SC00039                   5055C            snap            @SC00112
+     509D0            __fdt           @$open                     50AF0            __finio         @$INITIO
+     50B54            @@ABEND         @$ABEND                    50BDC            @@SIGT          @$sigt
+     50BE4            @@trcbck        @$TRACEB                   50BE8            __sF            @$findfp
+     50CA0            fputs           @$FPUTS                    50CDC            @@CLEANU        @$cleanu
+     50CE4            @@exit          @$@@EXIT                   51038            malloc          @$MALLOC
+     5104C            @$findfp        @$findfp                   51150            @$findfp        @$findfp
+     512C8            @$findfp        @$findfp                   512D0            @gdtblsz        @$GETDTA
+     513F0            @fwalk          @$FWALK                    513F4            __sflush        @$FFLUSH
+     514A8            @$findfp        @$findfp                   514B0            @@CLEANU        @$cleanu
+     51AC8            @@sclose        @$SCLOSE                   51ACC            @@sread         @$SREAD
+     51AD0            @@sseek         @$SSEEK                    51AD4            @@swrite        @$SWRITE
+     51B20            @@sclose        @$SCLOSE                   51B24            @@sread         @$SREAD
+     51B28            @@sseek         @$SSEEK                    51B2C            @@swrite        @$SWRITE
+     51B78            @@sclose        @$SCLOSE                   51B7C            @@sread         @$SREAD
+     51B80            @@sseek         @$SSEEK                    51B84            @@swrite        @$SWRITE
+     51EDC            fprintf         @$FPRINT                   52010            @@sfvwrt        @$FVWRIT
+     5215C            @ST00023        @SC00022                   52164            semaph          @SD00104
+     5216C            @ST00024        @SC00022                   52170            ready           @SC00084
+     52174            getfirst        @SC00200                   52178            resched         @SC00038
+     522C4            @SD00348        @SD00348                   523A4            hglookup        @SC00331
+     523A8            wait            @SC00100                   523AC            @ST00184        @SD00332
+     523B0            xsignal         @SC00075                   523B4            hgadd           @SC00387
+     523BC            @ST00208        @SD00350                   523C0            rtadd           @SC00145
+     523C4            @ST00057        @SD00099                   523C8            sleep10         @SC00247
+     523CC            igmp            @SC00350                   525D4            getbuf          @SC00142
+     525D8            Net             @SD00095                   525E0            ipsend          @SC00253
+     525E8            cksum           @SC00254                   52704            @CRT9A          @@CRT9A
+     527C0            @ST00184        @SD00332                   527C4            pcreate         @SC00267
+     527CC            wait            @SC00100                   527D0            preceive        @SC00244
+     527D4            igmp            @SC00350                   527DC            xsignal         @SC00075
+     528BC            tcbtab          @SD00161                   528CC            tcpsend         @SC00386
+     528D4            tmset           @SC00319                   528D8            @ST00186        @SD00236
+     52A10            tcpxmit         @SC00365                   52AE8            @ST00169        @SC00238
+     52AF0            tcpreset        @SC00326                   52AF4            tcpwait         @SC00385
+     52AF8            tcpdata         @SC00384                   52AFC            tcpacked        @SC00383
+     52C40            tcpabort        @SC00382                   52C4C            tcpreset        @SC00326
+     52C54            tcpacked        @SC00383                   52C58            xsignal         @SC00075
+     52DA0            @ST00169        @SC00238                   52DA8            tcpreset        @SC00326
+     52DB0            tcpacked        @SC00383                   52DB4            tcpwait         @SC00385
+     52DB8            xsignal         @SC00075                   52F40            tcpabort        @SC00382
+     52F48            @ST00128        @SD00128                   52F50            @ST00127        @SD00128
+     52F58            tcpreset        @SC00326                   52F5C            @ST00211        @SC00381
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     52F60            tcpacked        @SC00383                   530B8            tcpabort        @SC00382
+     530C4            tcpreset        @SC00326                   530C8            tcpacked        @SC00383
+     530D0            tcpdata         @SC00384                   530D4            tcpwait         @SC00385
+     53240            tcpabort        @SC00382                   5324C            tcpreset        @SC00326
+     53250            tcpacked        @SC00383                   53258            @ST00211        @SC00381
+     5325C            tcpdata         @SC00384                   53264            tcpwait         @SC00385
+     53268            xsignal         @SC00075                   53468            tcpabort        @SC00382
+     53470            @ST00128        @SD00128                   53478            @ST00127        @SD00128
+     53480            tcpreset        @SC00326                   53484            tcpacked        @SC00383
+     5348C            @ST00211        @SC00381                   53490            tcpdata         @SC00384
+     53644            @ST00126        @SD00128                   53648            @ST00169        @SC00238
+     5364C            tcpabort        @SC00382                   5365C            tcpreset        @SC00326
+     53660            tcpacked        @SC00383                   53664            wait            @SC00100
+     53668            xsignal         @SC00075                   5366C            pcount          @SC00271
+     53670            psend           @SC00270                   53678            tcpdata         @SC00384
+     5367C            @ST00128        @SD00128                   541BC            tcbtab          @SD00161
+     541CC            tcpabort        @SC00382                   541D8            @ST00186        @SD00236
+     541DC            tcpsend         @SC00386                   541E4            tmset           @SC00319
+     545AC            @CRT9A          @@CRT9A                    54688            xsignal         @SC00075
+     5468C            Net             @SD00095                   54690            currpid         @SD00031
+     54694            @SD00369        @SD00369                   54698            screate         @SC00101
+     5469C            ctr100          @SD00021                   546A4            sleep10         @SC00247
+     546A8            suspend         @SC00080                   546AC            wait            @SC00100
+     546B4            pcount          @SC00271                   546B8            psend           @SC00270
+     546BC            freemem         @SC00219                   54848            tqhead          @SD00369
+     5484C            wait            @SC00100                   54850            tqmutex         @SD00369
+     54858            ctr100          @SD00021                   53998            tcpreset        @SC00326
+     539A0            xsignal         @SC00075                   539A4            @ST00188        @SC00318
+     539AC            @ST00126        @SD00128                   539BC            tcpdata         @SC00384
+     539C0            tcpacked        @SC00383                   539C8            @ST00128        @SD00128
+     53BC0            tcpreset        @SC00326                   53BC8            tcballoc        @SC00234
+     53BCC            tcpsync         @SC00233                   53BD0            xsignal         @SC00075
+     53BD4            tcpdata         @SC00384                   53BDC            @ST00125        @SD00128
+     53BE0            tcpwinit        @SC00380                   53DB4            tcpreset        @SC00326
+     53ECC            tcbtab          @SD00161                   53ED4            tcprexmt        @SC00366
+     53ED8            tmclear         @SC00370                   53EE0            @ST00186        @SD00236
+     53EE4            @ST00212        @SC00379                   53EE8            tcpsend         @SC00386
+     53EF0            tmleft          @SC00320                   53EF4            tmset           @SC00319
+     5485C            freemem         @SC00219                   54860            xsignal         @SC00075
+     54A64            nif             @SD00095                   54A70            cksum           @SC00254
+     54A78            freebuf         @SC00137                   54A7C            @ST00213        @SC00378
+     54A80            hglookup        @SC00331                   54A84            wait            @SC00100
+     54A88            @ST00184        @SD00332                   54A8C            tmclear         @SC00370
+     54A90            xsignal         @SC00075                   54C44            pcount          @SC00271
+     54C48            @ST00187        @SD00236                   54C50            @ST00129        @SD00128
+     54C5C            freebuf         @SC00137                   54C60            psend           @SC00270
+     54DE0            kprintf         @SC00039                   54DF8            @ST00013        @SC00027
+     54E08            cksum           @SC00254                   54E0C            snap            @SC00112
+     54E10            icmpdump        @SC00284                   54E18            @ST00090        @SD00128
+     54E1C            icmp            @SC00151                   54E24            @ST00097        @SD00128
+     54E28            gateway         @SD00099                   54E2C            @ST00101        @SD00128
+     54E30            freebuf         @SC00137                   54E34            netmask         @SC00279
+1
+0  LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION             LOCATION  REFERS TO SYMBOL  IN CONTROL SECTION
+     54E38            @ST00102        @SD00128                   54E3C            nif             @SD00095
+     54E40            Net             @SD00095                   54E44            xsend           @SC00272
+     54E48            setmask         @SC00258                   54E4C            @ST00098        @SD00128
+     54E50            @ST00214        @SC00377                   54E54            @ST00096        @SD00128
+     54E58            @ST00092        @SD00128                   54E5C            @ST00095        @SD00128
+     54E60            @ST00093        @SD00128                   54E64            @ST00094        @SD00128
+     54E68            @ST00099        @SD00128                   54E6C            @ST00100        @SD00128
+     54E70            @ST00091        @SD00128                   54EC0            ipsend          @SC00253
+     54EC4            @ST00103        @SD00128                   54EC8            icsetsrc        @SC00250
+     55414            kprintf         @SC00039                   55594            gateway         @SD00099
+     5559C            icmp            @SC00151                   555A4            freebuf         @SC00137
+     555A8            deq             @SC00280                   555B0            freeq           @SC00280
+     557B4            @ST00057        @SD00099                   557B8            netmask         @SC00279
+     557BC            rtget           @SC00130                   557C4            freebuf         @SC00137
+     557C8            rtadd           @SC00145                   557CC            rtdel           @SC00311
+     557D0            rtfree          @SC00131                   55968            wait            @SC00100
+     5596C            @ST00184        @SD00332                   55974            hgtable         @SD00332
+     55978            tmset           @SC00319                   5597C            hgrand          @SC00348
+     55988            xsignal         @SC00075                   55C18            rtget           @SC00130
+     55C24            rtfree          @SC00131                   55C28            nif             @SD00095
+     55DCC            tmclear         @SC00370                   55DD8            tcbtab          @SD00161
+     55DDC            @ST00186        @SD00236                   55DE0            tcpkick         @SC00237
+     55F98            @ST00167        @SC00240                   55FA0            @ST00188        @SC00318
+     56080            tcpreset        @SC00326                   56084            tcpackit        @SC00322
+     56088            tcprtt          @SC00392                   560B8            scount          @SC00263
+     560BC            @ST00023        @SC00022                   560C0            xsignal         @SC00075
+     560C4            @ST00024        @SC00022                   560C8            @ST00215        @SC00393
+     563D0            tcpdodat        @SC00391                   563D4            tcpkick         @SC00237
+     56690            tmset           @SC00319                   5669C            @ST00186        @SD00236
+     566A0            @ST00188        @SC00318                   566A8            tcbtab          @SD00161
+     56794            getbuf          @SC00142                   56798            Net             @SD00095
+     5679C            tcbtab          @SD00161                   567A4            @ST00216        @SC00389
+     567BC            tcprmss         @SC00390                   567C8            @ST00189        @SC00317
+     567D8            @ST00131        @SD00128                   567DC            @ST00130        @SD00128
+     567E4            tcpwait         @SC00385                   567E8            ipsend          @SC00253
+     567EC            tcpcksum        @SC00328                   567F4            tcph2net        @SC00367
+     56CD8            wait            @SC00100                   56CDC            @ST00184        @SD00332
+     56CEC            @SD00387        @SD00387                   56CF0            hgtable         @SD00332
+     56CF8            xsignal         @SC00075                   56CFC            hgarpadd        @SC00388
+     56D00            @ST00208        @SD00350                   56F58            nif             @SD00095
+     56F70            arpalloc        @SC00305                   56F74            @ST00023        @SC00022
+     56F7C            @ST00024        @SC00022                   5743C            @ST00217        @SC00395
+     5744C            @ST00167        @SC00240                   57450            tfinsert        @SC00394
+     57634            tmclear         @SC00370                   57640            tcbtab          @SD00161
+     57644            @ST00186        @SD00236                   57768            tcpkick         @SC00237
+     5786C            getmem          @SC00122                   57870            newq            @SC00280
+     57874            enq             @SC00280                   57878            freemem         @SC00219
+     57A18            deq             @SC00280                   57A1C            freemem         @SC00219
+     57A24            freeq           @SC00280                   57A28            enq             @SC00280
+
+   LOCATION    490 REQUESTS CUMULATIVE PSEUDO REGISTER LENGTH
+  ENTRY ADDRESS       E0
+1
+0
+0 TOTAL LENGTH     57C00
+
+

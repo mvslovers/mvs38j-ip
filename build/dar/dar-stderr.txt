@@ -1,0 +1,3 @@
+DAR Systems/C archive librarian - version 1.60.00
+   (c) Copyright 1999-2002  Dignus, LLC   All rights reserved.
+dar: creating archive ../build/dar/libxinu.a
